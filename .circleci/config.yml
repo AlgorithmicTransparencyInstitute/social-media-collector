@@ -1,0 +1,53 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      # DOES NOT WORK UNDER 12.17.0 OR LATER.
+      - image: circleci/node:12.16.3
+        environment:
+        - NODE_ENV: test
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Install global packages
+          command: sudo npm i -g codecov greenkeeper-lockfile@1
+
+      - run:
+          name: Greenkeeper Lockfile
+          command: greenkeeper-lockfile-update
+
+      - run:
+          name: Install dependencies
+          command: npm ci
+
+      - save_cache:
+          key: dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
+      - run:
+          name: Javascript Linter
+          command: npm run lint
+
+      - run:
+          name: Unit Tests with Code Coverage
+          command: npm test -- --coverage --maxWorkers=2
+
+      - run:
+          name: Do a production build with connection to local back end.
+          command: npm run build -- --env.config=std --env.build=release --env.api=local
+
+      - run:
+          name: Push any lockfile changes
+          command: greenkeeper-lockfile-upload
+
+      - run:
+          name: Send reports to codecov.io
+          command: codecov

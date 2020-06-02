@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when a permission is false and the checkbox is disabled renders correctly 1`] = `
+<div>
+  <div
+    className="form-check"
+  >
+    <input
+      aria-label="some label"
+      checked={false}
+      className="form-check-input disabled"
+      disabled={true}
+      id="some-key"
+      name="some-key"
+      onChange={[MockFunction]}
+      type="checkbox"
+    />
+    <label
+      className="form-check-label disabled"
+      htmlFor="some-key"
+      title=""
+    >
+      some label
+    </label>
+  </div>
+  <p
+    className="small"
+  >
+    some-hint
+  </p>
+</div>
+`;
+
+exports[`when a permission is false renders correctly 1`] = `
+<div>
+  <div
+    className="form-check"
+  >
+    <input
+      aria-label="some label"
+      checked={false}
+      className="form-check-input"
+      disabled={false}
+      id="some-key"
+      name="some-key"
+      onChange={[MockFunction]}
+      type="checkbox"
+    />
+    <label
+      className="form-check-label"
+      htmlFor="some-key"
+      title=""
+    >
+      some label
+    </label>
+  </div>
+  <p
+    className="small"
+  >
+    some-hint
+  </p>
+</div>
+`;
+
+exports[`when a permission is true renders correctly 1`] = `
+<div>
+  <div
+    className="form-check"
+  >
+    <input
+      aria-label="some label"
+      checked={true}
+      className="form-check-input"
+      disabled={false}
+      id="some-key"
+      name="some-key"
+      onChange={[MockFunction]}
+      type="checkbox"
+    />
+    <label
+      className="form-check-label"
+      htmlFor="some-key"
+      title=""
+    >
+      some label
+    </label>
+  </div>
+  <p
+    className="small"
+  >
+    some-hint
+  </p>
+</div>
+`;
+
+exports[`when no permission is loaded renders correctly 1`] = `null`;

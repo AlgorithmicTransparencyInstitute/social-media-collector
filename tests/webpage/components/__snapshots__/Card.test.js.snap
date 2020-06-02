@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`with title and subtitle renders correctly 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card-header"
+  >
+    Test
+  </div>
+  <div
+    className="card-body"
+  >
+    <div
+      className="small mb-3"
+    >
+      This is a test
+    </div>
+    <div
+      className="mt-3"
+    >
+      <p>
+        Hello there
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`without title or subtitle renders correctly 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card-body"
+  >
+    <div
+      className="mt-3"
+    >
+      <p>
+        Hello there
+      </p>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when a value is selected renders correctly 1`] = `
+<div
+  className="pt-3"
+>
+  <label
+    className="form-label"
+  >
+    some label
+  </label>
+  <select
+    className="form-control"
+    id="some-key"
+    onChange={[MockFunction]}
+    value="en"
+  >
+    <option
+      value=""
+    >
+      Choose...
+    </option>
+    <option
+      value="test"
+    >
+      Test
+    </option>
+  </select>
+</div>
+`;
+
+exports[`when no value is selected renders correctly 1`] = `
+<div
+  className="pt-3"
+>
+  <label
+    className="form-label"
+  >
+    some label
+  </label>
+  <select
+    className="form-control"
+    id="some-key"
+    onChange={[MockFunction]}
+    value=""
+  >
+    <option
+      value=""
+    >
+      Choose...
+    </option>
+    <option
+      value="test"
+    >
+      Test
+    </option>
+  </select>
+</div>
+`;

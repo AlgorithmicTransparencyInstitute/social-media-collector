@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendered correctly 1`] = `
+Array [
+  <h4
+    className="mt-4"
+  >
+    Sharing Preferences
+  </h4>,
+  <p>
+    You have control over what you share with this project. To change what data you wish to share, check or uncheck the box to enable or disable sharing that type of data.
+  </p>,
+  <div>
+    <div
+      className="card-deck"
+    >
+      <div
+        className="card"
+      >
+        <div
+          className="card-header"
+        >
+          General Preferences
+        </div>
+        <div
+          className="card-body"
+        >
+          <div
+            className="small mb-3"
+          >
+            These settings apply to all data shared by the extension
+          </div>
+          <div
+            className="mt-3"
+          >
+            <input
+              id="user_share_diagnostic_data"
+              name="mocked-permission-checkbox"
+              type="checkbox"
+            />
+            <input
+              id="show_debug_data"
+              name="mocked-permission-checkbox"
+              type="checkbox"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="card"
+      >
+        <div
+          className="card-header"
+        >
+          Your Settings
+        </div>
+        <div
+          className="card-body"
+        >
+          <div
+            className="small mb-3"
+          >
+            Setting your language and location help us ensure we're handling your data responsibly and analyzing it correctly.
+          </div>
+          <div
+            className="mt-3"
+          >
+            <div
+              name="locale-preferences"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="mt-4"
+  >
+    <div
+      className="card-deck"
+    >
+      <div
+        className="card"
+      >
+        <div
+          className="card-header"
+        >
+          Facebook Preferences
+        </div>
+        <div
+          className="card-body"
+        >
+          <div
+            className="small mb-3"
+          >
+            These options control what data you share from your Facebook feed
+          </div>
+          <div
+            className="mt-3"
+          >
+            <input
+              id="facebook_share_sponsored_posts"
+              name="mocked-permission-checkbox"
+              type="checkbox"
+            />
+            <input
+              id="facebook_show_collection_status"
+              name="mocked-permission-checkbox"
+              type="checkbox"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="card"
+      >
+        <div
+          className="card-header"
+        >
+          YouTube Preferences
+        </div>
+        <div
+          className="card-body"
+        >
+          <div
+            className="small mb-3"
+          >
+            These options control what data you share when you are using YouTube
+          </div>
+          <div
+            className="mt-3"
+          >
+            <input
+              id="youtube_share_watched_videos"
+              name="mocked-permission-checkbox"
+              type="checkbox"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <footer
+    className="mt-4"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>Footy!</p>",
+      }
+    }
+  />,
+]
+`;

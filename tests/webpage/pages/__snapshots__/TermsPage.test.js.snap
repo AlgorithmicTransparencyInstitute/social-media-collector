@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when consent is 'current' rendered correctly 1`] = `
+Array [
+  <header>
+    <h1>
+      Terms of Use
+    </h1>
+  </header>,
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>I consent</p>",
+      }
+    }
+  />,
+  <p>
+    You accepted the above terms and conditions.
+  </p>,
+]
+`;
+
+exports[`when consent is 'none' rendered correctly 1`] = `
+Array [
+  <header>
+    <h1>
+      Terms of Use
+    </h1>
+  </header>,
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>I consent</p>",
+      }
+    }
+  />,
+  <p>
+    You need to accept the above terms and conditions before you can use the browser extension.
+  </p>,
+  <button>
+    I accept these terms and conditions
+  </button>,
+]
+`;
+
+exports[`when consent is 'old' rendered correctly 1`] = `
+Array [
+  <header>
+    <h1>
+      Terms of Use
+    </h1>
+  </header>,
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>I consent</p>",
+      }
+    }
+  />,
+  <p>
+    The above terms and conditions have been updated since you last agreed to them.
+  </p>,
+  <button>
+    I accept the updated terms and conditions
+  </button>,
+]
+`;

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="d-flex flex-wrap pw"
+>
+  <div
+    id="youtube-1"
+  />
+  <div
+    id="facebook-2"
+  />
+  <div
+    id="youtube-hostvideo-3"
+  />
+</div>
+`;

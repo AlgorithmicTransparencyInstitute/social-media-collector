@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering no page is active renders correctly 1`] = `
+<div
+  className="bg-dark border-right"
+  id="sidebar-wrapper"
+>
+  <div
+    className="list-group list-group-flush bg-dark"
+  >
+    <a
+      className="list-group-item list-group-item-action bg-dark text-light"
+      href="#"
+      onClick={[Function]}
+    >
+      My Archive
+    </a>
+    <a
+      className="list-group-item list-group-item-action bg-dark text-light"
+      href="#"
+      onClick={[Function]}
+    >
+      Preferences
+    </a>
+    <a
+      className="list-group-item list-group-item-action bg-dark text-light"
+      href="#"
+      onClick={[Function]}
+    >
+      About
+    </a>
+    <a
+      className="list-group-item list-group-item-action bg-dark text-light"
+      href="#"
+      onClick={[Function]}
+    >
+      Privacy Policy
+    </a>
+    <a
+      className="list-group-item list-group-item-action bg-dark text-light"
+      href="#"
+      onClick={[Function]}
+    >
+      Terms & Conditions
+    </a>
+  </div>
+</div>
+`;
+
+exports[`rendering terms page is active useArchive returns items renders correctly 1`] = `
+<div
+  className="bg-dark border-right"
+  id="sidebar-wrapper"
+>
+  <div
+    className="list-group list-group-flush bg-dark"
+  >
+    <a
+      className="list-group-item list-group-item-action bg-dark text-light"
+      href="#"
+      onClick={[Function]}
+    >
+      My Archive
+    </a>
+    <a
+      className="list-group-item list-group-item-action bg-dark text-light"
+      href="#"
+      onClick={[Function]}
+    >
+      Preferences
+    </a>
+    <a
+      className="list-group-item list-group-item-action bg-dark text-light"
+      href="#"
+      onClick={[Function]}
+    >
+      About
+    </a>
+    <a
+      className="list-group-item list-group-item-action bg-dark text-light"
+      href="#"
+      onClick={[Function]}
+    >
+      Privacy Policy
+    </a>
+    <a
+      className="list-group-item list-group-item-action bg-light"
+      href="#"
+      onClick={[Function]}
+    >
+      Terms & Conditions
+    </a>
+  </div>
+</div>
+`;
+
+exports[`rendering terms page is active useArchive returns nothing renders correctly 1`] = `
+<div
+  className="bg-dark border-right"
+  id="sidebar-wrapper"
+>
+  <div
+    className="list-group list-group-flush bg-dark"
+  >
+    <a
+      className="list-group-item list-group-item-action bg-dark text-light"
+      href="#"
+      onClick={[Function]}
+    >
+      My Archive
+    </a>
+    <a
+      className="list-group-item list-group-item-action bg-dark text-light"
+      href="#"
+      onClick={[Function]}
+    >
+      Preferences
+    </a>
+    <a
+      className="list-group-item list-group-item-action bg-dark text-light"
+      href="#"
+      onClick={[Function]}
+    >
+      About
+    </a>
+    <a
+      className="list-group-item list-group-item-action bg-dark text-light"
+      href="#"
+      onClick={[Function]}
+    >
+      Privacy Policy
+    </a>
+    <a
+      className="list-group-item list-group-item-action bg-light"
+      href="#"
+      onClick={[Function]}
+    >
+      Terms & Conditions
+    </a>
+  </div>
+</div>
+`;

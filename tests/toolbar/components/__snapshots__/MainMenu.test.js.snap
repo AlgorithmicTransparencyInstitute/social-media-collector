@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when the archive is empty rendered correctly 1`] = `
+Array [
+  <nav
+    className="navbar navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      <img
+        className="d-inline-block align-top"
+        height={30}
+        src="test-file-stub"
+        width={30}
+      />
+      <span
+        className="pl-2"
+      >
+        Test Project
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="list-group"
+  >
+    <a
+      className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+      href="#"
+      onClick={[Function]}
+    >
+      My Archive
+       
+      <span
+        className="badge badge-primary"
+      >
+        0
+      </span>
+    </a>
+    <a
+      className="list-group-item list-group-item-action"
+      href="#"
+      onClick={[Function]}
+    >
+      Preferences
+    </a>
+    <a
+      className="list-group-item list-group-item-action"
+      href="#"
+      onClick={[Function]}
+    >
+      About
+    </a>
+    <a
+      className="list-group-item list-group-item-action"
+      href="#"
+      onClick={[Function]}
+    >
+      Privacy Policy
+    </a>
+    <a
+      className="list-group-item list-group-item-action"
+      href="#"
+      onClick={[Function]}
+    >
+      Terms & Conditions
+    </a>
+  </div>,
+]
+`;
+
+exports[`when the archive is has stuff in it rendered correctly 1`] = `
+Array [
+  <nav
+    className="navbar navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      <img
+        className="d-inline-block align-top"
+        height={30}
+        src="test-file-stub"
+        width={30}
+      />
+      <span
+        className="pl-2"
+      >
+        Test Project
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="list-group"
+  >
+    <a
+      className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+      href="#"
+      onClick={[Function]}
+    >
+      My Archive
+       
+      <span
+        className="badge badge-primary"
+      >
+        2
+      </span>
+    </a>
+    <a
+      className="list-group-item list-group-item-action"
+      href="#"
+      onClick={[Function]}
+    >
+      Preferences
+    </a>
+    <a
+      className="list-group-item list-group-item-action"
+      href="#"
+      onClick={[Function]}
+    >
+      About
+    </a>
+    <a
+      className="list-group-item list-group-item-action"
+      href="#"
+      onClick={[Function]}
+    >
+      Privacy Policy
+    </a>
+    <a
+      className="list-group-item list-group-item-action"
+      href="#"
+      onClick={[Function]}
+    >
+      Terms & Conditions
+    </a>
+  </div>,
+]
+`;
+
+exports[`when the archive is undefined rendered correctly 1`] = `
+Array [
+  <nav
+    className="navbar navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      <img
+        className="d-inline-block align-top"
+        height={30}
+        src="test-file-stub"
+        width={30}
+      />
+      <span
+        className="pl-2"
+      >
+        Test Project
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="list-group"
+  >
+    <a
+      className="list-group-item list-group-item-action"
+      href="#"
+      onClick={[Function]}
+    >
+      My Archive
+    </a>
+    <a
+      className="list-group-item list-group-item-action"
+      href="#"
+      onClick={[Function]}
+    >
+      Preferences
+    </a>
+    <a
+      className="list-group-item list-group-item-action"
+      href="#"
+      onClick={[Function]}
+    >
+      About
+    </a>
+    <a
+      className="list-group-item list-group-item-action"
+      href="#"
+      onClick={[Function]}
+    >
+      Privacy Policy
+    </a>
+    <a
+      className="list-group-item list-group-item-action"
+      href="#"
+      onClick={[Function]}
+    >
+      Terms & Conditions
+    </a>
+  </div>,
+]
+`;

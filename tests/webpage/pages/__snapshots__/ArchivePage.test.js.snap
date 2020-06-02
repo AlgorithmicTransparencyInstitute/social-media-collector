@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when consent is 'current' rendered correctly 1`] = `
+Array [
+  <header>
+    <h1>
+      My Archive
+    </h1>
+  </header>,
+  <div
+    id="archive-list"
+  >
+    Archive stuff here
+  </div>,
+]
+`;
+
+exports[`when consent is 'none' rendered correctly 1`] = `
+Array [
+  <header>
+    <h1>
+      My Archive
+    </h1>
+  </header>,
+  <p
+    className="introduction"
+  >
+    You need to accept the terms and conditions before you can view your archive.
+  </p>,
+  <a
+    href="#terms"
+  >
+    View and accept terms and conditions
+  </a>,
+]
+`;
+
+exports[`when consent is 'old' rendered correctly 1`] = `
+Array [
+  <header>
+    <h1>
+      My Archive
+    </h1>
+  </header>,
+  <p
+    className="introduction"
+  >
+    You need to accept the updated terms and conditions before you can view your archive.
+  </p>,
+  <a
+    href="#terms"
+  >
+    View and accept updated terms and conditions
+  </a>,
+]
+`;

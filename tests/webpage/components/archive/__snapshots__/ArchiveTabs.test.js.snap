@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render the tabs renders correctly 1`] = `
+<div
+  className="btn-group"
+  role="group"
+>
+  <button
+    className="btn border align-items-center btn-light"
+    onClick={[Function]}
+    type="button"
+  >
+    Test
+    <span
+      className="badge badge-primary ml-2"
+    >
+      1
+    </span>
+  </button>
+  <button
+    className="btn border align-items-center btn-secondary"
+    onClick={[Function]}
+    type="button"
+  >
+    Alt
+  </button>
+</div>
+`;

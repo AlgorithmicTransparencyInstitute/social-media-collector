@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when consent is current renders correctly 1`] = `
+<div>
+  I am a Main Menu
+</div>
+`;
+
+exports[`when consent is none renders correctly 1`] = `
+<div
+  className="container"
+>
+  <h3>
+    Test Project
+  </h3>
+  <div
+    className="mb-1"
+  >
+    <p>
+      To enable the extension, please consent to our collection of your data.
+    </p>
+    <button
+      className="btn btn-primary btn-block"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Review Consent
+    </button>
+  </div>
+</div>
+`;
+
+exports[`when consent is old renders correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="mb-1"
+  >
+    <h3>
+      Test Project
+    </h3>
+    <p>
+      To enable the extension, please consent to our collection of some more of your data.
+    </p>
+    <button
+      className="btn btn-primary btn-block"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Review Consent
+    </button>
+  </div>
+</div>
+`;

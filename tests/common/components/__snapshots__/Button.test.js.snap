@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when onClick is provided renders correctly 1`] = `
+<button
+  className="btn btn-primary btn-block"
+  disabled={false}
+  onClick={[MockFunction]}
+  type="button"
+>
+  Click here!
+</button>
+`;
+
+exports[`when to is defined renders correctly 1`] = `
+<button
+  className="btn btn-primary btn-block"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  Click here!
+</button>
+`;
+
+exports[`when to is not defined renders correctly 1`] = `
+<button
+  className="btn btn-primary btn-block"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  Click here!
+</button>
+`;
+
+exports[`when type is link renders correctly 1`] = `
+<a
+  href="#"
+  onClick={[Function]}
+>
+  Click here!
+</a>
+`;
+
+exports[`when variant is "success" renders correctly 1`] = `
+<button
+  className="btn btn-success btn-block"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  Click here!
+</button>
+`;

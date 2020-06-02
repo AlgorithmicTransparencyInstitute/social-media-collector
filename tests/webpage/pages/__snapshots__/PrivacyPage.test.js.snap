@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendered correctly 1`] = `
+Array [
+  <header>
+    <h1>
+      Privacy
+    </h1>
+  </header>,
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>Privacy!</p>",
+      }
+    }
+  />,
+]
+`;

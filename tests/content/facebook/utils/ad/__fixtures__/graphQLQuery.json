@@ -1,0 +1,16 @@
+{
+  "credentials": "include",
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+    "content-type": "application/x-www-form-urlencoded",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "viewport-width": "800"
+  },
+  "referrer": "https://www.facebook.com/",
+  "referrerPolicy": "origin-when-cross-origin",
+  "body": "av=677889900&__user=677889900&__a=1&__dyn=7AgNeS4amaAxd2u6aJGeFxqeCwKyWzEpF4Wo8oeES2N6wAxu13wFw_x-K9xK5WwIKaxeUW3KFUe8OdwJKdx3wCgoDx2UO5UlwQwOxa2m4o6e2e250WG7EWq6862um1owhFUhKEtxy5UrwFwgEdoK7UaU-1uxOfKEpCwoGzku4EhwIXxK8BUjU8V8gzUOmVojzUkw_wiEyEqwgF9poiCDKi8wGxm4UGqfwhUyXxi48y2i3yeCzEmgK7o88vwEy8iw8q262O2WE9EjwtUym2mfxW68lBwkU4S2G&__csr=&__req=3f&__beoa=0&__pc=PHASED%3ADEFAULT&dpr=2&__rev=1001529984&__s=gsjy29%3Arxg5bi%3Ascxj3y&__hsi=6769487076091527907-0&fb_dtsg=AQEn6ynEozdS%3AAQEFzVMWtzHM&jazoest=27957&__spin_r=1001529984&__spin_b=trunk&__spin_t=1576115989&fb_api_caller_class=RelayModern&fb_api_req_friendly_name=AdsPrefWAISTDialogQuery&variables=%7B%22adId%22%3A%226151113333247%22%2C%22clientToken%22%3A%22AI%40AQIGFZIk5XnwbcDI0i6wVqW0VYj6UIZKzO9YqMBVIk2atF5AvP8Cj8cAgBnKLoctN2BeYt0lkL3xQnBDkZ4XYOeJ%22%7D&doc_id=2602243929890886",
+  "method": "POST",
+  "mode": "cors"
+}

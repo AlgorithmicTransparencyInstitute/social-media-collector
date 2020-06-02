@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card-header"
+  >
+    some video
+  </div>
+  <div
+    className="card-body"
+  >
+    <div
+      className="small mb-3"
+    >
+      someone
+    </div>
+    <div
+      className="mt-3"
+    >
+      <div
+        className="ati-item yt-item"
+      >
+        <div
+          enhancedPrivacy={true}
+          size="small"
+          suggestions={false}
+          videoId="1234566789"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

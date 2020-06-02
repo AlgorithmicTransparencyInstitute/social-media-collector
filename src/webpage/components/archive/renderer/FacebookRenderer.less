@@ -1,0 +1,309 @@
+.fb-item {
+  padding: 0;
+  width: 500px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+
+  &:first-child {
+    padding: 12px 12px 0 12px;
+  }
+
+  .hidden_elem {
+    display: none;
+  }
+
+  [data-testid="post_message"] {
+    padding: 10px 0;
+  }
+
+  & > img {
+    max-width: 90%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  video {
+    display: none;
+  }
+
+  div.mtm div div div span div img {
+    width: 498px;
+    height: auto;
+    margin-left: -12px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+
+  // Hide divs that have been otherwise rendering as stray periods.
+  ._6spk {
+    display: none;
+  }
+
+  // Don't allow user to click buttons or links.
+  // a,
+  // button {
+  //   // pointer-events: none;
+  // }
+
+  h5 {
+    font-size: 14px; // Match size of source bar w/ Facebook's size
+    margin-bottom: 0; // Bring timestamp closer to the source bar title
+  }
+
+  // Add "arrow" in place of "to" in source bar.
+  ._gb8.img::after {
+    content: ">";
+    font-style: normal;
+  }
+
+  // Remove word "to" in source bar.
+  ._gb8 u {
+    display: none;
+  }
+
+  ._6m6 {
+    padding-top: 2px;
+    margin-top: 3px;
+    display: block;
+    float: left;
+    padding-bottom: 10px;
+
+    a {
+      color: #1d2129;
+      font-size: 16px;
+      font-weight: 600;
+
+      &:hover {
+        text-decoration: none;
+        color: #1d2129;
+      }
+    }
+  }
+
+  // Bring author names inline with profile pics.
+  ._6a._6b {
+    display: inline-block;
+    height: 20px !important;
+
+    a {
+      color: #385898;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: subpixel-antialiased;
+    }
+  }
+
+  ._ohe ._6a {
+    display: block;
+    float: right;
+    padding-left: 18px;
+    height: 20px;
+    vertical-align: middle;
+
+    a {
+      border: 1px solid rgb(190, 195, 201);
+      background-color: rgb(238, 240, 242);
+      color: #4b4f56;
+      padding: 5px 8px;
+      border-radius: 2px;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  ._6m7 {
+    margin-top: 3px;
+    color: #606770;
+    font-size: 14px;
+    line-height: 20px;
+    word-break: break-word;
+    display: none;
+    overflow-x: hidden;
+  }
+
+  div[data-testid="post_message"] p {
+    color: #1d2129;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+
+  .accessible_elem {
+    display: none;
+  }
+
+  ._4r_y {
+    height: 2px;
+  }
+
+  // Hide inconsequential artifacts.
+  ._52c6 {
+    display: none;
+  }
+
+  div ._3x-2 {
+    margin: 0;
+    padding: 0;
+  }
+
+  // Hide buttons.
+  button {
+    display: none;
+  }
+
+  // Profile pic wrapper.
+  ._5pb8._1yz2._8o._8s.lfloat._ohe,
+  ._38vo {
+    display: block;
+    float: left;
+    width: 32px;
+    margin-right: 8px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  ._38vo {
+    max-height: 32px;
+  }
+
+  ._38vo img {
+    max-height: 32px;
+  }
+
+  ._5x46,
+  ._3dp ._29k {
+    /* Profile name wrapper */
+    margin-bottom: 6px;
+  }
+
+  ._3ekx {
+    display: block;
+  }
+
+  ._6lz {
+    padding-top: 10px;
+    color: #606770;
+    font-size: 12px;
+  }
+
+  .uiScaledImageContainer {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+  }
+
+  .scaledImageFitWidth {
+    // max-width: 100%;
+    // width: auto;
+    // height: auto;
+  }
+
+  .ellipsis {
+    line-height: 14px;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .card-title {
+    display: none;
+  }
+
+  .card-subtitle {
+    display: none;
+  }
+
+  &.fb-publicUserPost {
+    // background-color: #e1edec;
+    div.mtm div div div span div div {
+      display: none;
+    }
+  }
+
+  &.fb-publicPagePost {
+    // background-color: #e1edec;
+    div.mtm div div div span div div {
+      display: none;
+    }
+  }
+
+  &.fb-sponsoredPost {
+    // background-color: #f1edec;
+
+    a[role="button"] {
+      //border: 1px solid;
+      border-radius: 2px;
+      box-sizing: content-box;
+      font-size: 12px;
+      -webkit-font-smoothing: antialiased;
+      font-weight: bold;
+      justify-content: center;
+      padding: 0 8px;
+      position: relative;
+      text-align: center;
+      text-shadow: none;
+      vertical-align: middle;
+    }
+  }
+
+  ul.uiList {
+    margin-left: -52px;
+  }
+
+  ul.uiList li {
+    display: none;
+  }
+
+  ul.uiList li:first-child {
+    display: inline-block;
+    border-top: 1px solid #ccc;
+    width: 100%;
+  }
+
+  ul.uiList li img {
+    width: 498px;
+    height: auto;
+  }
+
+  ._5eut,
+  ._42gt {
+    display: none;
+  }
+
+  ._4lpe,
+  ._3htz,
+  ._5mly,
+  ._40ja,
+  ._45oh {
+    display: none;
+  }
+}
+
+.targeting {
+  margin-left: 5px;
+  width: 500px;
+
+  h4 {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+  }
+
+  .reason {
+    margin-right: 10px;
+
+    .reason-name {
+      padding-left: 5px;
+    }
+  }
+}

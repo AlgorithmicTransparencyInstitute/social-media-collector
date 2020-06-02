@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when granted is 'current' check rendering when there is a to prop renders correctly 1`] = `null`;
+
+exports[`when granted is 'current' check rendering when there is no to prop supplied renders correctly 1`] = `null`;
+
+exports[`when granted is 'none' check rendering when there is a to prop renders correctly 1`] = `
+<button
+  className="btn btn-primary btn-block"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  some label
+</button>
+`;
+
+exports[`when granted is 'none' check rendering when there is no to prop supplied renders correctly 1`] = `
+<button
+  className="btn btn-primary btn-block"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  some label
+</button>
+`;
+
+exports[`when granted is 'null' check rendering when there is a to prop renders correctly 1`] = `null`;
+
+exports[`when granted is 'null' check rendering when there is no to prop supplied renders correctly 1`] = `null`;
+
+exports[`when granted is 'old' check rendering when there is a to prop renders correctly 1`] = `
+<button
+  className="btn btn-primary btn-block"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  some label
+</button>
+`;
+
+exports[`when granted is 'old' check rendering when there is no to prop supplied renders correctly 1`] = `
+<button
+  className="btn btn-primary btn-block"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  some label
+</button>
+`;

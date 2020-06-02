@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<nav
+  className="navbar navbar-dark bg-dark"
+>
+  <a
+    className="navbar-brand"
+    href="#"
+  >
+    <img
+      className="d-inline-block align-top"
+      height={30}
+      src="test-file-stub"
+      width={30}
+    />
+    <span
+      className="pl-2"
+    >
+      <strong>
+        Test Project
+      </strong>
+    </span>
+  </a>
+</nav>
+`;

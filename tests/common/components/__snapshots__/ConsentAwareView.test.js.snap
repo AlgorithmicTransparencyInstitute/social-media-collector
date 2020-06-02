@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when not okay renders correctly 1`] = `null`;
+
+exports[`when okay renders correctly 1`] = `
+<div>
+  Hello There
+</div>
+`;

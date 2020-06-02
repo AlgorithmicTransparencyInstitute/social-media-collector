@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when there is an advertiser when there is a platformItemId renders correctly 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card-header"
+  >
+    some-advertiser
+  </div>
+  <div
+    className="card-body"
+  >
+    <div
+      className="small mb-3"
+    >
+      Extracted from undefined
+    </div>
+    <div
+      className="mt-3"
+    >
+      <div
+        className="ati-item yt-item yt-recommendedVideo"
+      >
+        <div
+          enhancedPrivacy={true}
+          size="small"
+          suggestions={false}
+          videoId="aabbccdd11223344"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`when there is an advertiser when there is not a platformItemId renders correctly 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card-header"
+  >
+    some-advertiser
+  </div>
+  <div
+    className="card-body"
+  >
+    <div
+      className="small mb-3"
+    >
+      Extracted from undefined
+    </div>
+    <div
+      className="mt-3"
+    >
+      <div
+        className="ati-item yt-item yt-recommendedVideo"
+      >
+        <p>
+          No Video Available
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`when there is not an advertiser with a title renders correctly 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card-header"
+  >
+    some video
+  </div>
+  <div
+    className="card-body"
+  >
+    <div
+      className="small mb-3"
+    >
+      Extracted from undefined
+    </div>
+    <div
+      className="mt-3"
+    >
+      <div
+        className="ati-item yt-item yt-recommendedVideo"
+      >
+        <p>
+          No Video Available
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`when there is not an advertiser without a title renders correctly 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card-body"
+  >
+    <div
+      className="small mb-3"
+    >
+      Extracted from undefined
+    </div>
+    <div
+      className="mt-3"
+    >
+      <div
+        className="ati-item yt-item yt-recommendedVideo"
+      >
+        <p>
+          No Video Available
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,25 @@
+ul.navigation {
+  display: inline-block;
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+
+  & li {
+    display: inline-block;
+    width: 100%;
+    text-transform: uppercase;
+
+    & span {
+      color: #c86c1c;
+      padding-left: 0.25em;
+
+      &::before {
+        content: '(';
+      }
+
+      &::after {
+        content: ')';
+      }
+    }
+  }
+}

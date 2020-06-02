@@ -1,0 +1,532 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when tab is '' when granted is "current" renders the  page with correct navigation 1`] = `
+Array [
+  <nav
+    className="navbar navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      <img
+        className="d-inline-block align-top"
+        height={30}
+        src="test-file-stub"
+        width={30}
+      />
+      <span
+        className="pl-2"
+      >
+        <strong>
+          Test Project
+        </strong>
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="d-flex"
+    id="wrapper"
+  >
+    <div
+      id="navigation"
+    >
+      Navigation goes here
+    </div>
+    <div
+      id="page-content-wrapper"
+    >
+      <div
+        className="container-fluid"
+      >
+        <h1>
+          About Page goes here
+        </h1>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`when tab is '' when granted is not "current" renders the terms page with no navigation 1`] = `
+Array [
+  <nav
+    className="navbar navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      <img
+        className="d-inline-block align-top"
+        height={30}
+        src="test-file-stub"
+        width={30}
+      />
+      <span
+        className="pl-2"
+      >
+        <strong>
+          Test Project
+        </strong>
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="d-flex"
+    id="wrapper"
+  >
+    <div
+      id="page-content-wrapper"
+    >
+      <h1>
+        Terms Page goes here
+      </h1>
+    </div>
+  </div>,
+]
+`;
+
+exports[`when tab is 'about' when granted is "current" renders the about page with correct navigation 1`] = `
+Array [
+  <nav
+    className="navbar navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      <img
+        className="d-inline-block align-top"
+        height={30}
+        src="test-file-stub"
+        width={30}
+      />
+      <span
+        className="pl-2"
+      >
+        <strong>
+          Test Project
+        </strong>
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="d-flex"
+    id="wrapper"
+  >
+    <div
+      id="navigation"
+    >
+      Navigation goes here
+    </div>
+    <div
+      id="page-content-wrapper"
+    >
+      <div
+        className="container-fluid"
+      >
+        <h1>
+          About Page goes here
+        </h1>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`when tab is 'about' when granted is not "current" renders the terms page with no navigation 1`] = `
+Array [
+  <nav
+    className="navbar navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      <img
+        className="d-inline-block align-top"
+        height={30}
+        src="test-file-stub"
+        width={30}
+      />
+      <span
+        className="pl-2"
+      >
+        <strong>
+          Test Project
+        </strong>
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="d-flex"
+    id="wrapper"
+  >
+    <div
+      id="page-content-wrapper"
+    >
+      <h1>
+        Terms Page goes here
+      </h1>
+    </div>
+  </div>,
+]
+`;
+
+exports[`when tab is 'archive' when granted is "current" renders the archive page with correct navigation 1`] = `
+Array [
+  <nav
+    className="navbar navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      <img
+        className="d-inline-block align-top"
+        height={30}
+        src="test-file-stub"
+        width={30}
+      />
+      <span
+        className="pl-2"
+      >
+        <strong>
+          Test Project
+        </strong>
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="d-flex"
+    id="wrapper"
+  >
+    <div
+      id="navigation"
+    >
+      Navigation goes here
+    </div>
+    <div
+      id="page-content-wrapper"
+    >
+      <div
+        className="container-fluid"
+      >
+        <h1>
+          Archive Page goes here
+        </h1>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`when tab is 'archive' when granted is not "current" renders the terms page with no navigation 1`] = `
+Array [
+  <nav
+    className="navbar navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      <img
+        className="d-inline-block align-top"
+        height={30}
+        src="test-file-stub"
+        width={30}
+      />
+      <span
+        className="pl-2"
+      >
+        <strong>
+          Test Project
+        </strong>
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="d-flex"
+    id="wrapper"
+  >
+    <div
+      id="page-content-wrapper"
+    >
+      <h1>
+        Terms Page goes here
+      </h1>
+    </div>
+  </div>,
+]
+`;
+
+exports[`when tab is 'preferences' when granted is "current" renders the preferences page with correct navigation 1`] = `
+Array [
+  <nav
+    className="navbar navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      <img
+        className="d-inline-block align-top"
+        height={30}
+        src="test-file-stub"
+        width={30}
+      />
+      <span
+        className="pl-2"
+      >
+        <strong>
+          Test Project
+        </strong>
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="d-flex"
+    id="wrapper"
+  >
+    <div
+      id="navigation"
+    >
+      Navigation goes here
+    </div>
+    <div
+      id="page-content-wrapper"
+    >
+      <div
+        className="container-fluid"
+      >
+        <h1>
+          Preferences Page goes here
+        </h1>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`when tab is 'preferences' when granted is not "current" renders the terms page with no navigation 1`] = `
+Array [
+  <nav
+    className="navbar navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      <img
+        className="d-inline-block align-top"
+        height={30}
+        src="test-file-stub"
+        width={30}
+      />
+      <span
+        className="pl-2"
+      >
+        <strong>
+          Test Project
+        </strong>
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="d-flex"
+    id="wrapper"
+  >
+    <div
+      id="page-content-wrapper"
+    >
+      <h1>
+        Terms Page goes here
+      </h1>
+    </div>
+  </div>,
+]
+`;
+
+exports[`when tab is 'privacy' when granted is "current" renders the privacy page with correct navigation 1`] = `
+Array [
+  <nav
+    className="navbar navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      <img
+        className="d-inline-block align-top"
+        height={30}
+        src="test-file-stub"
+        width={30}
+      />
+      <span
+        className="pl-2"
+      >
+        <strong>
+          Test Project
+        </strong>
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="d-flex"
+    id="wrapper"
+  >
+    <div
+      id="navigation"
+    >
+      Navigation goes here
+    </div>
+    <div
+      id="page-content-wrapper"
+    >
+      <div
+        className="container-fluid"
+      >
+        <header>
+          <h1>
+            Privacy
+          </h1>
+        </header>
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>Privacy!</p>",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`when tab is 'privacy' when granted is not "current" renders the terms page with no navigation 1`] = `
+Array [
+  <nav
+    className="navbar navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      <img
+        className="d-inline-block align-top"
+        height={30}
+        src="test-file-stub"
+        width={30}
+      />
+      <span
+        className="pl-2"
+      >
+        <strong>
+          Test Project
+        </strong>
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="d-flex"
+    id="wrapper"
+  >
+    <div
+      id="page-content-wrapper"
+    >
+      <h1>
+        Terms Page goes here
+      </h1>
+    </div>
+  </div>,
+]
+`;
+
+exports[`when tab is 'terms' when granted is "current" renders the terms page with correct navigation 1`] = `
+Array [
+  <nav
+    className="navbar navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      <img
+        className="d-inline-block align-top"
+        height={30}
+        src="test-file-stub"
+        width={30}
+      />
+      <span
+        className="pl-2"
+      >
+        <strong>
+          Test Project
+        </strong>
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="d-flex"
+    id="wrapper"
+  >
+    <div
+      id="navigation"
+    >
+      Navigation goes here
+    </div>
+    <div
+      id="page-content-wrapper"
+    >
+      <div
+        className="container-fluid"
+      >
+        <h1>
+          Terms Page goes here
+        </h1>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`when tab is 'terms' when granted is not "current" renders the terms page with no navigation 1`] = `
+Array [
+  <nav
+    className="navbar navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      <img
+        className="d-inline-block align-top"
+        height={30}
+        src="test-file-stub"
+        width={30}
+      />
+      <span
+        className="pl-2"
+      >
+        <strong>
+          Test Project
+        </strong>
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="d-flex"
+    id="wrapper"
+  >
+    <div
+      id="page-content-wrapper"
+    >
+      <h1>
+        Terms Page goes here
+      </h1>
+    </div>
+  </div>,
+]
+`;

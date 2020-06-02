@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  <div
+    id="installation_country_code"
+    name="preference-selector"
+  />,
+  <div
+    id="installation_language_code"
+    name="preference-selector"
+  />,
+  <div
+    id="installation_age_range"
+    name="preference-selector"
+  />,
+  <div
+    id="installation_gender_code"
+    name="preference-selector"
+  />,
+]
+`;

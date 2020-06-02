@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when there are two pages current page is 1 renders correctly 1`] = `
+<nav
+  arial-label="Archive Pagination"
+>
+  <ul
+    className="pagination justify-content-center"
+  >
+    <li
+      className="page-item disabled"
+    >
+      <a
+        aria-disabled="true"
+        className="page-link"
+        href="#"
+        tabIndex="-1"
+      >
+        Previous
+      </a>
+    </li>
+    <li
+      className="page-item disabled"
+    >
+      <a
+        className="page-link"
+        href="#"
+      >
+        1
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+      >
+        2
+         
+        <span
+          className="sr-only"
+        >
+          (current)
+        </span>
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+      >
+        Next
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`when there are two pages current page is 2 renders correctly 1`] = `
+<nav
+  arial-label="Archive Pagination"
+>
+  <ul
+    className="pagination justify-content-center"
+  >
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+      >
+        Previous
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+      >
+        1
+         
+        <span
+          className="sr-only"
+        >
+          (current)
+        </span>
+      </a>
+    </li>
+    <li
+      className="page-item disabled"
+    >
+      <a
+        className="page-link"
+        href="#"
+      >
+        2
+      </a>
+    </li>
+    <li
+      className="page-item disabled"
+    >
+      <a
+        aria-disabled="true"
+        className="page-link"
+        href="#"
+        tabIndex="-1"
+      >
+        Next
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`when there is only one page renders correctly 1`] = `null`;
