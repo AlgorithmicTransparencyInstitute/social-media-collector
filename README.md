@@ -16,8 +16,8 @@ Once installed **you must accept the standard terms and conditions of use**. The
 <!-- prettier-ignore -->
 | branch    | status | coverage | notes                 |
 | --------- | ------ | -------- | --------------------- |
-| `develop` |        |          | work in progress      |
-| `master`  |        |          | latest stable release |
+| `develop` | [![CircleCI](https://circleci.com/gh/AlgorithmicTransparencyInstitute/social-media-collector/tree/develop.svg?style=svg&circle-token=5373d9cc27e3f366db288363c7074a64f2d628d9)](https://circleci.com/gh/AlgorithmicTransparencyInstitute/social-media-collector/tree/develop) |          | work in progress      |
+| `master`  | [![CircleCI](https://circleci.com/gh/AlgorithmicTransparencyInstitute/social-media-collector/tree/master.svg?style=svg&circle-token=5373d9cc27e3f366db288363c7074a64f2d628d9)](https://circleci.com/gh/AlgorithmicTransparencyInstitute/social-media-collector/tree/master) |          | latest stable release |
 
 ### Prerequisites
 
