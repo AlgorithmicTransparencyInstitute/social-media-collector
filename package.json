@@ -140,10 +140,5 @@
     "./src/**/*.less": [
       "stylelint"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
