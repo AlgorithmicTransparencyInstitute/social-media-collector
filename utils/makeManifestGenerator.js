@@ -41,6 +41,10 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
   const versionName = `${config.version} (${shortSha})`;
   const permissions = ['storage', 'unlimitedStorage', '*://*.facebook.com/*'];
 
+  if(config.includeYoutube){
+    permissions.push('*://*.youtube.com/*');
+  }
+
   const BUNDLE_CONTENT_SCRIPT = [{
       js: ['content/bundle.js'],
       matches: [...FB_MATCHES, ...(config.includeYoutube ? YT_MATCHES : [])],
@@ -63,7 +67,7 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
     homepage_url: config.homepage,
     content_scripts: [
       ...FACEBOOK_CONTENT_SCRIPT,
-      ...(config.includeYoutube ? YOUTUBE_CONTENT_SCRIPT :[]),
+      ...(config.includeYoutube ? YOUTUBE_CONTENT_SCRIPT : []),
       ...BUNDLE_CONTENT_SCRIPT
     ],
     permissions
