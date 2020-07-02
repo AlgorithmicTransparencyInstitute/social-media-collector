@@ -38,6 +38,10 @@ const extractAdTargetingFromPost = post =>
           fbDtsg
         })
           .then(adTargetingData => {
+            for (const obj of adTargetingData.data.waist_targeting_data) {
+              delete obj.birthday;
+            }
+
             updateAndSavePost({
               ...ad,
               payload: { ...ad.payload, adTargetingData }

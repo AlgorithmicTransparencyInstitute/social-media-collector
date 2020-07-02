@@ -20,6 +20,11 @@ const extractAdTargetingFromPost = async post => {
   }
 
   const adTargetingData = await getAdTargetingData(adId, clientToken, commonData);
+
+  for (const obj of adTargetingData.data.waist_targeting_data) {
+    delete obj.birthday;
+  }
+
   updateAndSavePost({
     ...post,
     adId,
