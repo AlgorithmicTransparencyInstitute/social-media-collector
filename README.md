@@ -92,6 +92,8 @@ So if, for example, you create your own build config called `alt-build-config.js
 
 Any API URL you set in that file will be used as the default url, unless you specify an `--env.api` option. The `--env.api` option will override whatever you set in your copy of `build-config.js`.
 
+E.g., `npm run chrome -- -- --env.file=./legacy-build-config.js` or `npm run watch -- --env.file=./legacy-build-config.js`
+
 ## Unit tests
 
 Unit tests do not require a running backend server.

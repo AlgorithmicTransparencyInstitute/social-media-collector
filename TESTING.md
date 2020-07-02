@@ -1,4 +1,4 @@
-in Legacy version:
+in both versions:
 
 1. Share Sponsored Posts ON Share Ad Targeting Information ON
 
@@ -18,8 +18,17 @@ in Legacy version:
 
    CHECK
 
-in both versions:
+4. Share My Language OFF
+   
+   ensure nothing is sent
 
-Share My Language
+   CHECK
 
-CHECK
+5. Check that birthdays are removed from WAIST data.
+
+   CHECK
+
+
+in NYU new version only:
+
+youtube stuff.
