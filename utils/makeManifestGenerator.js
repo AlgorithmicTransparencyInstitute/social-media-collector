@@ -39,11 +39,8 @@ const YOUTUBE_CONTENT_SCRIPT = [{
 
 const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) => {
   const versionName = `${config.version} (${shortSha})`;
-  const permissions = ['storage', 'unlimitedStorage', '*://*.facebook.com/*'];
+  const permissions = ['storage', 'unlimitedStorage'];
 
-  if(config.includeYoutube){
-    permissions.push('*://*.youtube.com/*');
-  }
 
   const BUNDLE_CONTENT_SCRIPT = [{
       js: ['content/bundle.js'],
