@@ -18,9 +18,6 @@ const BASE_MANIFEST = {
     default_popup: 'toolbar/index.html'
   },
   web_accessible_resources: ['webpage/*'],
-  externally_connectable: {
-    matches: [...FB_MATCHES, ...YT_MATCHES]
-  }
 };
 
 const FACEBOOK_CONTENT_SCRIPT = [{
