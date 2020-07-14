@@ -1,4 +1,4 @@
-export const POSTER = 'h6 a, h5 a';
+export const POSTER = '.userContentWrapper h6 a, h5 a';
 
 /**
  *  Get the link identifying who posted this.
