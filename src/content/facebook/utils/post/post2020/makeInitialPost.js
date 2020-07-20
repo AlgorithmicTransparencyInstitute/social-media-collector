@@ -6,6 +6,15 @@ import isPublicPost from './isPublicPost';
 import isSponsoredPost from './isSponsoredPost';
 import { VERSION } from '../../../constants';
 
+
+const innerify = element => {
+  if (element.querySelector('.userContentWrapper')) {
+    return element.querySelector('.userContentWrapper');
+  } else {
+    return element;
+  }
+};
+
 /**
  *  Given a post element make a fleshed out post object.
  *
@@ -46,7 +55,7 @@ const makeInitialPost = element => {
     itemId: makeItemId(),
     observedAt: new Date().getTime(),
     payload: {
-      contentHtml: sanitizePostContent(elem.outerHTML, isUserPost)
+      contentHtml: sanitizePostContent(innerify(elem).outerHTML, isUserPost)
     },
     // these get filled in later
     itemType: null,
