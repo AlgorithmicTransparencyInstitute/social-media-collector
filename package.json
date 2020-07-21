@@ -1,7 +1,7 @@
 {
   "name": "@ati/social-media-collector",
   "description": "A browser extension to share data about your social feed with researchers and journalists to increase transparency.",
-  "version": "0.6.0",
+  "version": "1.0.0",
   "consentVersion": 3,
   "contributors": [
     "Cameron Hickey <cameron@ncoc.org>",
