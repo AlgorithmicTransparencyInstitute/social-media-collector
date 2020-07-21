@@ -200,6 +200,21 @@ module.exports = (isDebug = false) => ({
       hintText: 'The language you told us you speak',
       defaultValue: true 
     },
+    USER_SHARE_COUNTRY: {
+      label: 'Share My Country',
+      hintText: 'The country you told us you are in',
+      defaultValue: true
+    },
+    USER_SHARE_GENDER: {
+      label: 'Share My Gender',
+      hintText: 'The gender you told us you are, if selected on the preferences page',
+      defaultValue: true
+    },
+    USER_SHARE_AGE: {
+      label: 'Share My Age',
+      hintText: 'The age group you told us you are in, if selected on the preferences page',
+      defaultValue: true
+    },
     USER_SHARE_DIAGNOSTICS: {
       label: 'Share Diagnostic Data',
       hintText:
