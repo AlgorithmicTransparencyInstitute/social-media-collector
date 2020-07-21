@@ -6,7 +6,6 @@ import isPublicPost from './isPublicPost';
 import isSponsoredPost from './isSponsoredPost';
 import { VERSION } from '../../../constants';
 
-
 const innerify = element => {
   if (element.querySelector('.userContentWrapper')) {
     return element.querySelector('.userContentWrapper');
