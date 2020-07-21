@@ -16,7 +16,7 @@ module.exports = (isDebug = false) => ({
   consentVersion, // if you change this, strange things might happen.
   extensionProviderId: 'nyu',
   geckoId: 'developers@adobserver.org',
-  includeYoutube: false,
+  includeYoutube: true,
   homepage:
     'https://adobserver.org',
   assetsPath: 'assets',
