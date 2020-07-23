@@ -67,6 +67,23 @@ module.exports = (isDebug = false) => ({
   <a href="https://adobserver.org/terms-of-use/"><span style="font-style:normal;">here</span></a><span style="font-style:normal;">.</span></p>`,
   aboutText: `
   <p>
+    Thank you very much for participating in the Facebook Political Ad Collector
+    project!
+  </p>
+  <p>
+    ${title} is the successor to the Facebook Political Ad Collector. We've 
+    upgraded the look of the extension, changed the name and moved to New York 
+    University, but the details are the same: this extension still lets you 
+    automatically share the ads you see on Facebook for research and journalism.
+  </p>
+  <p>
+    Now, you can also contribute the ads you see on YouTube. To do that, please 
+    visit <a href="https://www.adobserver.org">AdObserver.org</a> and install the extension again, then be sure to enable 
+    "Share Advertisements" in the YouTube section of the "Preferences" page. (If
+    you do nothing, you will still be sharing only Facebook ads -- 
+    the same data as when you installed the Facebook Political Ad Collector.)
+  </p>
+  <p>
     ${title} is an initiative to empower citizens to
     voluntarily share data about what they see online to enable academic
     research and investigative journalism about how digital platforms impact
@@ -208,12 +225,12 @@ module.exports = (isDebug = false) => ({
     USER_SHARE_GENDER: {
       label: 'Share My Gender',
       hintText: 'The gender you told us you are, if selected on the preferences page',
-      defaultValue: true
+      defaultValue: false
     },
     USER_SHARE_AGE: {
       label: 'Share My Age',
       hintText: 'The age group you told us you are in, if selected on the preferences page',
-      defaultValue: true
+      defaultValue: false
     },
     USER_SHARE_DIAGNOSTICS: {
       label: 'Share Diagnostic Data',
