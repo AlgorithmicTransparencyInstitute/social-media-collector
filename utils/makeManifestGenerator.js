@@ -11,11 +11,18 @@ const BASE_MANIFEST = {
   },
   icons: {
     '16': 'assets/icon16.png',
+    '32': 'assets/icon32.png',
+    '48': 'assets/icon48.png',
     '64': 'assets/icon64.png',
     '128': 'assets/icon128.png'
   },
   browser_action: {
-    default_popup: 'toolbar/index.html'
+    default_popup: 'toolbar/index.html',
+    default_icon: {
+      "16": "images/icon16.png",
+      "24": "images/icon24.png",
+      "32": "images/icon32.png" 
+    },
   },
   web_accessible_resources: ['webpage/*'],
 };
