@@ -43,12 +43,13 @@ const YOUTUBE_ASK = () => (
       Politicians, dark money groups and scammers use YouTube ads too. But we have even less
       understanding of what they&apos;re saying and <i>how</i> they&apos;re target their ads.
       Google&apos;s transparency tools are even worse than Facebook&apos;s! We built a version of
-      the Facebook Political Ad Collector that also collects YouTube ads.
+      the Facebook Political Ad Collector that also lets you share YouTube ads.
       <br />
       <br />
       Would you be willing to help out? You&apos;ll have to install a new version of this extension
-      by going to <a href="https://adobserver.com">AdObserver.com</a> and following the directions
-      there. It&apos;s the same idea, but it collects data on YouTube too.
+      by going to <a href="https://www.adobserver.org">AdObserver.org</a> and following the
+      directions there. It lets you share the the ads and recommendations you see on YouTube, in
+      addition to ads from Facebook too.
       <br />
       <br />
       Thanks!
