@@ -12,10 +12,9 @@ module.exports = (isDebug = false) => ({
   name: 'Ad Observer', // the extension name (uses what's in package.json as a default)
   title,
   description,
-  version: '2.0.2, // FBPAC maxed out at 1.11.0 and this is a major update, so, 2.0
+  version: '2.0.2', // FBPAC maxed out at 1.11.0 and this is a major update, so, 2.0
   consentVersion, // if you change this, strange things might happen.
   extensionProviderId: 'nyu',
-  geckoId: 'developers@adobserver.org',
   includeYoutube: false,
   homepage:
     'https://adobserver.org',
