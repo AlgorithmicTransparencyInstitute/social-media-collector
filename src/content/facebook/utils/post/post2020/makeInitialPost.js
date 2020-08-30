@@ -22,8 +22,6 @@ const innerify = element => {
  * @sideeffect The post is saved to the `ALL_POSTS` set.
  */
 const makeInitialPost = element => {
-  console.log('guo: post2020');
-
   console.debug('element', element);
   const elem = element.querySelector('div'); // use the first inner div.
   const { isUserPost, ...posterData } = getPosterData(elem);

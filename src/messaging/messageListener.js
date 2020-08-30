@@ -10,8 +10,6 @@ import { handleRequest } from './registry';
  *  @returns true
  */
 const messageListener = (req, _sender, sendResponse) => {
-  console.log('messageListener', req, _sender);
-
   handleRequest(req)
     .then(sendResponse)
     .catch(err => {

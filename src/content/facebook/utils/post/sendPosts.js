@@ -24,25 +24,18 @@ function ifAdMustHaveInfo(post) {
  *  @param posts — The array of posts to send.
  */
 export const sendPosts = async posts => {
-  console.log('sendPosts.1', posts);
   if (!Array.isArray(posts) || !posts.length) return;
   const existing = await loadArchiveIndex();
 
   // Filter out posts already in the archive.
   const trimmed1 = posts.map(trimPost).filter(({ id }) => !existing.includes(id));
 
-  console.log('sendPosts.2', trimmed1);
-
   // Filter out sponsored posts that don't have the right info.
   const trimmed2 = trimmed1.filter(ifAdMustHaveInfo);
 
   if (!trimmed2.length) return;
 
-  console.log('sendPosts.3', trimmed2);
-
   await addItemsToArchive(trimmed2);
-
-  console.log('sendPosts.4', trimmed2);
 
   return sendToBackground(UPLOAD_POSTS, trimmed2.map(datesToISO));
 };

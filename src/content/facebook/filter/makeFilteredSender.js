@@ -15,11 +15,7 @@ const makeFilteredSender = ({
   const publicPageProcessed = makeFilteredFlagPostAsProcessed(canSharePublicPage);
 
   return async posts => {
-    await sendSponsored(posts).then(async function() {
-      console.log('d3.1', posts);
-      sponsoredProcessed(posts);
-      console.log('d3.2', posts);
-    });
+    await sendSponsored(posts).then(async () => sponsoredProcessed(posts));
     await sendPublicUser(posts).then(async () => publicUserProcessed(posts));
     await sendPublicPage(posts).then(async () => publicPageProcessed(posts));
   };
