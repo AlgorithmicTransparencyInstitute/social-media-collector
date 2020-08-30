@@ -14,17 +14,17 @@ const filters = ['some', 'filters'];
 const permisisons = ['some', 'permissions'];
 
 const send = jest.fn();
-const applyFilters = jest.fn();
+const applyAdInfo = jest.fn();
 const report = jest.fn();
 
-const expected = { send, applyFilters, report };
+const expected = { send, applyAdInfo, report };
 
 let result;
 
 beforeAll(async () => {
   getFiltersAndPermissions.mockResolvedValue({ filters, permisisons });
   makeFilteredSender.mockReturnValue(send);
-  makeFilteredAdInfoApplicator.mockReturnValue(applyFilters);
+  makeFilteredAdInfoApplicator.mockReturnValue(applyAdInfo);
   makeFilteredReporter.mockReturnValue(report);
 
   result = await makeFilteredUtilities();

@@ -8,7 +8,7 @@ const makeFilteredUtilities = async version => {
 
   return {
     send: makeFilteredSender({ filters }),
-    applyFilters: makeFilteredAdInfoApplicator({ filters, version }),
+    applyAdInfo: makeFilteredAdInfoApplicator({ filters, version }),
     report: makeFilteredReporter({ filters, permissions, version })
   };
 };
