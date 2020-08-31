@@ -27,13 +27,13 @@ Once installed **you must accept the standard terms and conditions of use**. The
 
 ### Installation
 
-There is currently an issue with one or more of the dependencies which means that to install you **must** use
+There is currently an issue with one or more of the dependencies which means that to install you **must** run `npm install` and then
 
 ```sh
 npm ci
 ```
 
-instead of `npm install`.
+instead of just `npm install`.
 
 ## Continuous build environment (single machine)
 
@@ -48,6 +48,17 @@ Build the extension continuously as you edit files:
 ```sh
 npm run watch
 ```
+
+### Actual real-life development:
+
+in two separate terminals, run these commands.
+
+```sh
+npm run chrome -- -- --env.file=./nyu-build-config.js --env.build=debug  --env.config=std
+npm run watch -- --env.file=./nyu-build-config.js --env.browser=chrome --env.build=debug --env.config=std
+```
+
+This starts a fresh Chrome install and also continuously monitors the code and recompiles it.
 
 ### Build output
 
@@ -106,7 +117,7 @@ Any API URL you set in that file will be used as the default url, unless you spe
  	3. `pushd build/firefox-std-release && zip -r0 ../firefox-$(jq .version manifest.json | tr -d \").zip ./* && popd`
 3. tag a version, push tag, `git tag v3.0.2` (or whatever).
 4. download source zip for Firefox
-5. upload source zip to Firefox with msg "There are instructions for how to build the extension in the README in the extension/ folder in the archive -- you'll want to use `$ npm run build -- --env.file=./nyu-build-config.js --env.build=release --env.config=std --env.browser=firefox` to generate the same minified, production code as in the uploaded version of the extension. "
+5. upload source zip to Firefox with msg "There are instructions for how to build the extension in the README in the extension/ folder in the archive -- you'll want to run `npm install`, then `npm ci` and then use `$ npm run build -- --env.file=./nyu-build-config.js --env.build=release --env.config=std --env.browser=firefox` to generate the same minified, production code as in the uploaded version of the extension. "
 
 ## Unit tests
 
