@@ -1,24 +1,18 @@
-const {
-  name,
-  version,
-  description,
-  consentVersion
-} = require('./package.json');
+const { name, version, description, consentVersion } = require('./package.json');
 
 const title = 'Ad Observer';
 
 // override any of these.
 module.exports = (isDebug = false) => ({
-	name: 'Ad Observer', // the extension name (uses what's in package.json as a default)
+  name: 'Ad Observer', // the extension name (uses what's in package.json as a default)
   title,
   description,
-  version: '3.0.2', // legacy build is v2.0+, this is better, so it's 3.0
+  version: '3.0.4', // legacy build is v2.0+, this is better, so it's 3.0
   consentVersion, // if you change this, strange things might happen.
   extensionProviderId: 'nyu',
   geckoId: 'developers@adobserver.org',
   includeYoutube: true,
-  homepage:
-    'https://adobserver.org',
+  homepage: 'https://adobserver.org',
   assetsPath: 'assets',
   defaultIcon: 'icon128.png',
 
@@ -28,7 +22,6 @@ module.exports = (isDebug = false) => ({
   preferencesPageFooter: `
   <p>
   </p>`,
-
 
   consentText: `<style>
   p,h1,h4,h3,ul{
@@ -207,7 +200,7 @@ module.exports = (isDebug = false) => ({
     USER_SHARE_LANGUAGE: {
       label: 'Share My Language',
       hintText: 'The language you told us you speak',
-      defaultValue: true 
+      defaultValue: true
     },
     USER_SHARE_COUNTRY: {
       label: 'Share My Country',
@@ -226,14 +219,12 @@ module.exports = (isDebug = false) => ({
     },
     USER_SHARE_DIAGNOSTICS: {
       label: 'Share Diagnostic Data',
-      hintText:
-        'If things go wrong we’ll send extra data to help us diagnose the problem',
+      hintText: 'If things go wrong we’ll send extra data to help us diagnose the problem',
       defaultValue: true
     },
     FB_SHARE_SPONSORED_POSTS: {
       label: 'Share Facebook Ads',
-      hintText:
-        'This allows the extension to collect all of the ads shown to you on Facebook',
+      hintText: 'This allows the extension to collect all of the ads shown to you on Facebook',
       defaultValue: true
     },
     FB_SHARE_AD_TARGETING: {
@@ -249,7 +240,8 @@ module.exports = (isDebug = false) => ({
     },
     YT_SHARE_WATCHED_VIDEOS: {
       label: 'Share Watched Videos',
-      hintText: 'This will share each video you choose to watch on YouTube (often, ads are targeted to be shown to viewers of a particular video or channel, so this is a big help if you opt-in)',
+      hintText:
+        'This will share each video you choose to watch on YouTube (often, ads are targeted to be shown to viewers of a particular video or channel, so this is a big help if you opt-in)',
       defaultValue: false
     },
     YT_SHARE_RECOMMENDED_VIDEOS: {
@@ -268,6 +260,6 @@ module.exports = (isDebug = false) => ({
       hintText:
         'This will share the explanations provided by YouTube for why you were shown a particular ad',
       defaultValue: true
-    }    
+    }
   }
 });

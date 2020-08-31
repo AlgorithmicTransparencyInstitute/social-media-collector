@@ -1,9 +1,4 @@
-const {
-  name,
-  version,
-  description,
-  consentVersion
-} = require('./package.json');
+const { name, version, description, consentVersion } = require('./package.json');
 
 const title = 'Ad Observer';
 
@@ -12,12 +7,11 @@ module.exports = (isDebug = false) => ({
   name: 'Ad Observer', // the extension name (uses what's in package.json as a default)
   title,
   description,
-  version: '2.0.2', // FBPAC maxed out at 1.11.0 and this is a major update, so, 2.0
+  version: '2.0.4', // FBPAC maxed out at 1.11.0 and this is a major update, so, 2.0
   consentVersion, // if you change this, strange things might happen.
   extensionProviderId: 'nyu',
   includeYoutube: false,
-  homepage:
-    'https://adobserver.org',
+  homepage: 'https://adobserver.org',
   assetsPath: 'assets',
   defaultIcon: 'icon128.png',
   consentText: `<style>
@@ -214,7 +208,7 @@ module.exports = (isDebug = false) => ({
     USER_SHARE_LANGUAGE: {
       label: 'Share My Language',
       hintText: 'The language you told us you speak',
-      defaultValue: true 
+      defaultValue: true
     },
     USER_SHARE_COUNTRY: {
       label: 'Share My Country',
@@ -233,14 +227,12 @@ module.exports = (isDebug = false) => ({
     },
     USER_SHARE_DIAGNOSTICS: {
       label: 'Share Diagnostic Data',
-      hintText:
-        'If things go wrong we’ll send extra data to help us diagnose the problem',
+      hintText: 'If things go wrong we’ll send extra data to help us diagnose the problem',
       defaultValue: true
     },
     FB_SHARE_SPONSORED_POSTS: {
       label: 'Share Facebook Ads',
-      hintText:
-        'This allows the extension to collect all of the ads shown to you on Facebook',
+      hintText: 'This allows the extension to collect all of the ads shown to you on Facebook',
       defaultValue: true
     },
     FB_SHARE_AD_TARGETING: {
@@ -253,6 +245,6 @@ module.exports = (isDebug = false) => ({
       label: 'Show Collection Status',
       hintText: 'If on this will tag your facebook post with collection info.',
       defaultValue: isDebug // change this to `isDebug` if you want this only be on for debug users
-    },
+    }
   }
 });
