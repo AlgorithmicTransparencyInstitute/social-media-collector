@@ -139,15 +139,39 @@ function getAdvertiser(doc /* DOMParser */) {
   return els[0].innerHTML;
 }
 
+function getCTALink(doc /* DOMParser */) {
+  // Attempt 1.
+  var els = doc.querySelectorAll('a[aria-label]');
+  for (var i = 0; i < els.length; ++i) {
+    if (els[i].href.indexOf('/l.php') >= 0 && els[i].innerText.length > 0) {
+      return ('<br>' + els[i].outerHTML);
+    }
+  }
+
+  // Attempt 2.
+  els = doc.querySelectorAll('a[rel="noopener nofollow"]');
+  for (i = 0; i < els.length; ++i) {
+    if (
+      els[i].href.indexOf('/l.php') >= 0 &&
+      els[i].innerText.length > 0 &&
+      els[i].childElementCount === 0
+    ) {
+      return ('<br>' + els[i].outerHTML);
+    }
+  }
+}
+
+function makeAdImg(img /* DOMElem */) {
+  return '<img src="' + img.getAttribute('src') + '" width=500>';
+}
+
 function makeAdHtml(html /* string */) {
   var doc = newDoc(html);
   var img = getAdImg(doc);
   if (!img) {
     return html;
   }
-  return (
-    getAdvertiser(doc) + getAdCopy(doc) + '<img src="' + img.getAttribute('src') + '" width=500>'
-  );
+  return getAdvertiser(doc) + getAdCopy(doc) + makeAdImg(img) + getCTALink(doc);
 }
 
 const FacebookRenderer = ({ item }) => {
