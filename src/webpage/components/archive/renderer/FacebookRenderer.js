@@ -144,7 +144,7 @@ function getCTALink(doc /* DOMParser */) {
   var els = doc.querySelectorAll('a[aria-label]');
   for (var i = 0; i < els.length; ++i) {
     if (els[i].href.indexOf('/l.php') >= 0 && els[i].innerText.length > 0) {
-      return ('<br>' + els[i].outerHTML);
+      return '<br>' + els[i].outerHTML;
     }
   }
 
@@ -156,7 +156,7 @@ function getCTALink(doc /* DOMParser */) {
       els[i].innerText.length > 0 &&
       els[i].childElementCount === 0
     ) {
-      return ('<br>' + els[i].outerHTML);
+      return '<br>' + els[i].outerHTML;
     }
   }
 }
