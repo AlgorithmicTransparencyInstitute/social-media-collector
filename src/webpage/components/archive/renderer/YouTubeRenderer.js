@@ -10,7 +10,7 @@ const YouTubeRenderer = ({ item }) => {
   const { id: _id, itemType, advertiser, title, platformItemId, hostVideo } = item;
 
   const classes = `ati-item yt-item yt-${itemType}`;
-  const host = `Extracted from ${hostVideo.url}`;
+  const host = `Extracted from ${hostVideo ? hostVideo.url : 'unknown'}`;
 
   return (
     <Card title={advertiser || title} subtitle={host}>
