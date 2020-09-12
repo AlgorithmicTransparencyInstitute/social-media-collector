@@ -11,9 +11,12 @@ const LINK = ':scope a[role="link"],:scope div[role="button"],:scope div[aria-la
  */
 const isSponsoredPost = (element, sponsorStr = 'Sponsored') =>
   Boolean(
-    Array.from(element.querySelectorAll(LINK)).find(
-      link => link.innerText === sponsorStr || link.innerText.indexOf(sponsorStr) === 0
-    )
+    Array.from(element.querySelectorAll(LINK)).find(link => {
+      if (link.getAttribute('aria-label') === sponsorStr) {
+        return true;
+      }
+      return link.innerText === sponsorStr || link.innerText.indexOf(sponsorStr) === 0;
+    })
   );
 
 export default isSponsoredPost;
