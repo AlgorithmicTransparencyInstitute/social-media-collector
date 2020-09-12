@@ -39,6 +39,15 @@ AdTargeting.propTypes = {
   item: PropTypes.shape(itemShape).isRequired
 };
 
+// Recurse all parent elements and try to find 'a' tag.
+function hasATagParent(el /* DOM Element */) {
+  while (el.parentNode) {
+    el = el.parentNode;
+    if (el.tagName && el.tagName.toLowerCase() === 'a') return el;
+  }
+  return null;
+}
+
 // Find the ad image used. The tricky part here is there could be two different
 // kinds of ways to parse (I think based on pre and post2020).
 function getAdImg(doc /* DOMParser */) {
@@ -105,6 +114,38 @@ function getAdCopyPost2020(doc /* DOMParser */) {
     if (el.childElementCount > 1) {
       continue;
     }
+
+    // The ad copy that appears after the image has A tag as parent. Ignore
+    // these. That stuff gets looked at in getAdCTAPost2020.
+    if (hasATagParent(el)) {
+      continue;
+    }
+
+    // This 'el' could still be valid it has a child element for the reason of
+    // an emoji.
+    if (el.childElementCount === 1 && el.innerHTML.indexOf('/emoji.php') >= 0) {
+      html += el.innerHTML;
+    } else if (el.childElementCount === 0) {
+      html += el.innerText + '<br />';
+    }
+  }
+  return html;
+}
+
+function getAdCTAPost2020(doc /* DOMParser */) {
+  var html = '<br>';
+  var els = doc.querySelectorAll('div[dir="auto"], span[dir="auto"]');
+  for (var i = 0; i < els.length; ++i) {
+    var el = els[i];
+    if (el.childElementCount > 1) {
+      continue;
+    }
+
+    // The ad copy that appears after the image must have an A tag.
+    if (!hasATagParent(el)) {
+      continue;
+    }
+
     // This 'el' could still be valid it has a child element for the reason of
     // an emoji.
     if (el.childElementCount === 1 && el.innerHTML.indexOf('/emoji.php') >= 0) {
@@ -171,7 +212,9 @@ function makeAdHtml(html /* string */) {
   if (!img) {
     return html;
   }
-  return getAdvertiser(doc) + getAdCopy(doc) + makeAdImg(img) + getCTALink(doc);
+  return (
+    getAdvertiser(doc) + getAdCopy(doc) + makeAdImg(img) + getAdCTAPost2020(doc) + getCTALink(doc)
+  );
 }
 
 const FacebookRenderer = ({ item }) => {
