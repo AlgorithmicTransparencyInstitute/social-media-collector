@@ -1,4 +1,4 @@
-const LINK = ':scope a[role="link"],:scope div[role="button"]';
+const LINK = ':scope a[role="link"],:scope div[role="button"],:scope div[aria-label="Sponsored"]';
 
 /**
  *  Determine if a FB feed post is sponsored.
