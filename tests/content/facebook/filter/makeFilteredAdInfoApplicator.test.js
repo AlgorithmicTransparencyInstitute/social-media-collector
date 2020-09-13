@@ -17,12 +17,12 @@ const filters = {
   applyAdId
 };
 
-let applyFilters;
+let applyAdInfo;
 
 const cleanup = () => {
   mfp.makeFilteredApplyAdTargeting.mockClear();
   mfp.makeFilteredApplyAdId.mockClear();
-  applyFilters = undefined;
+  applyAdInfo = undefined;
 };
 
 beforeAll(() => {
@@ -32,7 +32,7 @@ beforeAll(() => {
 
 describe('makes a function', () => {
   beforeAll(() => {
-    applyFilters = makeFilteredAdInfoApplicator({ filters, version });
+    applyAdInfo = makeFilteredAdInfoApplicator({ filters, version });
   });
 
   afterAll(cleanup);
@@ -46,7 +46,7 @@ describe('makes a function', () => {
   });
 
   it('returns a function', () => {
-    expect(typeof applyFilters).toEqual('function');
+    expect(typeof applyAdInfo).toEqual('function');
   });
 });
 
@@ -54,8 +54,8 @@ describe('when the function runs', () => {
   const posts = ['one', 'two', 'three'];
 
   beforeAll(async () => {
-    applyFilters = makeFilteredAdInfoApplicator({ filters, version });
-    await applyFilters(posts);
+    applyAdInfo = makeFilteredAdInfoApplicator({ filters, version });
+    await applyAdInfo(posts);
   });
 
   afterAll(cleanup);

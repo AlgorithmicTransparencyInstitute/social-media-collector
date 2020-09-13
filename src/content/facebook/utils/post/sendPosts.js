@@ -5,6 +5,19 @@ import datesToISO from 'common/utils/datesToISO';
 import { loadArchiveIndex, addItemsToArchive } from 'common/storage/archive';
 import trimPost from './trimPost';
 
+// Returns false if is ad but has missing info.
+// Returns true in all other cases. Including if `post` is not an ad.
+function ifAdMustHaveInfo(post) {
+  if (post.itemType !== 'sponsoredPost') {
+    return true;
+  }
+  // Must have platformItemId and adTargetingData.
+  if (!!post.platformItemId && !!post.payload.adTargetingData) {
+    return true;
+  }
+  return false;
+}
+
 /**
  *  Sends the posts to the background.
  *
@@ -14,12 +27,17 @@ export const sendPosts = async posts => {
   if (!Array.isArray(posts) || !posts.length) return;
   const existing = await loadArchiveIndex();
 
-  const trimmed = posts.map(trimPost).filter(({ id }) => !existing.includes(id));
+  // Filter out posts already in the archive.
+  const trimmed1 = posts.map(trimPost).filter(({ id }) => !existing.includes(id));
 
-  if (!trimmed.length) return;
+  // Filter out sponsored posts that don't have the right info.
+  const trimmed2 = trimmed1.filter(ifAdMustHaveInfo);
 
-  await addItemsToArchive(trimmed);
-  return sendToBackground(UPLOAD_POSTS, trimmed.map(datesToISO));
+  if (!trimmed2.length) return;
+
+  await addItemsToArchive(trimmed2);
+
+  return sendToBackground(UPLOAD_POSTS, trimmed2.map(datesToISO));
 };
 
 export default sendPosts;

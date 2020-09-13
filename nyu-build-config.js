@@ -1,9 +1,4 @@
-const {
-  name,
-  version,
-  description,
-  consentVersion
-} = require('./package.json');
+const { name, version, description, consentVersion } = require('./package.json');
 
 const title = 'Ad Observer';
 
@@ -12,54 +7,66 @@ module.exports = (isDebug = false) => ({
   name: 'Ad Observer', // the extension name (uses what's in package.json as a default)
   title,
   description,
-  version,
+  version: '3.0.5', // legacy build is v2.0+, this is better, so it's 3.0
   consentVersion, // if you change this, strange things might happen.
   extensionProviderId: 'nyu',
   geckoId: 'developers@adobserver.org',
   includeYoutube: true,
-  homepage:
-    'https://adobserver.org',
+  homepage: 'https://adobserver.org',
   assetsPath: 'assets',
   defaultIcon: 'icon128.png',
-  consentText: `
-  <style>
-  p,h1,h4,ul{
+
+  helpText: `
+  <p>
+  </p>`,
+  preferencesPageFooter: `
+  <p>
+  </p>`,
+
+  consentText: `<style>
+  p,h1,h4,h3,ul{
              margin: 2vmax;
   }
+  p {
+  line-height: 1; margin-top: 0pt; margin-bottom: 8pt;
+  }
+  h4 {
+  line-height: 1; margin-top: 2pt; margin-bottom: 0pt;
+  }
+  p span, h4 span {
+  font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;
+  font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;
+  }
 </style>
-  <p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">These Terms of Use form a legal agreement between you, the end user (“user” or “you”) and New York University (“NYU”, “us” or “we”), for the limited license to use the Ad Observer application, which includes a web browser extension, computer software and electronic documentation (“the Application” or “Ad Observer”).</span></p>
-<h4 dir="ltr" style="line-height: 1; margin-top: 2pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Ownership and distribution</span></h4>
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">The Application is owned and copyrighted by NYU. NYU grants you a limited, worldwide, non-exclusive, royalty-free, revocable, and non-commercial license to download and use Ad Observer. Your license to download and use the Application confers no title or ownership in the Application and should not be construed as a sale of any right in the Application.</span></p>
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Ad Observer may be freely distributed subject, but not limited to the following terms:</span></p>
+
+<h4 style="margin-bottom: 12pt;">Thank you for installing Ad Observer and helping us monitor online political ads.</h4>
+<p><span style="font-style:normal;">These Terms of Use form a legal agreement between you, the end user (“user” or “you”) and New York University (“NYU”, “us” or “we”), for the limited license to use the Ad Observer application, which includes a web browser extension, computer software and electronic documentation (“the Application” or “Ad Observer”).</span></p>
+<h4><span style="font-style:italic;">Ownership and distribution</span></h4>
+<p><span style="font-style:normal;">The Application is owned and copyrighted by NYU. NYU grants you a limited, worldwide, non-exclusive, royalty-free, revocable, and non-commercial license to download and use Ad Observer. Your license to download and use the Application confers no title or ownership in the Application and should not be construed as a sale of any right in the Application.</span></p>
+<p><span style="font-style:normal;">Ad Observer may be freely distributed subject, but not limited to the following terms:</span></p>
   <ul><li>Unless you have the express written consent of NYU, you may not distribute the Application or any portion thereof to any third parties;</li><li>If the user would like to distribute the Application they will need to contact NYU at developers@adobserver.org for written consent prior to distribution;</li><li>The user may not sell or re-sell the Application;</li><li>The user must not distribute the Application as part of any commercial package;</li><li>The user must not use or distribute the Application in support of a commercial service;</li><li>The user must not use or distribute the Application to support any kind of profit generating activity, even if it is being distributed freely.</li></ul>
-<p style="line-height: 1;">
-  <br>
-</p>
-<h4 dir="ltr" style="line-height: 1; margin-top: 2pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">User conduct</span></h4>
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">The user is strictly prohibited from, and agrees not to adapt, edit, change, modify, transform, publish, republish, distribute, or redistribute the Application or any elements, portions, or parts thereof without NYU’s prior written consent. You agree not to use any automated data collection methods, data mining, robots, scraping or any data gathering methods of any kind on the Application.&nbsp;</span></p>
-<h4 dir="ltr" style="line-height: 1; margin-top: 2pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Copyright</span></h4>
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">The Application and all rights, without limitation including proprietary rights therein, are owned by NYU and protected by copyright laws and international copyright treaties, as well as other intellectual property laws and treaties. The Application is licensed, not sold. You acknowledge that no title to the intellectual property in the Application is transferred to you. You further acknowledge that title and full ownership rights to the Application will remain the exclusive property of NYU and you will not acquire any rights to the Application except as expressly set forth in this license. You agree that any copies of the Application will contain the same proprietary notices which appear on and in the Application. NYU may bring legal proceedings against individuals who contravene these Terms of Use, including to enforce its copyrights to Ad Observer.&nbsp;</span></p>
-<h4 dir="ltr" style="line-height: 1; margin-top: 2pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Warranties</span></h4>
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Ad Observer is provided to the user “AS IS” with no warranties for use or performance and NYU disclaims any warranty or liability obligations to the user of any kind, whether expressed or implied. Where legislation implies in this agreement any condition or warranty, and that legislation avoids or prohibits provisions in an agreement excluding or modifying application of or exercise of liability under such condition or warranty, the condition or warranty will be deemed to be included in this agreement.</span></p>
-<h4 dir="ltr" style="line-height: 1; margin-top: 2pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Limitation of Liability</span></h4>
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">NYU is not subject to, and the user releases NYU from any additional liability and indemnifies them against any claim, action, suit or proceeding (including but not limited to direct, indirect, consequential loss or damage, removal costs or re-installation costs or liability for loss of use or profit) because of the use of or inability to use the Application or the provision of or failure to provide support services, any delay in delivery or fault or defect in the Application even if NYU has been advised of the possibility of such damages. NYU‘s entire liability under this agreement shall be limited to the amount paid by the user for the Application. The user further indemnifies NYU against any claim, action suit or proceedings brought by any web site provider or any copyright holder in respect of the operation of the Application by the user. The user expressly acknowledges and agrees that it has not relied upon, and NYU is not liable for any advice given by NYU, its servants, agents, representatives or employees in relation to the suitability for any purpose of the Application.</span></p>
-<p style="line-height: 1;">
-  <br>
-</p>
-<h4 dir="ltr" style="line-height: 1; margin-top: 2pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Third Party Copyright Infringement</span></h4>
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">NYU does not condone the violation of copyright and other laws. NYU requires all users to Use the Application in strict compliance with copyright and other laws. NYU does not, by the supply of the Application, authorize or encourage you to infringe the copyright or other rights of third parties.</span></p>
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Indemnification</span></p>
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">In connection with your user of Ad Observer and to the extent permitted by applicable law, you agree to defend, indemnify, and hold harmless NYU and its directors, officers, employees, and consultants, from and against any claim or demand (including reasonable attorney fees) arising from and of (a) your use of the Application; (b) any violation of these Terms of Use by you; (c ) any allegation that your use of the Application infringes or violates the copyright, trademark, trade secret or other intellectual property or rights of any third party.&nbsp;</span></p>
-<h4 dir="ltr" style="line-height: 1; margin-top: 2pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Your Information</span></h4>
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">By installing the Application you acknowledge that you have reviewed and agree to the Ad Observer Privacy Policy that describes and governs the Application’s information gathering practices. A copy of Ad Observer’s Privacy Policy is available&nbsp;</span>
-  <a href="https://adobserver.org/privacy-policy/" rel="noopener noreferrer" target="_blank"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">here</span></a><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">. Ad Observer reserves the right to change the provisions of its Privacy Policy from time to time and if it does so, Ad Observer will post any changes to its Privacy Policy at the web address provided.</span></p>
-<h4 dir="ltr" style="line-height: 1; margin-top: 2pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">General Provisions</span></h4>
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">This is the entire agreement between you and NYU governing your use of Ad Observer, which supersedes any prior agreement or understanding, whether written, or oral, relating to the subject matter of these Terms of Use. If any part of these Terms of Use is found void and unenforceable, it will not affect the validity of the balance of the agreement, which shall remain valid and enforceable according to its terms. These Terms of Use shall automatically terminate upon failure by you to comply with its terms. NYU in its sole discretion, may modify these Terms of Use in writing at any time.</span></p>
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Termination</span></p>
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">You may terminate these Terms of Use at any time by uninstalling Ad Observer. Your right to use Ad Observer may also be terminated by NYU at any time, without cause and without notice. This agreement will automatically terminate if you fail to comply with any of its terms. Upon termination, you agree to stop using and to uninstall Ad Observer.&nbsp;</span></p>
-<h4 dir="ltr" style="line-height: 1; margin-top: 2pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Changes in these Terms of Use</span></h4>
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 8pt;"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">NYU reserves the right to update these Terms of Use from time to time. Since your use of the Application is anonymous, we cannot inform you about this personally. The most current version of the Terms of Use can be reviewed </span>
-  <a href="https://adobserver.org/terms-of-use/"><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">here</span></a><span style="font-size:11pt;font-family:Arial;color:#3c434e;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">.</span></p>`,
+<h4><span style="font-style:italic;">User conduct</span></h4>
+<p><span style="font-style:normal;">The user is strictly prohibited from, and agrees not to adapt, edit, change, modify, transform, publish, republish, distribute, or redistribute the Application or any elements, portions, or parts thereof without NYU’s prior written consent. You agree not to use any automated data collection methods, data mining, robots, scraping or any data gathering methods of any kind on the Application.&nbsp;</span></p>
+<h4><span style="font-style:italic;">Copyright</span></h4>
+<p><span style="font-style:normal;">The Application and all rights, without limitation including proprietary rights therein, are owned by NYU and protected by copyright laws and international copyright treaties, as well as other intellectual property laws and treaties. The Application is licensed, not sold. You acknowledge that no title to the intellectual property in the Application is transferred to you. You further acknowledge that title and full ownership rights to the Application will remain the exclusive property of NYU and you will not acquire any rights to the Application except as expressly set forth in this license. You agree that any copies of the Application will contain the same proprietary notices which appear on and in the Application. NYU may bring legal proceedings against individuals who contravene these Terms of Use, including to enforce its copyrights to Ad Observer.&nbsp;</span></p>
+<h4><span style="font-style:italic;">Warranties</span></h4>
+<p><span style="font-style:normal;">Ad Observer is provided to the user “AS IS” with no warranties for use or performance and NYU disclaims any warranty or liability obligations to the user of any kind, whether expressed or implied. Where legislation implies in this agreement any condition or warranty, and that legislation avoids or prohibits provisions in an agreement excluding or modifying application of or exercise of liability under such condition or warranty, the condition or warranty will be deemed to be included in this agreement.</span></p>
+<h4><span style="font-style:italic;">Limitation of Liability</span></h4>
+<p><span style="font-style:normal;">NYU is not subject to, and the user releases NYU from any additional liability and indemnifies them against any claim, action, suit or proceeding (including but not limited to direct, indirect, consequential loss or damage, removal costs or re-installation costs or liability for loss of use or profit) because of the use of or inability to use the Application or the provision of or failure to provide support services, any delay in delivery or fault or defect in the Application even if NYU has been advised of the possibility of such damages. NYU‘s entire liability under this agreement shall be limited to the amount paid by the user for the Application. The user further indemnifies NYU against any claim, action suit or proceedings brought by any web site provider or any copyright holder in respect of the operation of the Application by the user. The user expressly acknowledges and agrees that it has not relied upon, and NYU is not liable for any advice given by NYU, its servants, agents, representatives or employees in relation to the suitability for any purpose of the Application.</span></p>
+<h4><span style="font-style:italic;">Third Party Copyright Infringement</span></h4>
+<p><span style="font-style:normal;">NYU does not condone the violation of copyright and other laws. NYU requires all users to Use the Application in strict compliance with copyright and other laws. NYU does not, by the supply of the Application, authorize or encourage you to infringe the copyright or other rights of third parties.</span></p>
+<h4><span style="font-style:italic;">Indemnification</span></h4>
+<p><span style="font-style:normal;">In connection with your user of Ad Observer and to the extent permitted by applicable law, you agree to defend, indemnify, and hold harmless NYU and its directors, officers, employees, and consultants, from and against any claim or demand (including reasonable attorney fees) arising from and of (a) your use of the Application; (b) any violation of these Terms of Use by you; (c ) any allegation that your use of the Application infringes or violates the copyright, trademark, trade secret or other intellectual property or rights of any third party.&nbsp;</span></p>
+<h4><span style="font-style:italic;">Your Information</span></h4>
+<p><span style="font-style:normal;">By installing the Application you acknowledge that you have reviewed and agree to the Ad Observer Privacy Policy that describes and governs the Application’s information gathering practices. A copy of Ad Observer’s Privacy Policy is available&nbsp;</span>
+  <a href="https://adobserver.org/privacy-policy/" rel="noopener noreferrer" target="_blank"><span style="font-style:normal;">here</span></a><span style="font-style:normal;">. Ad Observer reserves the right to change the provisions of its Privacy Policy from time to time and if it does so, Ad Observer will post any changes to its Privacy Policy at the web address provided.</span></p>
+<h4><span style="font-style:italic;">General Provisions</span></h4>
+<p><span style="font-style:normal;">This is the entire agreement between you and NYU governing your use of Ad Observer, which supersedes any prior agreement or understanding, whether written, or oral, relating to the subject matter of these Terms of Use. If any part of these Terms of Use is found void and unenforceable, it will not affect the validity of the balance of the agreement, which shall remain valid and enforceable according to its terms. These Terms of Use shall automatically terminate upon failure by you to comply with its terms. NYU in its sole discretion, may modify these Terms of Use in writing at any time.</span></p>
+<h4><span style="font-style:italic;">Termination</span></h4>
+<p><span style="font-style:normal;">You may terminate these Terms of Use at any time by uninstalling Ad Observer. Your right to use Ad Observer may also be terminated by NYU at any time, without cause and without notice. This agreement will automatically terminate if you fail to comply with any of its terms. Upon termination, you agree to stop using and to uninstall Ad Observer.&nbsp;</span></p>
+<h4><span style="font-style:italic;">Changes in these Terms of Use</span></h4>
+<p><span style="font-style:normal;">NYU reserves the right to update these Terms of Use from time to time. Since your use of the Application is anonymous, we cannot inform you about this personally. The most current version of the Terms of Use can be reviewed </span>
+  <a href="https://adobserver.org/terms-of-use/"><span style="font-style:normal;">here</span></a><span style="font-style:normal;">.</span></p>`,
   aboutText: `
   <p>
     ${title} is an initiative to empower citizens to
@@ -168,7 +175,7 @@ module.exports = (isDebug = false) => ({
 </p>
 <p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Data Subjects Rights</span></p>
 <p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Individuals whose personal data is processed in accordance with the GDPR have the following rights:</span></p>
-  <ul><li>The right to be informed as to whether NYU holds data about them</li><li>The right of access to that information</li><li>The right to have inaccurate data corrected</li><li>The right to have their data deleted</li><li>The right to opt-out of particular data processing operations</li><li>The right to receive their data in a form that makes it “portable”</li><li>The right to object to data processing</li><li>The right to receive an explanation about any automated decision making and/or profiling, and to challenge those decisions where appropriate</li></ul>
+	<ul><li>The right to be informed as to whether NYU holds data about them</li><li>The right of access to that information</li><li>The right to have inaccurate data corrected</li><li>The right to have their data deleted</li><li>The right to opt-out of particular data processing operations</li><li>The right to receive their data in a form that makes it “portable”</li><li>The right to object to data processing</li><li>The right to receive an explanation about any automated decision making and/or profiling, and to challenge those decisions where appropriate</li></ul>
 <p style="line-height: 1;">
   <br>
 </p>
@@ -193,18 +200,31 @@ module.exports = (isDebug = false) => ({
     USER_SHARE_LANGUAGE: {
       label: 'Share My Language',
       hintText: 'The language you told us you speak',
-      defaultValue: true 
+      defaultValue: true
+    },
+    USER_SHARE_COUNTRY: {
+      label: 'Share My Country',
+      hintText: 'The country you told us you are in',
+      defaultValue: true
+    },
+    USER_SHARE_GENDER: {
+      label: 'Share My Gender',
+      hintText: 'The gender you told us you are',
+      defaultValue: true
+    },
+    USER_SHARE_AGE: {
+      label: 'Share My Age',
+      hintText: 'The age group you told us you are in',
+      defaultValue: true
     },
     USER_SHARE_DIAGNOSTICS: {
       label: 'Share Diagnostic Data',
-      hintText:
-        'If things go wrong we’ll send extra data to help us diagnose the problem',
+      hintText: 'If things go wrong we’ll send extra data to help us diagnose the problem',
       defaultValue: true
     },
     FB_SHARE_SPONSORED_POSTS: {
-      label: 'Share Sponsored Posts',
-      hintText:
-        'This allows the extension to collect all of the ads shown to you on Facebook',
+      label: 'Share Facebook Ads',
+      hintText: 'This allows the extension to collect all of the ads shown to you on Facebook',
       defaultValue: true
     },
     FB_SHARE_AD_TARGETING: {
@@ -218,5 +238,28 @@ module.exports = (isDebug = false) => ({
       hintText: 'If on this will tag your facebook post with collection info.',
       defaultValue: isDebug // change this to `isDebug` if you want this only be on for debug users
     },
+    YT_SHARE_WATCHED_VIDEOS: {
+      label: 'Share Watched Videos',
+      hintText:
+        'This will share each video you choose to watch on YouTube (often, ads are targeted to be shown to viewers of a particular video or channel, so this is a big help if you opt-in)',
+      defaultValue: false
+    },
+    YT_SHARE_RECOMMENDED_VIDEOS: {
+      label: 'Share Recommendations',
+      hintText:
+        'This will share the other videos YouTube recommends to you while you are watching a video',
+      defaultValue: false
+    },
+    YT_SHARE_ADS: {
+      label: 'Share Advertisements',
+      hintText: 'This will share all of the different types of ads you are shown on YouTube',
+      defaultValue: true
+    },
+    YT_SHARE_AD_TARGETING: {
+      label: 'Share Ad Targeting Information',
+      hintText:
+        'This will share the explanations provided by YouTube for why you were shown a particular ad',
+      defaultValue: true
+    }
   }
 });

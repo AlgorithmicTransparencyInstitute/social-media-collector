@@ -35,6 +35,8 @@
       const objectKeys = Object.keys(obj);
       for (let i = 0; i < objectKeys.length; i++) {
         const key = objectKeys[i];
+        if (key === "return") continue; // the "return" key appears to be a reference to a parent element and, since this is recursive, it can mean "analyzing" an element's siblings, which we don't want (because it can lead to one ad's ad id being attached to a sibling ad.)
+                                        // you get true from element[Object.keys(element)[0]]["child"]["return"] == element[Object.keys(element)[0]]
         const item = obj[key];
         if (isEmpty(item)) continue;
         if (item instanceof Date) continue;
