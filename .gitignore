@@ -4,6 +4,3 @@
 /node_modules/
 .idea/
 /coverage/
-
-# ignore alternative build configs
-*-build-config.js

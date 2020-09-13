@@ -14,7 +14,7 @@ jest.mock('content/facebook/utils/post/buildInitialPosts');
 jest.mock('content/facebook/utils/post/normaliseCommonData');
 jest.mock('content/facebook/filter/makeFilteredUtilities');
 
-const applyFilters = jest.fn();
+const applyAdInfo = jest.fn();
 const send = jest.fn();
 const report = jest.fn();
 const commonData = { __some: 'common', __data: { cool: 'and normal' } };
@@ -43,7 +43,7 @@ const cleanup = () => {
   buildInitialPosts.mockClear();
   normaliseCommonData.mockClear();
   makeFilteredUtilities.mockClear();
-  applyFilters.mockReset();
+  applyAdInfo.mockReset();
   send.mockReset();
   report.mockReset();
   window.addEventListener.mockClear();
@@ -71,10 +71,10 @@ describe('when consent is granted', () => {
     // note we await start as it behaves like an async function even though it isn't.
     beforeAll(async () => {
       buildInitialPosts.mockReturnValue({ version, posts: [post] });
-      applyFilters.mockResolvedValue();
+      applyAdInfo.mockResolvedValue();
       send.mockResolvedValue();
       report.mockResolvedValue();
-      makeFilteredUtilities.mockReturnValue({ applyFilters, send, report });
+      makeFilteredUtilities.mockReturnValue({ applyAdInfo, send, report });
       await start();
     });
 
@@ -97,8 +97,8 @@ describe('when consent is granted', () => {
       expect(makeFilteredUtilities).toHaveBeenCalledWith(version);
     });
 
-    it('called applyFilters with posts', () => {
-      expect(applyFilters).toHaveBeenCalledWith([post]);
+    it('called applyAdInfo with posts', () => {
+      expect(applyAdInfo).toHaveBeenCalledWith([post]);
     });
 
     it('called send with posts', () => {

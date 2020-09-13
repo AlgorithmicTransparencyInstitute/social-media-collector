@@ -1,5 +1,4 @@
 import makeItemId from 'common/utils/makeItemId';
-
 import getFbDtsgFromPostElement from '../../id/getFbDtsgFromPostElement';
 import isPublicPost from './isPublicPost';
 import isSponsoredPost from './isSponsoredPost';
@@ -10,6 +9,14 @@ import { updateAndSavePost, getSavedPost } from '../../../posts';
 import { HYPERFEED, VERSION } from '../../../constants';
 
 const FIRST_DIV_INSIDE_POST = ':scope div.userContentWrapper > div:first-of-type';
+
+const innerify = element => {
+  if (element.querySelector('.userContentWrapper')) {
+    return element.querySelector('.userContentWrapper');
+  } else {
+    return element;
+  }
+};
 
 /**
  *  Given a post element make a fleshed out post object.
@@ -50,7 +57,7 @@ const makeInitialPost = element => {
     itemId: makeItemId(),
     observedAt: new Date().getTime(),
     payload: {
-      contentHtml: sanitizePostContent(elem.outerHTML, isUserPost)
+      contentHtml: sanitizePostContent(innerify(elem).outerHTML, isUserPost)
     },
     // these get filled in later
     itemType: null,

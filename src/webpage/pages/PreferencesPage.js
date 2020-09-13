@@ -37,6 +37,26 @@ const checkboxen = (perms, props) =>
     />
   ));
 
+const YOUTUBE_ASK = () => (
+  <div>
+    <p>
+      Politicians, dark money groups and scammers use YouTube ads too. But we have even less
+      understanding of what they&apos;re saying and <i>how</i> they&apos;re target their ads.
+      Google&apos;s transparency tools are even worse than Facebook&apos;s! We built a version of
+      the Facebook Political Ad Collector that also lets you share YouTube ads.
+      <br />
+      <br />
+      Would you be willing to help out? You&apos;ll have to install a new version of this extension
+      by going to <a href="https://www.adobserver.org">AdObserver.org</a> and following the
+      directions there. It lets you share the the ads and recommendations you see on YouTube, in
+      addition to ads from Facebook too.
+      <br />
+      <br />
+      Thanks!
+    </p>
+  </div>
+);
+
 const CARDS = {
   locale: {
     title: 'Your Settings',
@@ -57,6 +77,11 @@ const CARDS = {
     title: 'YouTube Preferences',
     subtitle: 'These options control what data you share when you are using YouTube',
     permissions: YOUTUBE_PERMISSIONS
+  },
+  legacy: {
+    title: 'Help us monitor YouTube ads too',
+    subtitle: <YOUTUBE_ASK />,
+    permissions: []
   }
 };
 
@@ -68,6 +93,7 @@ const makeCard = (key, content) => (
 
 // no need for a ConsentAwareView as this page is not visible unless you
 // have granted latest consent.
+const ytCard = process.env.INCLUDE_YOUTUBE ? makeCard('youtube') : makeCard('legacy', '');
 const PreferencesPage = () => (
   <Fragment>
     <h4 className="mt-4">Sharing Preferences</h4>
@@ -84,7 +110,7 @@ const PreferencesPage = () => (
     <div className="mt-4">
       <Deck>
         {makeCard('facebook')}
-        {makeCard('youtube')}
+        {ytCard}
       </Deck>
     </div>
     <footer

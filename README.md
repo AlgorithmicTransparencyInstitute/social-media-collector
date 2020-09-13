@@ -27,13 +27,13 @@ Once installed **you must accept the standard terms and conditions of use**. The
 
 ### Installation
 
-There is currently an issue with one or more of the dependencies which means that to install you **must** use
+There is currently an issue with one or more of the dependencies which means that to install you **must** run `npm install` and then
 
 ```sh
 npm ci
 ```
 
-instead of `npm install`.
+instead of just `npm install`.
 
 ## Continuous build environment (single machine)
 
@@ -48,6 +48,17 @@ Build the extension continuously as you edit files:
 ```sh
 npm run watch
 ```
+
+### Actual real-life development:
+
+in two separate terminals, run these commands.
+
+```sh
+npm run chrome -- -- --env.file=./nyu-build-config.js --env.build=debug  --env.config=std
+npm run watch -- --env.file=./nyu-build-config.js --env.browser=chrome --env.build=debug --env.config=std
+```
+
+This starts a fresh Chrome install and also continuously monitors the code and recompiles it.
 
 ### Build output
 
@@ -91,6 +102,22 @@ You can create your own customised version of this extension by making a copy of
 So if, for example, you create your own build config called `alt-build-config.js` in the root folder of this project, then you'd use it by adding the param `--env.file=./alt-build-conf`.
 
 Any API URL you set in that file will be used as the default url, unless you specify an `--env.api` option. The `--env.api` option will override whatever you set in your copy of `build-config.js`.
+
+## NYU Release Ritual
+
+1. up the version in the build config file (`nyu-build-config.js` or `legacy-build-config.js`). Legacy is `v2.x.y`, Full is `v3.x.y`.
+2. tag a version, push tag, `git tag v3.0.2` (or whatever).
+3. build both legacy and standard
+ - legacy:
+ 	1. `npm run build -- --env.file=./legacy-build-config.js --env.build=release --env.config=std`
+ 	2. `pushd build/chrome-std-release && zip -r0 ../chrome-$(jq .version manifest.json | tr -d \").zip ./* && popd`
+ 	3. `pushd build/firefox-std-release && zip -r0 ../firefox-$(jq .version manifest.json | tr -d \").zip ./* && popd`
+ - standard: 
+ 	1. `npm run build -- --env.file=./nyu-build-config.js --env.build=release --env.config=std`
+ 	2. `pushd build/chrome-std-release && zip -r0 ../chrome-$(jq .version manifest.json | tr -d \").zip ./* && popd`
+ 	3. `pushd build/firefox-std-release && zip -r0 ../firefox-$(jq .version manifest.json | tr -d \").zip ./* && popd`
+4. download source zip for Firefox
+5. upload source zip to Firefox with msg "There are instructions for how to build the extension in the README in the extension/ folder in the archive -- you'll want to run `npm install`, then `npm ci` and then use `$ npm run build -- --env.file=./nyu-build-config.js --env.build=release --env.config=std --env.browser=firefox` to generate the same minified, production code as in the uploaded version of the extension. Be sure to check the output for sporadic network errors; I've verified that these instructions work in a clean build environment."
 
 ## Unit tests
 

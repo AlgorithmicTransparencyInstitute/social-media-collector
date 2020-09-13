@@ -39,9 +39,11 @@ const scanElements = async () => {
     return;
   }
 
-  const { applyFilters, send, report } = await makeFilteredUtilities(version);
+  // applyAdInfo only sets ad data to ads that pass a filter. One example of a
+  // filter is 'canShareSponsored' (user preference).
+  const { applyAdInfo, send, report } = await makeFilteredUtilities(version);
 
-  await applyFilters(posts);
+  await applyAdInfo(posts);
   await report(posts);
   await send(posts); // TODO: send should not also tag as processed. That should be a separate step.
 };

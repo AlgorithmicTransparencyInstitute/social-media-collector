@@ -26,7 +26,7 @@ export const start = async () => {
   } else setAllDefaults();
 
   const viewedAt = await getConsentViewedAt();
-  if (!tooSoon(viewedAt)) {
+  if (!tooSoon(viewedAt) && !isUpgradeFromGlobeAndMail(version)) {
     const openTerms = openPage('terms');
     openTerms();
   }

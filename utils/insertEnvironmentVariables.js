@@ -17,6 +17,7 @@ const insertEnvironmentVariables = ({ isFirefox, isChrome, isQA, isDebug, apiUrl
     CONSENT_TEXT: config.consentText,
     CONSENT_VERSION: config.consentVersion.toString(),
     HELP_TEXT: config.helpText,
+    INCLUDE_YOUTUBE: config.includeYoutube,
     ABOUT_TEXT: config.aboutText,
     PRIVACY_TEXT: config.privacyText,
     PERMISSIONS: JSON.stringify(config.permissions),

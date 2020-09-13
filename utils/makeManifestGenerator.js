@@ -11,43 +11,47 @@ const BASE_MANIFEST = {
   },
   icons: {
     '16': 'assets/icon16.png',
+    '32': 'assets/icon32.png',
+    '48': 'assets/icon48.png',
     '64': 'assets/icon64.png',
     '128': 'assets/icon128.png'
   },
   browser_action: {
-    default_popup: 'toolbar/index.html'
+    default_popup: 'toolbar/index.html',
+    default_icon: {
+      "16": "images/icon16.png",
+      "24": "images/icon24.png",
+      "32": "images/icon32.png" 
+    },
   },
-  content_scripts: [
-    {
-      // Facebook specific preloader to add `isTrusted` to events.
-      js: ['preload/bundle.js'],
-      matches: FB_MATCHES,
-      exclude_globs: FB_EXCLUDES,
-      run_at: 'document_start'
-    },
-    {
-      // Youtube specific preloader to monkeypatch XHR.
-      js: ['ytpreload/bundle.js'],
-      matches: YT_MATCHES,
-      run_at: 'document_start'
-    },
-    {
-      js: ['content/bundle.js'],
-      matches: [...FB_MATCHES, ...YT_MATCHES],
-      exclude_globs: FB_EXCLUDES,
-      run_at: 'document_start'
-    }
-  ],
   web_accessible_resources: ['webpage/*'],
-  externally_connectable: {
-    matches: [...FB_MATCHES, ...YT_MATCHES]
-  }
 };
+
+const FACEBOOK_CONTENT_SCRIPT = [{
+  // Facebook specific preloader to add `isTrusted` to events.
+  js: ['preload/bundle.js'],
+  matches: FB_MATCHES,
+  exclude_globs: FB_EXCLUDES,
+  run_at: 'document_start'
+}];
+const YOUTUBE_CONTENT_SCRIPT = [{
+  // Youtube specific preloader to monkeypatch XHR.
+  js: ['ytpreload/bundle.js'],
+  matches: YT_MATCHES,
+  run_at: 'document_start'
+}];
 
 const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) => {
   const versionName = `${config.version} (${shortSha})`;
-  const permissions = ['storage', 'unlimitedStorage', '*://*.facebook.com/*'];
-  if (apiUrl) permissions.push(`${apiUrl}/`);
+  const permissions = ['storage', 'unlimitedStorage'];
+
+
+  const BUNDLE_CONTENT_SCRIPT = [{
+      js: ['content/bundle.js'],
+      matches: [...FB_MATCHES, ...(config.includeYoutube ? YT_MATCHES : [])],
+      exclude_globs: FB_EXCLUDES,
+      run_at: 'document_start'
+    }];
 
   const baseManifest = {
     ...BASE_MANIFEST,
@@ -62,8 +66,14 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
       default_icon: `assets/${config.defaultIcon}`
     },
     homepage_url: config.homepage,
+    content_scripts: [
+      ...FACEBOOK_CONTENT_SCRIPT,
+      ...(config.includeYoutube ? YOUTUBE_CONTENT_SCRIPT : []),
+      ...BUNDLE_CONTENT_SCRIPT
+    ],
     permissions
   };
+
 
   const firefoxManifest = {
     ...baseManifest,
