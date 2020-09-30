@@ -38,19 +38,18 @@ AdTargeting.displayName = 'Ad targeting';
 AdTargeting.propTypes = {
   item: PropTypes.shape(itemShape).isRequired
 };
-
 // Recurse all parent elements and try to find 'a' tag.
-function hasATagParent(el /* DOM Element */) {
+const hasATagParent = (el /* DOM Element */) => {
   while (el.parentNode) {
     el = el.parentNode;
     if (el.tagName && el.tagName.toLowerCase() === 'a') return el;
   }
   return null;
-}
+};
 
 // Find the ad image used. The tricky part here is there could be two different
 // kinds of ways to parse (I think based on pre and post2020).
-function getAdImg(doc /* DOMParser */) {
+const getAdImg = (doc /* DOMParser */) => {
   // Pre 2020. Much easier to parse.
   var imgs = doc.querySelectorAll('div.fbStoryAttachmentImage');
   if (imgs.length > 0) {
@@ -86,16 +85,16 @@ function getAdImg(doc /* DOMParser */) {
     }
     return img;
   }
-}
+};
 
-function newDoc(html /* string */) {
+const newDoc = (html /* string */) => {
   // From https://stackoverflow.com/a/30040354/3325787
   var parser = new DOMParser();
   var doc = parser.parseFromString(html, 'text/html');
   return doc;
-}
+};
 
-function getAdCopyPre2020(doc /* DOMParser */) {
+const getAdCopyPre2020 = (doc /* DOMParser */) => {
   var html = '';
   var els = doc.querySelectorAll('div.userContent');
   if (els.length > 0) {
@@ -104,10 +103,14 @@ function getAdCopyPre2020(doc /* DOMParser */) {
     }
   }
   return html;
-}
+};
 
-function getAdCopyPost2020(doc /* DOMParser */) {
-  var html = '';
+const getAdCopyPost2020 = (doc /* DOMParser */) => {
+  var htmlTexts = [];
+  doc
+    .querySelectorAll('div[role="button"], span[role="button"]')
+    .forEach(elem => elem.parentNode.removeChild(elem));
+
   var els = doc.querySelectorAll('div[dir="auto"], span[dir="auto"]');
   for (var i = 0; i < els.length; ++i) {
     var el = els[i];
@@ -124,15 +127,15 @@ function getAdCopyPost2020(doc /* DOMParser */) {
     // This 'el' could still be valid it has a child element for the reason of
     // an emoji.
     if (el.childElementCount === 1 && el.innerHTML.indexOf('/emoji.php') >= 0) {
-      html += el.innerHTML;
+      htmlTexts.push(el.innerHTML);
     } else if (el.childElementCount === 0) {
-      html += el.innerText + '<br />';
+      htmlTexts.push(el.innerText);
     }
   }
-  return html;
-}
+  return '<div class="ati-item-ad-copy">' + htmlTexts.join('<br />') + '</div>';
+};
 
-function getAdCTAPost2020(doc /* DOMParser */) {
+const getAdCTAPost2020 = (doc /* DOMParser */) => {
   var html = '<br>';
   var els = doc.querySelectorAll('div[dir="auto"], span[dir="auto"]');
   for (var i = 0; i < els.length; ++i) {
@@ -151,21 +154,21 @@ function getAdCTAPost2020(doc /* DOMParser */) {
     if (el.childElementCount === 1 && el.innerHTML.indexOf('/emoji.php') >= 0) {
       html += el.innerHTML;
     } else if (el.childElementCount === 0) {
-      html += el.innerText + '<br />';
+      html += el.innerHTML + '<br />';
     }
   }
-  return html;
-}
+  return '<div class="ati-item-cta">' + html + '</div>';
+};
 
-function getAdCopy(doc /* DOMParser */) {
+const getAdCopy = (doc /* DOMParser */) => {
   var html = getAdCopyPre2020(doc);
   if (html.length > 0) {
     return html;
   }
   return getAdCopyPost2020(doc);
-}
+};
 
-function getAdvertiser(doc /* DOMParser */) {
+const getAdvertiser = (doc /* DOMParser */) => {
   // pre2020
   var els = doc.querySelectorAll('a[data-hovercard]');
   if (els.length > 1) {
@@ -177,15 +180,15 @@ function getAdvertiser(doc /* DOMParser */) {
   if (els.length === 0) {
     return '';
   }
-  return els[0].innerHTML;
-}
+  return '<div class="ati-item-advertiser">' + els[0].innerHTML + '</div>';
+};
 
-function getCTALink(doc /* DOMParser */) {
+const getCTALink = (doc /* DOMParser */) => {
   // Attempt 1.
   var els = doc.querySelectorAll('a[aria-label]');
   for (var i = 0; i < els.length; ++i) {
     if (els[i].href.indexOf('/l.php') >= 0 && els[i].innerText.length > 0) {
-      return '<br>' + els[i].outerHTML;
+      return '<div class="ati-item-cta">' + els[i].outerHTML + '</div>';
     }
   }
 
@@ -197,16 +200,17 @@ function getCTALink(doc /* DOMParser */) {
       els[i].innerText.length > 0 &&
       els[i].childElementCount === 0
     ) {
-      return '<br>' + els[i].outerHTML;
+      return '<div class="ati-item-cta">' + els[i].outerHTML + '</div>';
     }
   }
-}
+  return '';
+};
 
-function makeAdImg(img /* DOMElem */) {
+const makeAdImg = (img /* DOMElem */) => {
   return '<img src="' + img.getAttribute('src') + '" width=500>';
-}
+};
 
-function makeAdHtml(html /* string */) {
+export const makeAdHtml = (html /* string */) => {
   var doc = newDoc(html);
   var img = getAdImg(doc);
   if (!img) {
@@ -215,7 +219,7 @@ function makeAdHtml(html /* string */) {
   return (
     getAdvertiser(doc) + getAdCopy(doc) + makeAdImg(img) + getAdCTAPost2020(doc) + getCTALink(doc)
   );
-}
+};
 
 const FacebookRenderer = ({ item }) => {
   const {
