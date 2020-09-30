@@ -29,7 +29,7 @@
     "bootstrap": "^4.4.1",
     "core-js": "^3.6.4",
     "debounce": "^1.2.0",
-    "dompurify": "^2.0.8",
+    "dompurify": "^2.1.1",
     "pluralise": "^1.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
