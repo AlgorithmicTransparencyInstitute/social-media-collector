@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DOMPurify from 'dompurify';
 
 import Reason from './Reason';
 import Boosted from './Boosted';
@@ -227,7 +228,7 @@ const FacebookRenderer = ({ item }) => {
 
   const classes = `ati-item fb-item fb-${itemType}`;
 
-  var adhtml = makeAdHtml(html);
+  var adhtml = DOMPurify.sanitize(makeAdHtml(html));
 
   return (
     <div className="archive-item">
