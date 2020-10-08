@@ -38,6 +38,7 @@ AdTargeting.displayName = 'Ad targeting';
 AdTargeting.propTypes = {
   item: PropTypes.shape(itemShape).isRequired
 };
+
 // Recurse all parent elements and try to find 'a' tag.
 const hasATagParent = (el /* DOM Element */) => {
   while (el.parentNode) {
@@ -51,7 +52,7 @@ const hasATagParent = (el /* DOM Element */) => {
 // kinds of ways to parse (I think based on pre and post2020).
 const getAdImg = (doc /* DOMParser */) => {
   // Pre 2020. Much easier to parse.
-  var imgs = doc.querySelectorAll('div.fbStoryAttachmentImage');
+  var imgs = doc.querySelectorAll('div.fbStoryAttachmentImage img');
   if (imgs.length > 0) {
     return imgs[0];
   }
@@ -79,7 +80,9 @@ const getAdImg = (doc /* DOMParser */) => {
       w < 75 ||
       h < 75 ||
       arialabel != null ||
-      src.indexOf('/rsrc.php/') >= 0
+      src.indexOf('/rsrc.php/') >= 0 ||
+      src === 'null' ||
+      src === null
     ) {
       continue;
     }
@@ -94,7 +97,7 @@ const newDoc = (html /* string */) => {
   return doc;
 };
 
-const getAdCopyPre2020 = (doc /* DOMParser */) => {
+const getAdCopyPre2020 = (doc /* DOMParser */, cx) => {
   var html = '';
   var els = doc.querySelectorAll('div.userContent');
   if (els.length > 0) {
@@ -102,10 +105,34 @@ const getAdCopyPre2020 = (doc /* DOMParser */) => {
       html += els[i].innerHTML;
     }
   }
-  return html;
+  return '<div class="' + cx('ati-item-ad-copy') + '">' + html + '</div>';
 };
 
-const getAdCopyPost2020 = (doc /* DOMParser */) => {
+const getAdSponsorLine = (doc, cx) => {
+  var htmlTexts = [];
+
+  var els = doc.querySelectorAll('div[dir="auto"], span[dir="auto"]');
+  for (var i = 0; i < els.length; ++i) {
+    var el = els[i];
+
+    if (el.childElementCount === 1 && el.innerText.indexOf('·') > -1) {
+      htmlTexts.push(el.innerText); // non-political
+    }
+  }
+
+  els = doc.querySelectorAll('div[data-testid="story-subtitle"]');
+  for (i = 0; i < els.length; ++i) {
+    el = els[i];
+    if (el.innerText.indexOf('Paid for by') > -1 && el.innerText.indexOf('Sponsored') > -1) {
+      htmlTexts.push(el.innerText); // political
+    } else if (el.innerText.indexOf('·') > -1) {
+      htmlTexts.push(el.innerText); // non-political
+    }
+  }
+  return '<div class="' + cx('ati-item-ad-sponsored') + '">' + htmlTexts.join('<br />') + '</div>';
+};
+
+const getAdCopyPost2020 = (doc /* DOMParser */, cx) => {
   var htmlTexts = [];
   doc
     .querySelectorAll('div[role="button"], span[role="button"]')
@@ -132,10 +159,10 @@ const getAdCopyPost2020 = (doc /* DOMParser */) => {
       htmlTexts.push(el.innerText);
     }
   }
-  return '<div class="ati-item-ad-copy">' + htmlTexts.join('<br />') + '</div>';
+  return '<div class="' + cx('ati-item-ad-copy') + '">' + htmlTexts.join('<br />') + '</div>';
 };
 
-const getAdCTAPost2020 = (doc /* DOMParser */) => {
+const getAdCTAPost2020 = (doc /* DOMParser */, cx) => {
   var html = '<br>';
   var els = doc.querySelectorAll('div[dir="auto"], span[dir="auto"]');
   for (var i = 0; i < els.length; ++i) {
@@ -157,22 +184,24 @@ const getAdCTAPost2020 = (doc /* DOMParser */) => {
       html += el.innerHTML + '<br />';
     }
   }
-  return '<div class="ati-item-cta">' + html + '</div>';
+  return '<div class="' + cx('ati-item-cta') + '">' + html + '</div>';
 };
 
-const getAdCopy = (doc /* DOMParser */) => {
-  var html = getAdCopyPre2020(doc);
+const getAdCopy = (doc /* DOMParser */, cx) => {
+  var html = getAdCopyPre2020(doc, cx);
   if (html.length > 0) {
     return html;
   }
-  return getAdCopyPost2020(doc);
+  return getAdCopyPost2020(doc, cx);
 };
 
-const getAdvertiser = (doc /* DOMParser */) => {
+const getAdvertiser = (doc /* DOMParser */, cx) => {
   // pre2020
   var els = doc.querySelectorAll('a[data-hovercard]');
   if (els.length > 1) {
-    return els[1].outerHTML;
+    return '<div class="' + cx('ati-item-advertiser') + '">' + els[1].outerHTML + '</div>';
+  } else if (els.length === 1) {
+    return '<div class="' + cx('ati-item-advertiser') + '">' + els[0].outerHTML + '</div>';
   }
 
   // post2020
@@ -180,15 +209,18 @@ const getAdvertiser = (doc /* DOMParser */) => {
   if (els.length === 0) {
     return '';
   }
-  return '<div class="ati-item-advertiser">' + els[0].innerHTML + '</div>';
+  return '<div class="' + cx('ati-item-advertiser') + '">' + els[0].innerHTML + '</div>';
 };
 
-const getCTALink = (doc /* DOMParser */) => {
+const getCTALink = (doc /* DOMParser */, cx) => {
   // Attempt 1.
+  doc
+    .querySelectorAll('div.fbStoryAttachmentImage')
+    .forEach(elem => elem.parentNode.removeChild(elem));
   var els = doc.querySelectorAll('a[aria-label]');
   for (var i = 0; i < els.length; ++i) {
     if (els[i].href.indexOf('/l.php') >= 0 && els[i].innerText.length > 0) {
-      return '<div class="ati-item-cta">' + els[i].outerHTML + '</div>';
+      return '<div class="' + cx('ati-item-cta') + '">' + els[i].outerHTML + '</div>';
     }
   }
 
@@ -200,24 +232,56 @@ const getCTALink = (doc /* DOMParser */) => {
       els[i].innerText.length > 0 &&
       els[i].childElementCount === 0
     ) {
-      return '<div class="ati-item-cta">' + els[i].outerHTML + '</div>';
+      return '<div class="' + cx('ati-item-cta') + '">' + els[i].outerHTML + '</div>';
     }
   }
   return '';
 };
 
-const makeAdImg = (img /* DOMElem */) => {
-  return '<img src="' + img.getAttribute('src') + '" width=500>';
+const getAdAdvertiserThumbnail = (doc /* DOMParser */, cx) => {
+  // pre2020
+  // var els = doc.querySelectorAll('img[role="img"]');
+  // if (els.length > 1) {
+  //   return '<div class="'+cx('ati-item-advertiser')+'">' + els[1].outerHTML + '</div>';
+  // }
+
+  // post2020
+  var els = doc.querySelectorAll('img[role="img"]');
+  if (els.length === 0) {
+    return '';
+  }
+  return (
+    '<img class="' +
+    cx('ati-item-advertiser-thumb') +
+    '" src="' +
+    els[0].getAttribute('src') +
+    '"/>'
+  );
 };
 
-export const makeAdHtml = (html /* string */) => {
+const makeAdImg = (img /* DOMElem */, cx) => {
+  return (
+    '<img class="' + cx('ati-item-image') + '" src="' + img.getAttribute('src') + '" width=500>'
+  );
+};
+
+export const makeAdHtml = (html /* string */, cx) => {
+  if (!cx) {
+    cx = name => name;
+  }
   var doc = newDoc(html);
   var img = getAdImg(doc);
   if (!img) {
     return html;
   }
   return (
-    getAdvertiser(doc) + getAdCopy(doc) + makeAdImg(img) + getAdCTAPost2020(doc) + getCTALink(doc)
+    getAdAdvertiserThumbnail(doc, cx) +
+    getAdvertiser(doc, cx) +
+    getAdSponsorLine(doc, cx) +
+    getAdCopy(doc, cx) +
+    makeAdImg(img, cx) +
+    getAdCTAPost2020(doc, cx) +
+    getCTALink(doc, cx)
   );
 };
 
