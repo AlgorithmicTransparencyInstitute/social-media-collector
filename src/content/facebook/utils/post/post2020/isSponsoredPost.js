@@ -14,16 +14,22 @@
 //
 // This is also not computationally expensive, since on the test post element
 // I used, I found only 3 aria-labelledby elements that we need to go through.
-const isSponsoredPost = function (element, sponsorStr = 'Sponsored') {
+const isSponsoredPost = function(element, sponsorStr = 'Sponsored') {
   const arias = element.querySelectorAll('[aria-labelledby]');
-  for (let a of arias) {
+  for (const a of arias) {
+    // Facebook creates ghost divs with a fake Sponsored aria label. We can
+    // counter this by checking the span/div has a valid width.
+    if (a.clientWidth <= 3) {
+      continue;
+    }
+
     const label = a.getAttribute('aria-labelledby');
-    const ariaElement = document.querySelector('#'+label);
+    const ariaElement = document.querySelector('#' + label);
     if (ariaElement && ariaElement.textContent === sponsorStr) {
       return true;
     }
   }
   return false;
-}
+};
 
 export default isSponsoredPost;
