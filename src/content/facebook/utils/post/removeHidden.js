@@ -7,7 +7,7 @@ const removeHidden = node => {
     node.classList.contains('uiPopover') ||
     node.classList.contains('profileLink');
 
-  if (removeIt) node.parentNode.removeChild(node);
+  if (removeIt && node.parentNode !== null) node.parentNode.removeChild(node);
 };
 
 export default removeHidden;
