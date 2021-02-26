@@ -23,17 +23,17 @@ const isSponsoredPost = function(el, sponsorStr = 'Sponsored') {
 // First we try to detect sponsored post by searching for aria labels with
 // Sponsored label.
 function isSponsoredTest1(element, sponsorStr = 'Sponsored') {
-  const arias = element.querySelectorAll('[aria-labelledby]');
-  for (const a of arias) {
+  const labelledElems = element.querySelectorAll('[aria-labelledby]');
+  for (const labelledElem of labelledElems) {
     // Facebook creates ghost divs with a fake Sponsored aria label. We can
     // counter this by checking the span/div has a valid width.
-    if (a.clientWidth <= 3) {
+    if (labelledElem.clientWidth === 0) {
       continue;
     }
 
-    const label = a.getAttribute('aria-labelledby');
-    const ariaElement = document.querySelector('#' + label);
-    if (ariaElement && ariaElement.textContent === sponsorStr) {
+    const label = labelledElem.getAttribute('aria-labelledby');
+    const ariaLabelElem = document.querySelector('#' + label);
+    if (ariaLabelElem && ariaLabelElem.textContent === sponsorStr) {
       return true;
     }
   }
