@@ -1,3 +1,5 @@
+import { Buffer } from 'buffer';
+
 const decodeJson = encoded => {
   try {
     return JSON.parse(Buffer.from(encoded, 'base64').toString());
