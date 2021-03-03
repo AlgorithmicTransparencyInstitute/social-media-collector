@@ -28,32 +28,10 @@ beforeAll(() => {
   getAttribute.mockReturnValue(id);
 });
 
-describe('pre2020', () => {
-  beforeAll(() => {
-    querySelectorAll.mockReturnValue(elements);
-    notOverlapping.mockImplementation(() => elements);
-
-    result = determineFbVersion(doc);
-  });
-
-  afterAll(cleanup);
-
-  it('filtered by isElementInViewport', () => {
-    expect(isElementInViewport).toHaveBeenCalled();
-  });
-
-  it('reduced by notOverlapping', () => {
-    expect(notOverlapping).toHaveBeenCalled();
-  });
-
-  it('returned the expected version and element array', () => {
-    expect(result).toEqual({ version: 'pre2020', elements });
-  });
-});
-
 describe('post2020', () => {
   beforeAll(() => {
-    querySelectorAll.mockReturnValueOnce([]).mockReturnValueOnce(elements);
+    querySelectorAll.mockReturnValueOnce(elements);
+    notOverlapping.mockImplementation(() => elements);
 
     result = determineFbVersion(doc);
   });
