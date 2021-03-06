@@ -129,6 +129,23 @@ Run the unit tests:
 npm test
 ```
 
+## Manual testing
+
+If you made a big change that affects many parts of the extension, these are
+good things to test manually in the extension:
+
+1. fb scrolling feed, for 30+ posts, or about 5 ads
+2. fb messaging people
+3. liking fb group
+4. liking fb post
+5. clicking 3 dots on fb ad, it should show more info
+6. add friend
+
+In general any normal facebook activity.
+
+Please feel free to add to the list of things recommended to test, if you
+found one manual testing case that breaks it!
+
 ## Repository organization
 
 For a quick overview of the parts of a browser extension, visit:
