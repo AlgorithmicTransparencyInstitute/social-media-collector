@@ -9,7 +9,7 @@ import determineFbVersion from './determineFbVersion';
  *  @returns {Array} — array of non-null posts.
  */
 const buildInitialPosts = (/* istanbul ignore next */ doc = document) => {
-  const { elements, version } = determineFbVersion(doc);
+  const { elements, version } = determineFbVersion(doc); // if pre2020, elements is empty list.
   return {
     posts: elements.map(makeInitialPost2020Post).filter(Boolean),
     version
