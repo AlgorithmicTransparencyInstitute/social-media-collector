@@ -105,7 +105,48 @@ const BrowserExtensionParser = {
       var link = author_link[0].getAttribute('href').split("?")[0]
       return link
     }
-  }
+  },
+
+  get_user_content: function(item) {
+    /*Parse user content from contentHtml using selectolax. Selectolax is much more efficient
+    compared to Beautifulsoup (bs4). This method returns a list of user content sections. There
+    are usually only one but if there are more than one, the first element is usually null (empty string).
+
+    */
+    var userContent_divs = item.parser.querySelectorAll('[dir="auto"]')
+    //logging.debug(f"userContent div classes found: {len(userContent_divs)}")
+    var user_content_pieces = [];
+
+    // Process each div that has a userContent class and include them in the
+    // user_content_pieces list if they are not null ('')
+    for (let div of userContent_divs) {
+      var ad_text = div.innerText;
+      if (ad_text && ad_text.length > 0) {
+        var p1 = /\d*[.]?\d?K?M? ?[Ss]hares?/;
+        var p2 = /\d+[.]?\d?K?M? [Cc]omments?/;
+        var p3 = /\d+[.]?\d?K?M? [lL]ikes?/;
+        if (!ad_text.match(p1) && !ad_text.match(p2) && !ad_text.match(p3)) {
+          user_content_pieces.push(ad_text);
+        }
+      }
+    }
+
+    userContent_divs = item.parser.querySelectorAll('div.userContent')
+    for (let div of userContent_divs) {
+      var ad_text = div.innerText;
+      if (ad_text && ad_text.length > 0) {
+        user_content_pieces.push(ad_text);
+      }
+    }
+
+    // if (!user_content_pieces.length) {
+    //   logging.warning("Unable to find any user content pieces within contentHtml")
+    // }
+
+    return user_content_pieces.slice(4);
+  },
+
+
 
 };
 const bep = BrowserExtensionParser; // Abbreviated.
@@ -128,7 +169,14 @@ function process_facebook_item(item) {
   item_data['paid_for_by'] = bep.get_paid_for_by(item);
 
   // Parse author link
-  item_data['author_link'] = bep.get_author_link()
+  item_data['author_link'] = bep.get_author_link(item)
+
+  // Parse User Content (this returns a list of user content pieces)
+  var user_content_pieces = bep.get_user_content(item)
+  item_data['user_content'] = user_content_pieces.join("\n");
+
+
+
 
 
 
