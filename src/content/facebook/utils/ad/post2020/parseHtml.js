@@ -157,6 +157,44 @@ const BrowserExtensionParser = {
     return '';
   },
 
+  get_story_attachment_image: function(item) { // -> list:
+    /*Parse out the images from the ad within the contentHtml. This method returns
+    a list of objects that includes metadata for the image. Common fields returned are:
+
+    height:     Image height
+    width:      Image width
+    alt:        Image alt field
+    src:        Image source
+    data-src:   Appears to be the same information as src
+    class:      Image category (e.g. scaledImageFitWidth)
+
+    Note:       Image src links appear to have an expiration time. When attempting to fetch
+                an image after this expiration time, Facebook returns a "URL signature expired" error.
+    */
+
+    var images = [];
+    var story_attachment_images = item.parser.querySelectorAll("img");
+    var pattern = /scontent-?.*.(?:xx|fna).fbcdn.net\//;
+    // TODO: doublecheck this pattern correctly matches against fbcdn urls.
+    for (let image of story_attachment_images) {
+      var m = image.getAttribute('src').match(pattern);
+      if (m) {
+        var w = parseFloat(image.getAttribute('width'));
+        if (isNaN(w) || w < 30) {
+          continue;
+        }
+        images.push(image);
+      }
+    }
+
+    if (!story_attachment_images.length) {
+        //logging.debug("No fbStoryAttachmentImage classes found in contentHtml")
+    }
+
+    return images;
+  },
+
+
 
 
 };
@@ -189,12 +227,15 @@ function process_facebook_item(item) {
   // Parse User Content Wrapper
   item_data['user_content_wrapper'] = bep.get_user_content_wrapper(item)
 
+  // Parse Ad Images (Returns a list of objects)
+  item_data['ad_images_metadata'] = bep.get_story_attachment_image(item)
 
 
 
 
 
-  // TODO: more parsing from parse_facebook_observation.py, L147
+
+  // TODO: more parsing from parse_facebook_observation.py, L158
 
   return item_data;
 }
