@@ -86,7 +86,7 @@ const BrowserExtensionParser = {
       return m[1];
     }
 
-    pfb = item.parser.querySelectorAll("span._3nlk")
+    var pfb = item.parser.querySelectorAll("span._3nlk")
     var i = 0;
     for (let el of pfb) {
       if (el.innerText.toLowerCase().trim() === "sponsored") {
@@ -98,6 +98,14 @@ const BrowserExtensionParser = {
     // Couldn't find any.
     return undefined;
   },
+
+  get_author_link: function(item) {
+    var author_link = item.parser.querySelectorAll(".fwb a");
+    if (author_link.length) {
+      var link = author_link[0].getAttribute('href').split("?")[0]
+      return link
+    }
+  }
 
 };
 const bep = BrowserExtensionParser; // Abbreviated.
@@ -118,6 +126,11 @@ function process_facebook_item(item) {
 
   // Parse paid_for_by data
   item_data['paid_for_by'] = bep.get_paid_for_by(item);
+
+  // Parse author link
+  item_data['author_link'] = bep.get_author_link()
+
+
 
   // TODO: more parsing from parse_facebook_observation.py, L147
 
