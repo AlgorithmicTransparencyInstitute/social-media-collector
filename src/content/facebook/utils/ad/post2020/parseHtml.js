@@ -146,6 +146,17 @@ const BrowserExtensionParser = {
     return user_content_pieces.slice(4);
   },
 
+  get_user_content_wrapper: function(item) {
+    /*Parse user content wrapper from contentHtml. This is the full content of the ad text
+    */
+    var user_content_wrapper = item.parser.querySelectorAll("div.userContentWrapper");
+    if (user_content_wrapper.length) {
+        return user_content_wrapper[0].innerText;
+    }
+    //logging.warning("Unable to parse the user content or it is not present.")
+    return '';
+  },
+
 
 
 };
@@ -174,6 +185,9 @@ function process_facebook_item(item) {
   // Parse User Content (this returns a list of user content pieces)
   var user_content_pieces = bep.get_user_content(item)
   item_data['user_content'] = user_content_pieces.join("\n");
+
+  // Parse User Content Wrapper
+  item_data['user_content_wrapper'] = bep.get_user_content_wrapper(item)
 
 
 
