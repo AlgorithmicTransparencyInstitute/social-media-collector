@@ -230,6 +230,23 @@ function process_facebook_item(item) {
   // Parse Ad Images (Returns a list of objects)
   item_data['ad_images_metadata'] = bep.get_story_attachment_image(item)
 
+  // Fetch Ad Images data
+  var images_data = []
+  item_data['alt_text'] = ""
+  for (let image of item_data['ad_images_metadata']) {
+    var src = image.getAttribute('src');
+    // orig was 'alt_text'. Doublecheck 'alt' was the right version.
+    if (image.getAttribute('alt')) {
+      item_data['alt_text']+=image.getAttribute('alt')+"\n"
+    }
+    //image_data = bep.fetch_image(src)
+    //if image_data is not None:
+    //    images_data.append(image_data)
+  }
+  item_data['ad_images_data'] = None //images_data
+
+  // Parse Ad Targeting data
+  //waist_targeting_data = process_waist_targeting_data(item)
 
 
 
