@@ -194,11 +194,72 @@ const BrowserExtensionParser = {
     return images;
   },
 
+  extract_ft_values: function(item) {
+    /*Extract values for each ft element within the contentHtml field
+    */
+    if (!item.ft_keys) {
+      extract_ft_keys(item);
+    }
 
+    var t = item.payload.contentHtml;
 
+    for (let ft_element of Object.keys(item.ft_keys)) {
+      if (ft_element === 'page_insights') {
+        // Test cases:
+        //   t = `ft[page_insights][1][u]=asdf&`
+        //   // Python: [('[u]', 'asdf')]
+        //   // JS: [('[u]', 'asdf')]
+        // objs = re.findall(r"ft\[page_insights\]\[\d+\](\[.*?\])=(.*?)(?:&)",
+        //   self.contentHtml, re.MULTILINE)
+        var objs = [...t.matchAll(/ft\[page_insights\]\[\d+\](\[.*?\])=(.*?)(?:&)/gm)];
+
+        for (let obj of objs) {
+          // TODO: dblchk this group capturing works.
+          var key = "page_insights" + obj[1].replace("][",".").replace("[",".").replace("]","") // Not very elegant
+          var value = obj[2];
+          item.ft[key] = value;
+        }
+      } else {
+        // TODO: dblchk this works. Original:
+        // value = re.search(f"ft\[{ft_element}\]=(.*?)(?:&)", self.contentHtml,
+        //   re.MULTILINE)
+        // Test cases:
+        //   t = `ft[random]=asdf&`
+        var r = new RegExp(`ft\\[${ft_element}\\]=(.*?)(?:&)`, 'm');
+        var value = t.match(r);
+        if (value) {
+          item.ft[ft_element] = value[1];
+        }
+      }
+    }
+  },
 
 };
 const bep = BrowserExtensionParser; // Abbreviated.
+
+function extract_ft_keys(item) {
+  /*Extract individual fb elements. These elements start with ft and are followed by brackets
+  for the corresponding key. For example, ft[qid] contains the Facebook advertisement id for the ad
+  being parsed. A full list of fields can be extracted using regex (in this situation, regex can work
+  well for a given HTML code piece with a known structure.
+  */
+
+  /*This finds all of the corresponding ft elements within the contentHtml key that is returned by the
+  browser extension. The purpose of many of these key fields is unknown, but it is worth extracting them
+  anyway since they are available.*/
+
+  // TODO: doublecheck this regexp works.
+  // Test cases:
+  //   t = `ft[page_insights][1][u]=asdf&`
+  var t = item.payload.contentHtml;
+  var ft_elements = [...t.matchAll(/ft\[(.*?)\]/gm)];
+
+  item.ft_keys = {};
+  for (let element of ft_elements) {
+    item.ft_keys[element[1]] = true;
+  }
+}
+
 
 function process_facebook_item(item) {
   // Initialize item data dict for insertion into observations database table.
@@ -206,6 +267,7 @@ function process_facebook_item(item) {
 
   // console.log('d1 item', item);
   item.parser = newparser(item.payload.contentHtml);
+  item.ft = {}
 
   // Parse item id
   item_data['item_id'] = item.id;
@@ -258,9 +320,15 @@ function process_facebook_item(item) {
   observation_data['observed_at'] = item.observedAt;
   observation_data['targets'] = null;
   observation_data['country_code'] = "";
+  // TODO: need to pass observation_metadata to this function.
   // if 'countryCode' in observation_metadata:
   //     observation_data['country_code'] = observation_metadata['countryCode'];
-  insert_observation(observation_data,conn);
+
+  // TODO: need to understand what is the corollary. This inserts into sql db.
+  // insert_observation(observation_data,conn);
+
+  // Extract ad ft key values
+  bep.extract_ft_values()
 
 
 
@@ -268,7 +336,7 @@ function process_facebook_item(item) {
 
 
 
-  // TODO: more parsing from parse_facebook_observation.py, L158
+  // TODO: more parsing from parse_facebook_observation.py, L191
 
   return item_data;
 }
