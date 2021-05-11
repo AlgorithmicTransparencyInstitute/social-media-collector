@@ -204,6 +204,7 @@ function process_facebook_item(item) {
   // Initialize item data dict for insertion into observations database table.
   var item_data = {};
 
+  // console.log('d1 item', item);
   item.parser = newparser(item.payload.contentHtml);
 
   // Parse item id
@@ -247,6 +248,21 @@ function process_facebook_item(item) {
 
   // Parse Ad Targeting data
   //waist_targeting_data = process_waist_targeting_data(item)
+
+  // Create Observation Record for insertion into the observations table
+  var observation_data = {};
+  observation_data['item_id'] = item.itemId;
+  observation_data['ad_id'] = item.platformItemId;
+  observation_data['share_count'] = item_data['share_count'];
+  observation_data['comment_count'] = item_data['comment_count'];
+  observation_data['observed_at'] = item.observedAt;
+  observation_data['targets'] = null;
+  observation_data['country_code'] = "";
+  // if 'countryCode' in observation_metadata:
+  //     observation_data['country_code'] = observation_metadata['countryCode'];
+  insert_observation(observation_data,conn);
+
+
 
 
 
