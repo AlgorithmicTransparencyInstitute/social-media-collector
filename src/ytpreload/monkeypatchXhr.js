@@ -77,7 +77,7 @@
     const body = null;
     PATHS.forEach(path => {
       if (!response.url.includes(path)) return;
-      const clonedResponse = response.clone();
+      const clonedResponse = response.clone(); // clone the response object so that the original response object is still "unread" by future consumers of the promise.
 
       clonedResponse
         .json()
