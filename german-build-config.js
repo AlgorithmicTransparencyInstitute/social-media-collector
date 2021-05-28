@@ -175,72 +175,72 @@ module.exports = (isDebug = false) => ({
   apiUrl: 'https://observations.nyuapi.org',
   permissions: {
     SHOW_DEBUG_DATA: {
-      label: 'Show Debug Data',
-      hintText: 'Debugging information will be displayed',
+      label: 'Debug-Informationen anzeigen',
+      hintText: 'Debug-Informationen werden angezeigt',
       defaultValue: isDebug
     },
     USER_SHARE_LANGUAGE: {
-      label: 'Share My Language',
-      hintText: 'The language you told us you speak',
+      label: 'Meine Sprache teilen',
+      hintText: 'Sie teilen uns mit, welche Sprache Sie sprechen.',
       defaultValue: true
     },
     USER_SHARE_COUNTRY: {
-      label: 'Share My Country',
-      hintText: 'The country you told us you are in',
+      label: 'Mein Land teilen',
+      hintText: 'Sie teilen uns mit, in welchem Land Sie leben.',
       defaultValue: true
     },
     USER_SHARE_GENDER: {
-      label: 'Share My Gender',
-      hintText: 'The gender you told us you are',
+      label: 'Mein Geschlecht teilen',
+      hintText: 'Sie teilen uns Ihr Geschlecht mit.',
       defaultValue: true
     },
     USER_SHARE_AGE: {
-      label: 'Share My Age',
-      hintText: 'The age group you told us you are in',
+      label: 'Mein Alter teilen',
+      hintText: 'Sie teilen uns Ihr Alter mit.',
       defaultValue: true
     },
     USER_SHARE_DIAGNOSTICS: {
-      label: 'Share Diagnostic Data',
-      hintText: 'If things go wrong we’ll send extra data to help us diagnose the problem',
+      label: 'Diagnose-Daten teilen',
+      hintText: 'Falls Fehler auftreten, können Sie uns zusätzliche Daten schicken, um uns beim Lösen des Problems zu helfen.',
       defaultValue: true
     },
     FB_SHARE_SPONSORED_POSTS: {
-      label: 'Share Facebook Ads',
-      hintText: 'This allows the extension to collect all of the ads shown to you on Facebook',
+      label: 'Facebook-Werbungen teilen',
+      hintText: 'Dies erlaubt dem Programm alle Werbungen zu sammeln, die Ihnen angezeigt werden.',
       defaultValue: true
     },
     FB_SHARE_AD_TARGETING: {
-      label: 'Share Ad Targeting Information',
+      label: 'Zielgruppendaten teilen',
       hintText:
-        'This allows the extension to request and collect the "Why am I seeing this?" information from facebook that explains why a particular ad was targeted to you',
+        'Dies erlaubt uns, die „Warum wird mir das angezeigt“-Informationen von Facebook zu sammeln. Dies sind Informationen darüber, warum Ihnen bestimmte Werbung gezielt gezeigt wird.',
       defaultValue: true
     },
     FB_SHOW_COLLECTION_STATUS: {
-      label: 'Show Collection Status',
-      hintText: 'If on this will tag your facebook post with collection info.',
+      label: 'Sammlungsstatus anzeigen',
+      hintText: 'Diese Option zeigt zu Ihren Facebook-Posts die jeweils gesammelten Informationen an.',
       defaultValue: isDebug // change this to `isDebug` if you want this only be on for debug users
     },
     YT_SHARE_WATCHED_VIDEOS: {
-      label: 'Share Watched Videos',
+      label: 'Gesehene Videos teilen',
       hintText:
-        'This will share each video you choose to watch on YouTube (often, ads are targeted to be shown to viewers of a particular video or channel, so this is a big help if you opt-in)',
+        'Dies ermöglicht dem Programm die von Ihnen angeschauten Videos auf Youtube zu sehen. Häufig sind zielgerichtete Werbungen mit bestimmten Videos oder Kanälen verbunden. Dies wäre also eine große Hilfe für dieses Forschungsprojekt',
       defaultValue: false
     },
     YT_SHARE_RECOMMENDED_VIDEOS: {
-      label: 'Share Recommendations',
+      label: 'Empfehlungen teilen',
       hintText:
-        'This will share the other videos YouTube recommends to you while you are watching a video',
+        'Dies ermöglicht dem Programm zu sehen, welche Videos Ihnen empfohlen werden.',
       defaultValue: false
     },
     YT_SHARE_ADS: {
-      label: 'Share Advertisements',
-      hintText: 'This will share all of the different types of ads you are shown on YouTube',
+      label: 'Werbung teilen',
+      hintText: 'Dies erlaubt Ad Observer das Teilen der verschiedenen Arten von Werbungen, die ihnen gezeigt werden.',
       defaultValue: true
     },
     YT_SHARE_AD_TARGETING: {
-      label: 'Share Ad Targeting Information',
+      label: 'Zielgruppeninformationen der Werbung teilen',
       hintText:
-        'This will share the explanations provided by YouTube for why you were shown a particular ad',
+        'Dies erlaubt dem Programm die Erklärungen von YouTube zu sammeln, warum Sie eine Bestimmte Werbung sehen.',
       defaultValue: true
     }
   }

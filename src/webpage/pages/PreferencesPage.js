@@ -1,3 +1,4 @@
+import I18n from 'common/i18n';
 import React, { Fragment } from 'react';
 
 import LocalePreferences from 'common/components/LocalePreferences';
@@ -59,23 +60,22 @@ const YOUTUBE_ASK = () => (
 
 const CARDS = {
   locale: {
-    title: 'Your Settings',
-    subtitle:
-      "Setting your language and location help us ensure we're handling your data responsibly and analyzing it correctly."
+    title: I18n('prefs', 8),
+    subtitle: I18n('prefs', 9)
   },
   general: {
-    title: 'General Preferences',
-    subtitle: 'These settings apply to all data shared by the extension',
+    title: I18n('prefs', 2),
+    subtitle: I18n('prefs', 3),
     permissions: GENERAL_PERMISSIONS
   },
   facebook: {
-    title: 'Facebook Preferences',
-    subtitle: 'These options control what data you share from your Facebook feed',
+    title: I18n('prefs', 4),
+    subtitle: I18n('prefs', 5),
     permissions: FACEBOOK_PERMISSIONS
   },
   youtube: {
-    title: 'YouTube Preferences',
-    subtitle: 'These options control what data you share when you are using YouTube',
+    title: I18n('prefs', 6),
+    subtitle: I18n('prefs', 7),
     permissions: YOUTUBE_PERMISSIONS
   },
   legacy: {
@@ -96,11 +96,8 @@ const makeCard = (key, content) => (
 const ytCard = process.env.INCLUDE_YOUTUBE ? makeCard('youtube') : makeCard('legacy', '');
 const PreferencesPage = () => (
   <Fragment>
-    <h4 className="mt-4">Sharing Preferences</h4>
-    <p>
-      You have control over what you share with this project. To change what data you wish to share,
-      check or uncheck the box to enable or disable sharing that type of data.
-    </p>
+    <h4 className="mt-4">{I18n('prefs', 0)}</h4>
+    <p>{I18n('prefs', 1)}</p>
     <div>
       <Deck>
         {makeCard('general')}

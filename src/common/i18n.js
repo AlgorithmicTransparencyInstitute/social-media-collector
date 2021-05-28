@@ -24,16 +24,56 @@ export const i18n = {
       ''
     ],
     nav: ['My Archive', 'Privacy Policy', 'Terms & Conditions'],
-    about: ['About the']
+    about: ['About the'],
+    prefs: [
+      'Sharing Preferences',
+      `You have control over what you share with this project. To change what data you wish to share,
+      check or uncheck the box to enable or disable sharing that type of data.`,
+
+      'General Preferences',
+      'These settings apply to all data shared by the extension',
+
+      'Facebook Preferences',
+      'These options control what data you share from your Facebook feed',
+
+      'YouTube Preferences',
+      'These options control what data you share when you are using YouTube',
+
+      'Your Settings',
+      "Setting your language and location help us ensure we're handling your data responsibly and analyzing it correctly.",
+
+      'Your Country',
+      'Your Language',
+      'Age',
+      'Gender'
+    ]
   },
   german: {
     nav: ['Mein Archiv', 'TODO', 'TODO'],
-    about: ['Über']
+    about: ['Über'],
+    prefs: [
+      'Sharing Preferences',
+      'Sie haben die Kontrolle darüber, was Sie mit diesem Projekt teilen. Um zu ändern, welche Daten sie teilen wollen, füllen Sie einfach die Kästchen aus.',
+
+      'General Preferences',
+      'These settings apply to all data shared by the extension',
+
+      'Einstellungen für Facebook',
+      'Diese Optionen kontrollieren, welche Facebook-Daten Sie mit uns teilen.',
+
+      'Einstelllungen für YouTube',
+      'Diese Optionen kontrollieren, welche Youtube-Daten Sie mit uns teilen wollen',
+
+      'Ihre Einstellungen',
+      'Die Einstellung Ihrer Sprache und Ihres Landes hilft uns dabei, mit ihren Daten verantwortungsvoll im Rahmen der jeweiligen Gesetze umzugehen, sowie bei der korrekten Durchführung der Analysen.'
+    ]
   }
 };
 
 function I18n(page, i) {
+  // var lang = process.env.lang;
   return i18n.eng[page][i];
+  // return i18n[lang][page][i];
 }
 
 export default I18n;
