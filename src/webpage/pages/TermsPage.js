@@ -15,19 +15,19 @@ const TermsPage = () => {
   return (
     <Fragment>
       <header>
-        <h1>{I18n(5)}</h1>
+        <h1>{I18n('terms', 5)}</h1>
       </header>
       <div dangerouslySetInnerHTML={{ __html: process.env.CONSENT_TEXT }} />
       <ConsentAwareView whenGrantedIs="none">
-        <p>{I18n(2)}</p>
-        <GrantConsentButton label={I18n(0)} to="preferences" />
+        <p>{I18n('terms', 2)}</p>
+        <GrantConsentButton label={I18n('terms', 0)} to="preferences" />
       </ConsentAwareView>
       <ConsentAwareView whenGrantedIs="old">
-        <p>{I18n(3)}</p>
-        <GrantConsentButton label={I18n(1)} to="preferences" />
+        <p>{I18n('terms', 3)}</p>
+        <GrantConsentButton label={I18n('terms', 1)} to="preferences" />
       </ConsentAwareView>
       <ConsentAwareView whenGrantedIs="current">
-        <p>{I18n(4)}</p>
+        <p>{I18n('terms', 4)}</p>
       </ConsentAwareView>
     </Fragment>
   );
