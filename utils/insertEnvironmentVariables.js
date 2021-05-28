@@ -10,6 +10,7 @@ const insertEnvironmentVariables = ({ isFirefox, isChrome, isQA, isDebug, apiUrl
     IS_QA: isQA.toString(),
     IS_DEBUG: isDebug.toString(),
     TITLE: config.title,
+    LANGUAGE: config.language,
     PROVIDER_ID: config.extensionProviderId,
     API_URL: apiUrl,
     EXTENSION_NAME: config.name,

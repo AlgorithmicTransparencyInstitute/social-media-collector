@@ -55,8 +55,8 @@ export const i18n = {
       'Sharing Preferences',
       'Sie haben die Kontrolle darüber, was Sie mit diesem Projekt teilen. Um zu ändern, welche Daten sie teilen wollen, füllen Sie einfach die Kästchen aus.',
 
-      'General Preferences',
-      'These settings apply to all data shared by the extension',
+      'Allgemeine Präferenzen',
+      'Diese Einstellungen betreffen alle mit Ad Observer geteilten Daten.',
 
       'Einstellungen für Facebook',
       'Diese Optionen kontrollieren, welche Facebook-Daten Sie mit uns teilen.',
@@ -70,10 +70,11 @@ export const i18n = {
   }
 };
 
+// var lang = process.env.lang;
+var lang = process.env.LANGUAGE;
 function I18n(page, i) {
-  // var lang = process.env.lang;
-  return i18n.eng[page][i];
-  // return i18n[lang][page][i];
+  // return i18n.eng[page][i];
+  return i18n[lang][page][i];
 }
 
 export default I18n;
