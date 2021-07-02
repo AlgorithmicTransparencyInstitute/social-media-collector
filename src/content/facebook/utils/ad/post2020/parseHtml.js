@@ -260,7 +260,18 @@ function extract_ft_keys(item) {
   }
 }
 
+// The pythonic equivalent is
+//  [src['src'] for src in item_data['ad_images_metadata']];
+function getimgsrcs(imgs) {
+  var result = [];
+  for (let image of item_data['ad_images_metadata']) {
+    var src = image.getAttribute('src');
+    result.push(src);
+  }
+  return src;
+}
 
+// This is all from parse_facebook_observation.py 'process_facebook_item'.
 function process_facebook_item(item) {
   // Initialize item data dict for insertion into observations database table.
   var item_data = {};
@@ -328,15 +339,74 @@ function process_facebook_item(item) {
   // insert_observation(observation_data,conn);
 
   // Extract ad ft key values
-  bep.extract_ft_values()
+  bep.extract_ft_values(item);
+
+  // Create Ad Record for insertion into the ads table
+  ad_data = {};
+  ad_data.id = observation_data['ad_id'];
+  ad_data.html = item.payload.contentHtml;
+  ad_data.images = getimgsrcs(item_data['ad_images_metadata']);
+  ad_data.alt_text = "";
+  if (item_data.alt_text) { ad_data.alt_text = item_data.alt_text; }
+  // Get advertiser and thumbnail data if present
+  ad_data.advertiser = '';
+  ad_data.thumbnail = '';
+  //if item['payload']['adTargetingData']:
+  if (item.payload.adTargetingData) {
+    ad_data['advertiser'] = item['payload']['adTargetingData']['data']['waist_advertiser_info']['name'];
+    ad_data['thumbnail'] = item['payload']['adTargetingData']['data']['waist_advertiser_info']['profile_picture_url'];
+  }
+  ad_data['message'] = item_data['user_content'];
+
+  // TODO: need to pass observation_metadata to this function.
+  // if (observation_metadata.languageCode) {
+  //   ad_data['lang'] = observation_metadata['languageCode'];
+  // } else {
+  //   //logging.warning("languageCode is missing from observation metadata")
+  //   ad_data['lang'] = "Unavailable";
+  // }
+
+  ad_data['page'] = item_data['author_link'];
+  ad_data['paid_for_by'] = item_data['paid_for_by'];
+  // Parse call_to_action_type field if available
+  ad_data['call_to_action_type'] = bep.ft.get('call_to_action_type');
+
+  // Parse page id from ft fields if available
+  ad_data['page_id'] = null;
+  if (bep.ft.page_id) {
+    ad_data['page_id'] = bep.ft['page_id'];
+  } else if (item['payload']['adTargetingData']['data']['waist_advertiser_info'].advertiser_id) {
+    ad_data['page_id'] = item['payload']['adTargetingData']['data']['waist_advertiser_info']['advertiser_id'];
+  }
+
+  // Parse Ad creation time from ft.page_insights.post_context.publish_time
+  ad_data['created_at'] = null;
+  if (bep.ft['page_insights.post_context.publish_time']) {
+    ad_data['created_at'] = bep.ft['page_insights.post_context.publish_time'];
+  }
+
+  //logging.info(f"{len(ad_data['images'])} images to process")
+
+  //PUll images
+  for (var i = 0; i < ad_data['images'].length; ++i) {
+    var image_url = ad_data['images'][i];
+    // TODO: doublecheck that we port upload_image correctly.
+    // var image_bucket_path = upload_image(image_url, bucket_client)
+    // if len(image_bucket_path) > 0:
+    //     ad_data['images'][i] = image_bucket_path
+    //     insert_image_mappings(conn,image_url,image_bucket_path)
+  }
+  ad_data['thumbnail'] = item['payload']['adTargetingData']['data']['waist_advertiser_info']['profile_picture_url'];
+
+  var thumbnail_url = ad_data['thumbnail'];
+  // TODO: doublecheck that we port upload_image correctly.
+  // var thumbnail_bucket_path = upload_image(thumbnail_url, bucket_client);
+  // if len(thumbnail_bucket_path) > 0:
+  //     insert_image_mappings(conn,thumbnail_url,thumbnail_bucket_path)
+  //     ad_data['thumbnail'] = thumbnail_bucket_path
 
 
-
-
-
-
-
-  // TODO: more parsing from parse_facebook_observation.py, L191
+  //insert_ad(ad_data,conn);
 
   return item_data;
 }
