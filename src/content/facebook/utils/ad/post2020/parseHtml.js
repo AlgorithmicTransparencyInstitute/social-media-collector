@@ -490,17 +490,32 @@ var testcases = [
   // message: 'Conversion.ai is a groundbreaking new tool that uses AI to write high performing marketing copy for your business. Get started for free now.\n' +
   //    'CONVERSION.AI/FREE-TRIAL\n' +
   //    'Get more clicks with AI-powered copywriting\n' +
-  //    'Use AI to create better ads in 1 minute',
+  //    'Use AI to create better ads in 1 minute' +
+  //    'Download',
   require("./obs3.json"),
 
   // This is a Avail video ad. 0 comments. 0 likes.
+  // message: "Whether you're working from home or heading out of town, earn extra money by sharing your car with Avail. \n" +
+  //    'Park for free & come back to a sparkling clean car, plus cash if your car was shared. Your car is covered by Allstate insurance the entire time you’re… See More\n' +
+  //    'AVAILCARSHARING.COM\n' +
+  //    'Share Your Car & Earn Big\n' +
+  //    'Learn More'
   require("./obs4.json"),
+
+  require("./obs5.json"),
+
+  require("./obs6.json"),
+
+  require("./obs7.json"),
 ];
 
 function main() {
   // process_observation(testcases[0]);
   // process_observation(testcases[1]);
   // process_observation(testcases[2]);
-  process_observation(testcases[3]);
+  // process_observation(testcases[3]);
+  // process_observation(testcases[4]);
+  // process_observation(testcases[5]);
+  process_observation(testcases[6]);
 }
 main();
