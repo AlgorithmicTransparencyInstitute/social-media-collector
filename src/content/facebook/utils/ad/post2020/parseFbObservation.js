@@ -1,5 +1,8 @@
-function is_nodejs() {
-  return (typeof window === 'undefined');
+/* eslint-disable */
+// Sorry eslint, please ignore this file for me. I just wanna test.
+
+function isNodeJS() {
+  return typeof window === 'undefined';
 }
 
 // Determine if item is an actual Facebook ad
@@ -39,7 +42,7 @@ function fbNumStrToInt(s) {
 
 // Taken from https://stackoverflow.com/a/494348
 function newparser(htmlString) {
-  if (is_nodejs()) {
+  if (isNodeJS()) {
     var jsdom = require('jsdom');
     var parser = (new jsdom.JSDOM(htmlString)).window.document;
     return parser;
@@ -382,7 +385,7 @@ function process_facebook_item(item) {
   bep.extract_ft_values(item);
 
   // Create Ad Record for insertion into the ads table
-  ad_data = {};
+  var ad_data = {};
   ad_data['id'] = observation_data['ad_id'];
   ad_data['html'] = item.payload.contentHtml;
   ad_data['images'] = getimgsrcs(item_data['ad_images_metadata']);
@@ -391,8 +394,7 @@ function process_facebook_item(item) {
   // Get advertiser and thumbnail data if present
   ad_data.advertiser = '';
   ad_data.thumbnail = '';
-  //if item['payload']['adTargetingData']:
-  if (item.payload.adTargetingData) {
+  if (item['payload']['adTargetingData']) {
     ad_data['advertiser'] = item['payload']['adTargetingData']['data']['waist_advertiser_info']['name'];
     ad_data['thumbnail'] = item['payload']['adTargetingData']['data']['waist_advertiser_info']['profile_picture_url'];
   }
@@ -455,67 +457,79 @@ function process_facebook_item(item) {
   return {item_data, ad_data};
 }
 
-function process_observation(observation) {
-  let metadata = observation.metadata;
+function process_fb_observation(observation) {
+  const metadata = observation.metadata;
+  const parsed_observations = [];
   for (let item of observation.items) {
     if (item_is_ad(item)) {
-      var item_data = process_facebook_item(item, metadata);
-      console.log(item_data);
+      const parsed_obs = process_facebook_item(item, metadata);
+      parsed_observations.push(parsed_obs);
+      // console.log(parsed_obs);
     }
   }
+  return parsed_observations;
 }
 
-var testcases = [
-  // Sorry didn't take notes for this one. This is from running the parser.
-  // Has 7 comments, 2 shares.
-  //
-  // message: '"ClickCease helps me MAXIMIZE my Google Ads spend on REAL potential customers rather than wasting it on bots."\n' +
-  //    ' Excellent. 4.9 on SourceForge\n' +
-  //    'clickcease.com\n' +
-  //    'Protect Your Google Ads Budget Now!\n' +
-  //    'Sign Up and start your 7 days free trial\n' +
-  //    'Sign Up',
-  require("./observation.json"),
-
-  // This is a motion video ad. There are 0 shares. 0 comments. 9 likes.
-  // Video ad means there are no images.
-  //
-  // message: 'Motion’s distraction blocker protects your focus time, so your brain can stay fresh and do its best work.\n' +
-  //    'USEMOTION.COM\n' +
-  //    'Bye bye brain drain.\n' +
-  //    'Learn More',
-  require("./obs2.json"),
-
-  // This is a Jarvis AI video ad. There are 42 comments, 1 share.
-  // message: 'Conversion.ai is a groundbreaking new tool that uses AI to write high performing marketing copy for your business. Get started for free now.\n' +
-  //    'CONVERSION.AI/FREE-TRIAL\n' +
-  //    'Get more clicks with AI-powered copywriting\n' +
-  //    'Use AI to create better ads in 1 minute' +
-  //    'Download',
-  require("./obs3.json"),
-
-  // This is a Avail video ad. 0 comments. 0 likes.
-  // message: "Whether you're working from home or heading out of town, earn extra money by sharing your car with Avail. \n" +
-  //    'Park for free & come back to a sparkling clean car, plus cash if your car was shared. Your car is covered by Allstate insurance the entire time you’re… See More\n' +
-  //    'AVAILCARSHARING.COM\n' +
-  //    'Share Your Car & Earn Big\n' +
-  //    'Learn More'
-  require("./obs4.json"),
-
-  require("./obs5.json"),
-
-  require("./obs6.json"),
-
-  require("./obs7.json"),
-];
-
-function main() {
-  // process_observation(testcases[0]);
-  // process_observation(testcases[1]);
-  // process_observation(testcases[2]);
-  // process_observation(testcases[3]);
-  // process_observation(testcases[4]);
-  // process_observation(testcases[5]);
-  process_observation(testcases[6]);
+function test_observation(testcase) {
+  console.log(process_fb_observation(testcase));
 }
-main();
+
+function main(testcases) {
+  // test_observation(testcases[0]);
+  // test_observation(testcases[1]);
+  // test_observation(testcases[2]);
+  // test_observation(testcases[3]);
+  // test_observation(testcases[4]);
+  // test_observation(testcases[5]);
+  test_observation(testcases[6]);
+}
+
+// Run only in nodejs.
+if (isNodeJS()) {
+  var testcases = [
+    // Sorry didn't take notes for this one. This is from running the parser.
+    // Has 7 comments, 2 shares.
+    //
+    // message: '"ClickCease helps me MAXIMIZE my Google Ads spend on REAL potential customers rather than wasting it on bots."\n' +
+    //    ' Excellent. 4.9 on SourceForge\n' +
+    //    'clickcease.com\n' +
+    //    'Protect Your Google Ads Budget Now!\n' +
+    //    'Sign Up and start your 7 days free trial\n' +
+    //    'Sign Up',
+    require('./observation.json'),
+
+    // This is a motion video ad. There are 0 shares. 0 comments. 9 likes.
+    // Video ad means there are no images.
+    //
+    // message: 'Motion’s distraction blocker protects your focus time, so your brain can stay fresh and do its best work.\n' +
+    //    'USEMOTION.COM\n' +
+    //    'Bye bye brain drain.\n' +
+    //    'Learn More',
+    require('./obs2.json'),
+
+    // This is a Jarvis AI video ad. There are 42 comments, 1 share.
+    // message: 'Conversion.ai is a groundbreaking new tool that uses AI to write high performing marketing copy for your business. Get started for free now.\n' +
+    //    'CONVERSION.AI/FREE-TRIAL\n' +
+    //    'Get more clicks with AI-powered copywriting\n' +
+    //    'Use AI to create better ads in 1 minute' +
+    //    'Download',
+    require('./obs3.json'),
+
+    // This is a Avail video ad. 0 comments. 0 likes.
+    // message: "Whether you're working from home or heading out of town, earn extra money by sharing your car with Avail. \n" +
+    //    'Park for free & come back to a sparkling clean car, plus cash if your car was shared. Your car is covered by Allstate insurance the entire time you’re… See More\n' +
+    //    'AVAILCARSHARING.COM\n' +
+    //    'Share Your Car & Earn Big\n' +
+    //    'Learn More'
+    require('./obs4.json'),
+
+    require('./obs5.json'),
+
+    require('./obs6.json'),
+
+    require('./obs7.json'),
+  ];
+  main(testcases);
+}
+
+export default process_fb_observation;
