@@ -136,7 +136,7 @@ const BrowserExtensionParser = {
         var p2 = /\d+[.]?\d?K?M? [Cc]omments?/;
         var p3 = /\d+[.]?\d?K?M? [lL]ikes?/;
         if (!ad_text.match(p1) && !ad_text.match(p2) && !ad_text.match(p3) &&
-          ad_text !== 'Download' && ad_text !== 'Like' && ad_text !== 'Comment') {
+          ad_text !== 'Like' && ad_text !== 'Comment') {
           user_content_pieces.push(ad_text);
         }
       }
@@ -435,21 +435,37 @@ function process_observation(observation) {
 }
 
 var testcases = [
-  // Sorry didn't take notes for this one.
+  // Sorry didn't take notes for this one. This is from running the parser.
   // Has 7 comments, 2 shares.
+  //
+  // message: '"ClickCease helps me MAXIMIZE my Google Ads spend on REAL potential customers rather than wasting it on bots."\n' +
+  //    ' Excellent. 4.9 on SourceForge\n' +
+  //    'clickcease.com\n' +
+  //    'Protect Your Google Ads Budget Now!\n' +
+  //    'Sign Up and start your 7 days free trial\n' +
+  //    'Sign Up',
   require("./observation.json"),
 
   // This is a motion video ad. There are 0 shares. 0 comments. 9 likes.
   // Video ad means there are no images.
+  //
+  // message: 'Motion’s distraction blocker protects your focus time, so your brain can stay fresh and do its best work.\n' +
+  //    'USEMOTION.COM\n' +
+  //    'Bye bye brain drain.\n' +
+  //    'Learn More',
   require("./obs2.json"),
 
   // This is a Jarvis AI video ad. There are 42 comments, 1 share.
+  // message: 'Conversion.ai is a groundbreaking new tool that uses AI to write high performing marketing copy for your business. Get started for free now.\n' +
+  //    'CONVERSION.AI/FREE-TRIAL\n' +
+  //    'Get more clicks with AI-powered copywriting\n' +
+  //    'Use AI to create better ads in 1 minute',
   require("./obs3.json"),
 ];
 
 function main() {
   process_observation(testcases[0]);
   // process_observation(testcases[1]);
-  // process_observation(testcases[2]);
+  process_observation(testcases[2]);
 }
 main();
