@@ -118,6 +118,7 @@ const BrowserExtensionParser = {
     // Process each div that has a userContent class and include them in the
     // user_content_pieces list if they are not null ('')
     for (let div of userContent_divs) {
+
       // Skip any elements that has a nested [dir="auto"]
       if (div.querySelectorAll('[dir="auto"]').length > 0) {
         continue;
@@ -125,9 +126,9 @@ const BrowserExtensionParser = {
 
       var ad_text = div.textContent;
       if (ad_text && ad_text.length > 0) {
-        var p1 = /\d*[.]?\d?K?M? ?[Ss]hares?/;
-        var p2 = /\d+[.]?\d?K?M? [Cc]omments?/;
-        var p3 = /\d+[.]?\d?K?M? [lL]ikes?/;
+        var p1 = /^\d*[.]?\d?K?M? ?[Ss]hares?$/;
+        var p2 = /^\d+[.]?\d?K?M? [Cc]omments?$/;
+        var p3 = /^\d+[.]?\d?K?M? [lL]ikes?$/;
         if (!ad_text.match(p1) && !ad_text.match(p2) && !ad_text.match(p3) &&
           ad_text !== 'Like' && ad_text !== 'Comment') {
           user_content_pieces.push(ad_text);
@@ -147,7 +148,8 @@ const BrowserExtensionParser = {
     //   logging.warning("Unable to find any user content pieces within contentHtml")
     // }
 
-    // The first two elements are: "<advertiser name>" and "Sponsored".
+    // The first two elements are: "<advertiser name>" and "Sponsored", so
+    // the slice(2) removes them.
     return user_content_pieces.slice(2);
     // return user_content_pieces;
   },
@@ -490,11 +492,15 @@ var testcases = [
   //    'Get more clicks with AI-powered copywriting\n' +
   //    'Use AI to create better ads in 1 minute',
   require("./obs3.json"),
+
+  // This is a Avail video ad. 0 comments. 0 likes.
+  require("./obs4.json"),
 ];
 
 function main() {
   // process_observation(testcases[0]);
-  process_observation(testcases[1]);
+  // process_observation(testcases[1]);
   // process_observation(testcases[2]);
+  process_observation(testcases[3]);
 }
 main();
