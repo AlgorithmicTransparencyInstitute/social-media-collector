@@ -330,10 +330,10 @@ function process_facebook_item(item) {
   item_data['paid_for_by'] = bep.get_paid_for_by(item);
 
   // Parse author link
-  item_data['author_link'] = bep.get_author_link(item)
+  item_data['author_link'] = bep.get_author_link(item);
 
   // Parse User Content (this returns a list of user content pieces)
-  var user_content_pieces = bep.get_user_content(item)
+  var user_content_pieces = bep.get_user_content(item);
   item_data['user_content'] = user_content_pieces.join("\n");
 
   // Parse User Content Wrapper
@@ -406,8 +406,12 @@ function process_facebook_item(item) {
 
   ad_data['page'] = item_data['author_link'];
   ad_data['paid_for_by'] = item_data['paid_for_by'];
-  // Parse call_to_action_type field if available
-  ad_data['call_to_action_type'] = item.ft['call_to_action_type'];
+
+  // Parse call_to_action_type field if available.
+  // Below python code was never working. I fixed it by getting the last text
+  // in the ad message.
+  // ad_data['call_to_action_type'] = item.ft['call_to_action_type'];
+  ad_data['call_to_action_type'] = user_content_pieces.slice(-1)[0];
 
   // Parse page id from ft fields if available
   ad_data['page_id'] = null;
