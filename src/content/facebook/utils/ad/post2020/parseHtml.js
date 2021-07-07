@@ -64,13 +64,6 @@ const BrowserExtensionParser = {
   get_comment_count: function(item) {
     const r = />[ ]?(\d+[.]?\d?K?M?)[ ]?[cC]omments?[ ]?</;
     const m = item.payload.contentHtml.match(r);
-
-    // const r2 = />[ ]?(\d+[.]?\d?K?M?)[ ]?[cC]omments?</;
-    // const m2 = item.payload.contentHtml.match(r2);
-    // if (m2) { return fbNumStrToInt(m2[1]); }
-
-    // console.log('d1', m, m2)
-    // console.log('html', item.payload.contentHtml);
     if (m) { return fbNumStrToInt(m[1]); }
     return 0;
   },
@@ -188,14 +181,29 @@ const BrowserExtensionParser = {
     var images = [];
     var story_attachment_images = item.parser.querySelectorAll("img");
     var pattern = /scontent-?.*.(?:xx|fna).fbcdn.net\//;
-    // TODO: doublecheck this pattern correctly matches against fbcdn urls.
     for (let image of story_attachment_images) {
       var m = image.getAttribute('src').match(pattern);
       if (m) {
+        // First way of getting width.
         var w = parseFloat(image.getAttribute('width'));
-        if (isNaN(w) || w < 30) {
+        if (!isNaN(w) && w < 50) {
+          // Too small of an image is probably a profile picture, not relevant
+          // to the ad.
           continue;
         }
+
+        // Alternate way of getting width.
+        var m2 = image.getAttribute('src').match(/\/p(\d+)x(\d+)\//);
+        var w, h;
+        if (m2) {
+          w = m2[1];
+          h = m2[2];
+          if (w < 50) {
+            continue;
+          }
+        }
+
+        // Add the image if it doesn't meet any of these.
         images.push(image);
       }
     }
@@ -289,6 +297,23 @@ function process_facebook_item(item) {
   // Initialize item data dict for insertion into observations database table.
   var item_data = {};
 
+  // This stuff does not need to run in the browser because this code is purely
+  // just inserting into DB.
+  //
+  ////// Original python code
+  // # Initialize targetings data (presently for insertion into raw_targetings table)
+  // targeting_data = {}
+  //
+  // # Update targeting_data with current ad id
+  // targeting_data['ad_id'] = bep.ad_id
+  //
+  // # Process waist targeting data
+  // try:
+  //     process_waist_targeting_data(targeting_data['ad_id'], item['payload']['adTargetingData'],conn)
+  // except Exception as e:
+  //     logging.error(f"Error getting targetings data: {e}")
+
+
   // console.log('d1 item', item);
   item.parser = newparser(item.payload.contentHtml);
   item.ft = {}
@@ -356,10 +381,10 @@ function process_facebook_item(item) {
 
   // Create Ad Record for insertion into the ads table
   ad_data = {};
-  ad_data.id = observation_data['ad_id'];
-  ad_data.html = item.payload.contentHtml;
-  ad_data.images = getimgsrcs(item_data['ad_images_metadata']);
-  ad_data.alt_text = "";
+  ad_data['id'] = observation_data['ad_id'];
+  ad_data['html'] = item.payload.contentHtml;
+  ad_data['images'] = getimgsrcs(item_data['ad_images_metadata']);
+  ad_data['alt_text'] = "";
   if (item_data.alt_text) { ad_data.alt_text = item_data.alt_text; }
   // Get advertiser and thumbnail data if present
   ad_data.advertiser = '';
@@ -464,8 +489,8 @@ var testcases = [
 ];
 
 function main() {
-  process_observation(testcases[0]);
-  // process_observation(testcases[1]);
-  process_observation(testcases[2]);
+  // process_observation(testcases[0]);
+  process_observation(testcases[1]);
+  // process_observation(testcases[2]);
 }
 main();
