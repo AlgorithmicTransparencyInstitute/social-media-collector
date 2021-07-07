@@ -53,21 +53,26 @@ function newparser(htmlString) {
 
 const BrowserExtensionParser = {
   get_share_count: function(item) {
-    const r = />(\d+[.]?\d?K?M?) [sS]hares?</;
+    const r = />[ ]?(\d+[.]?\d?K?M?)[ ]?[sS]hares?[ ]?</;
     const m = item.payload.contentHtml.match(r);
     if (m) {
       return fbNumStrToInt(m[1]);
     }
-    return undefined;
+    return 0;
   },
 
   get_comment_count: function(item) {
-    const r = /> (\d+[.]?\d?K?M?)[cC]omments?</;
+    const r = />[ ]?(\d+[.]?\d?K?M?)[ ]?[cC]omments?[ ]?</;
     const m = item.payload.contentHtml.match(r);
-    if (m) {
-      return fbNumStrToInt(m[1]);
-    }
-    return undefined;
+
+    // const r2 = />[ ]?(\d+[.]?\d?K?M?)[ ]?[cC]omments?</;
+    // const m2 = item.payload.contentHtml.match(r2);
+    // if (m2) { return fbNumStrToInt(m2[1]); }
+
+    // console.log('d1', m, m2)
+    // console.log('html', item.payload.contentHtml);
+    if (m) { return fbNumStrToInt(m[1]); }
+    return 0;
   },
 
   // TODO: need to have a valid test case for this section.
@@ -120,12 +125,18 @@ const BrowserExtensionParser = {
     // Process each div that has a userContent class and include them in the
     // user_content_pieces list if they are not null ('')
     for (let div of userContent_divs) {
-      var ad_text = div.innerText;
+      // Skip any elements that has a nested [dir="auto"]
+      if (div.querySelectorAll('[dir="auto"]').length > 0) {
+        continue;
+      }
+
+      var ad_text = div.textContent;
       if (ad_text && ad_text.length > 0) {
         var p1 = /\d*[.]?\d?K?M? ?[Ss]hares?/;
         var p2 = /\d+[.]?\d?K?M? [Cc]omments?/;
         var p3 = /\d+[.]?\d?K?M? [lL]ikes?/;
-        if (!ad_text.match(p1) && !ad_text.match(p2) && !ad_text.match(p3)) {
+        if (!ad_text.match(p1) && !ad_text.match(p2) && !ad_text.match(p3) &&
+          ad_text !== 'Download' && ad_text !== 'Like' && ad_text !== 'Comment') {
           user_content_pieces.push(ad_text);
         }
       }
@@ -133,7 +144,7 @@ const BrowserExtensionParser = {
 
     userContent_divs = item.parser.querySelectorAll('div.userContent')
     for (let div of userContent_divs) {
-      var ad_text = div.innerText;
+      var ad_text = div.textContent;
       if (ad_text && ad_text.length > 0) {
         user_content_pieces.push(ad_text);
       }
@@ -143,7 +154,9 @@ const BrowserExtensionParser = {
     //   logging.warning("Unable to find any user content pieces within contentHtml")
     // }
 
-    return user_content_pieces.slice(4);
+    // The first two elements are: "<advertiser name>" and "Sponsored".
+    return user_content_pieces.slice(2);
+    // return user_content_pieces;
   },
 
   get_user_content_wrapper: function(item) {
@@ -264,7 +277,7 @@ function extract_ft_keys(item) {
 //  [src['src'] for src in item_data['ad_images_metadata']];
 function getimgsrcs(imgs) {
   var result = [];
-  for (let image of item_data['ad_images_metadata']) {
+  for (let image of imgs) {
     var src = image.getAttribute('src');
     result.push(src);
   }
@@ -317,7 +330,7 @@ function process_facebook_item(item) {
     //if image_data is not None:
     //    images_data.append(image_data)
   }
-  item_data['ad_images_data'] = None //images_data
+  item_data['ad_images_data'] = null; //images_data
 
   // Parse Ad Targeting data
   //waist_targeting_data = process_waist_targeting_data(item)
@@ -369,11 +382,11 @@ function process_facebook_item(item) {
   ad_data['page'] = item_data['author_link'];
   ad_data['paid_for_by'] = item_data['paid_for_by'];
   // Parse call_to_action_type field if available
-  ad_data['call_to_action_type'] = bep.ft.get('call_to_action_type');
+  ad_data['call_to_action_type'] = item.ft['call_to_action_type'];
 
   // Parse page id from ft fields if available
   ad_data['page_id'] = null;
-  if (bep.ft.page_id) {
+  if (item.ft.page_id) {
     ad_data['page_id'] = bep.ft['page_id'];
   } else if (item['payload']['adTargetingData']['data']['waist_advertiser_info'].advertiser_id) {
     ad_data['page_id'] = item['payload']['adTargetingData']['data']['waist_advertiser_info']['advertiser_id'];
@@ -381,14 +394,14 @@ function process_facebook_item(item) {
 
   // Parse Ad creation time from ft.page_insights.post_context.publish_time
   ad_data['created_at'] = null;
-  if (bep.ft['page_insights.post_context.publish_time']) {
+  if (item.ft['page_insights.post_context.publish_time']) {
     ad_data['created_at'] = bep.ft['page_insights.post_context.publish_time'];
   }
 
   //logging.info(f"{len(ad_data['images'])} images to process")
 
   //PUll images
-  for (var i = 0; i < ad_data['images'].length; ++i) {
+  for (var i = 0; ad_data['images'] && i < ad_data['images'].length; ++i) {
     var image_url = ad_data['images'][i];
     // TODO: doublecheck that we port upload_image correctly.
     // var image_bucket_path = upload_image(image_url, bucket_client)
@@ -408,7 +421,7 @@ function process_facebook_item(item) {
 
   //insert_ad(ad_data,conn);
 
-  return item_data;
+  return {item_data, ad_data};
 }
 
 function process_observation(observation) {
@@ -421,8 +434,22 @@ function process_observation(observation) {
   }
 }
 
-function main(testcase1) {
-  var testcase1 = require("./observation.json");
-  process_observation(testcase1);
+var testcases = [
+  // Sorry didn't take notes for this one.
+  // Has 7 comments, 2 shares.
+  require("./observation.json"),
+
+  // This is a motion video ad. There are 0 shares. 0 comments. 9 likes.
+  // Video ad means there are no images.
+  require("./obs2.json"),
+
+  // This is a Jarvis AI video ad. There are 42 comments, 1 share.
+  require("./obs3.json"),
+];
+
+function main() {
+  process_observation(testcases[0]);
+  // process_observation(testcases[1]);
+  // process_observation(testcases[2]);
 }
 main();
