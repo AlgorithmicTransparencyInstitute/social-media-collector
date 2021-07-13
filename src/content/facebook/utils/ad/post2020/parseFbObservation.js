@@ -298,8 +298,7 @@ function getimgsrcs(imgs) {
 }
 
 function get_waist_targeting_fields() {
-  return ['waist_ui_type', 'location_name', 'location_type', 'dfca_data',
-    'interests', 'mobile_ca_data', 'website_ca_data'];
+  return ['age_max', 'age_min', 'description', 'dfca_data', 'edu_status', 'gender', 'interests', 'locales', 'location_name', 'location_type', 'mobile_ca_data', 'name', 'type', 'waist_ui_type', 'website_ca_data', 'serialized_data', 'job_title', 'employer_name', 'school_names', 'merchant_name', 'relationship_status'];
 }
 
 // This just gets the records that explicitly extracts the fields.
@@ -489,7 +488,7 @@ function process_fb_observation(observation) {
 }
 
 function test_observation(testcase) {
-  console.log(process_fb_observation(testcase));
+  console.log(JSON.stringify(process_fb_observation(testcase), null, 2));
 }
 
 function main(testcases) {
