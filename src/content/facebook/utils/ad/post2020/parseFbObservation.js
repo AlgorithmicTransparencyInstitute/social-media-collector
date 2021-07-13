@@ -297,27 +297,45 @@ function getimgsrcs(imgs) {
   return src;
 }
 
+function get_waist_targeting_fields() {
+  return ['waist_ui_type', 'location_name', 'location_type', 'dfca_data',
+    'interests', 'mobile_ca_data', 'website_ca_data'];
+}
+
+// This just gets the records that explicitly extracts the fields.
+function process_waist_targeting_data(item) {
+  var waist_records = [];
+  let targeting_fields = get_waist_targeting_fields();
+  for (let waist of item['payload']['adTargetingData']['data']['waist_targeting_data']) {
+    let current_record = {'ad_id': parseInt(item['platformItemId'], 10) };
+    for (let field of targeting_fields) {
+      if (waist[field]) {
+        current_record[field] = waist[field];
+      } else {
+        current_record[field] = null;
+      }
+    }
+
+    // Stringify these fields.
+    for (let key of ['interests','mobile_ca_data','dfca_data','website_ca_data']) {
+      if (current_record[key]) {
+        current_record[key] = JSON.stringify(current_record[key]);
+      }
+    }
+
+    // console.log('waist item', item['platformItemId'], waist);
+    // console.log('current_record', current_record);
+    waist_records.push(current_record);
+  }
+  return waist_records;
+}
+
 // This is all from parse_facebook_observation.py 'process_facebook_item'.
 function process_facebook_item(item) {
   // Initialize item data dict for insertion into observations database table.
   var item_data = {};
 
-  // This stuff does not need to run in the browser because this code is purely
-  // just inserting into DB.
-  //
-  ////// Original python code
-  // # Initialize targetings data (presently for insertion into raw_targetings table)
-  // targeting_data = {}
-  //
-  // # Update targeting_data with current ad id
-  // targeting_data['ad_id'] = bep.ad_id
-  //
-  // # Process waist targeting data
-  // try:
-  //     process_waist_targeting_data(targeting_data['ad_id'], item['payload']['adTargetingData'],conn)
-  // except Exception as e:
-  //     logging.error(f"Error getting targetings data: {e}")
-
+  let waist_records = process_waist_targeting_data(item);
 
   // console.log('d1 item', item);
   item.parser = newparser(item.payload.contentHtml);
@@ -367,8 +385,8 @@ function process_facebook_item(item) {
 
   // Create Observation Record for insertion into the observations table
   var observation_data = {};
-  observation_data['item_id'] = item.itemId;
-  observation_data['ad_id'] = item.platformItemId;
+  observation_data['item_id'] = item['itemId'];
+  observation_data['ad_id'] = item['platformItemId'];
   observation_data['share_count'] = item_data['share_count'];
   observation_data['comment_count'] = item_data['comment_count'];
   observation_data['observed_at'] = item.observedAt;
@@ -454,7 +472,7 @@ function process_facebook_item(item) {
 
   //insert_ad(ad_data,conn);
 
-  return {item_data, ad_data};
+  return {item_data, ad_data, waist_records};
 }
 
 function process_fb_observation(observation) {
@@ -480,8 +498,8 @@ function main(testcases) {
   // test_observation(testcases[2]);
   // test_observation(testcases[3]);
   // test_observation(testcases[4]);
-  // test_observation(testcases[5]);
-  test_observation(testcases[6]);
+  test_observation(testcases[5]);
+  // test_observation(testcases[6]);
 }
 
 // Run only in nodejs.
