@@ -304,6 +304,8 @@ function get_waist_targeting_fields() {
 // This just gets the records that explicitly extracts the fields.
 function process_waist_targeting_data(item) {
   var waist_records = [];
+  if (!item['payload']['adTargetingData']) { return waist_records; }
+
   let targeting_fields = get_waist_targeting_fields();
   for (let waist of item['payload']['adTargetingData']['data']['waist_targeting_data']) {
     let current_record = {'ad_id': parseInt(item['platformItemId'], 10) };
@@ -438,7 +440,8 @@ function process_facebook_item(item) {
   ad_data['page_id'] = null;
   if (item.ft.page_id) {
     ad_data['page_id'] = bep.ft['page_id'];
-  } else if (item['payload']['adTargetingData']['data']['waist_advertiser_info'].advertiser_id) {
+  } else if (item['payload']['adTargetingData'] &&
+      item['payload']['adTargetingData']['data']['waist_advertiser_info'].advertiser_id) {
     ad_data['page_id'] = item['payload']['adTargetingData']['data']['waist_advertiser_info']['advertiser_id'];
   }
 
@@ -459,7 +462,9 @@ function process_facebook_item(item) {
     //     ad_data['images'][i] = image_bucket_path
     //     insert_image_mappings(conn,image_url,image_bucket_path)
   }
-  ad_data['thumbnail'] = item['payload']['adTargetingData']['data']['waist_advertiser_info']['profile_picture_url'];
+  if (item['payload']['adTargetingData']) {
+    ad_data['thumbnail'] = item['payload']['adTargetingData']['data']['waist_advertiser_info']['profile_picture_url'];
+  }
 
   var thumbnail_url = ad_data['thumbnail'];
   // TODO: doublecheck that we port upload_image correctly.
