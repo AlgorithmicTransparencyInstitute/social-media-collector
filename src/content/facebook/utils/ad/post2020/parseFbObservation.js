@@ -507,6 +507,7 @@ function main(testcases) {
 }
 
 // Run only in nodejs.
+// TODO: needs to import the files from "tests/test_observations/*.json" instead.
 if (isNodeJS()) {
   var testcases = [
     // Sorry didn't take notes for this one. This is from running the parser.
