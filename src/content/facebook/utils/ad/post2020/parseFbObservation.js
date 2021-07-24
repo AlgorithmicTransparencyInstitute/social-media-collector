@@ -42,11 +42,11 @@ function fbNumStrToInt(s) {
 
 // Taken from https://stackoverflow.com/a/494348
 function newparser(htmlString) {
-  if (isNodeJS()) {
-    var jsdom = require('jsdom');
-    var parser = (new jsdom.JSDOM(htmlString)).window.document;
-    return parser;
-  }
+  // if (isNodeJS()) {
+  //   var jsdom = require('jsdom');
+  //   var parser = (new jsdom.JSDOM(htmlString)).window.document;
+  //   return parser;
+  // }
   var div = document.createElement('div');
   div.innerHTML = htmlString.trim();
 
