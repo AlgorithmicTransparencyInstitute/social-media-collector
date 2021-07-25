@@ -42,11 +42,11 @@ function fbNumStrToInt(s) {
 
 // Taken from https://stackoverflow.com/a/494348
 function newparser(htmlString) {
-  if (isNodeJS()) {
-    var jsdom = require('jsdom');
-    var parser = (new jsdom.JSDOM(htmlString)).window.document;
-    return parser;
-  }
+  // if (isNodeJS()) {
+  //   var jsdom = require('jsdom');
+  //   var parser = (new jsdom.JSDOM(htmlString)).window.document;
+  //   return parser;
+  // }
   var div = document.createElement('div');
   div.innerHTML = htmlString.trim();
 
@@ -506,52 +506,53 @@ function main(testcases) {
   // test_observation(testcases[6]);
 }
 
-// Run only in nodejs.
-if (isNodeJS()) {
-  var testcases = [
-    // Sorry didn't take notes for this one. This is from running the parser.
-    // Has 7 comments, 2 shares.
-    //
-    // message: '"ClickCease helps me MAXIMIZE my Google Ads spend on REAL potential customers rather than wasting it on bots."\n' +
-    //    ' Excellent. 4.9 on SourceForge\n' +
-    //    'clickcease.com\n' +
-    //    'Protect Your Google Ads Budget Now!\n' +
-    //    'Sign Up and start your 7 days free trial\n' +
-    //    'Sign Up',
-    require('./observation.json'),
-
-    // This is a motion video ad. There are 0 shares. 0 comments. 9 likes.
-    // Video ad means there are no images.
-    //
-    // message: 'Motion’s distraction blocker protects your focus time, so your brain can stay fresh and do its best work.\n' +
-    //    'USEMOTION.COM\n' +
-    //    'Bye bye brain drain.\n' +
-    //    'Learn More',
-    require('./obs2.json'),
-
-    // This is a Jarvis AI video ad. There are 42 comments, 1 share.
-    // message: 'Conversion.ai is a groundbreaking new tool that uses AI to write high performing marketing copy for your business. Get started for free now.\n' +
-    //    'CONVERSION.AI/FREE-TRIAL\n' +
-    //    'Get more clicks with AI-powered copywriting\n' +
-    //    'Use AI to create better ads in 1 minute' +
-    //    'Download',
-    require('./obs3.json'),
-
-    // This is a Avail video ad. 0 comments. 0 likes.
-    // message: "Whether you're working from home or heading out of town, earn extra money by sharing your car with Avail. \n" +
-    //    'Park for free & come back to a sparkling clean car, plus cash if your car was shared. Your car is covered by Allstate insurance the entire time you’re… See More\n' +
-    //    'AVAILCARSHARING.COM\n' +
-    //    'Share Your Car & Earn Big\n' +
-    //    'Learn More'
-    require('./obs4.json'),
-
-    require('./obs5.json'),
-
-    require('./obs6.json'),
-
-    require('./obs7.json'),
-  ];
-  main(testcases);
-}
+// // Run only in nodejs.
+// // TODO: needs to import the files from "tests/test_observations/*.json" instead.
+// if (isNodeJS()) {
+//   var testcases = [
+//     // Sorry didn't take notes for this one. This is from running the parser.
+//     // Has 7 comments, 2 shares.
+//     //
+//     // message: '"ClickCease helps me MAXIMIZE my Google Ads spend on REAL potential customers rather than wasting it on bots."\n' +
+//     //    ' Excellent. 4.9 on SourceForge\n' +
+//     //    'clickcease.com\n' +
+//     //    'Protect Your Google Ads Budget Now!\n' +
+//     //    'Sign Up and start your 7 days free trial\n' +
+//     //    'Sign Up',
+//     require('./observation.json'),
+//
+//     // This is a motion video ad. There are 0 shares. 0 comments. 9 likes.
+//     // Video ad means there are no images.
+//     //
+//     // message: 'Motion’s distraction blocker protects your focus time, so your brain can stay fresh and do its best work.\n' +
+//     //    'USEMOTION.COM\n' +
+//     //    'Bye bye brain drain.\n' +
+//     //    'Learn More',
+//     require('./obs2.json'),
+//
+//     // This is a Jarvis AI video ad. There are 42 comments, 1 share.
+//     // message: 'Conversion.ai is a groundbreaking new tool that uses AI to write high performing marketing copy for your business. Get started for free now.\n' +
+//     //    'CONVERSION.AI/FREE-TRIAL\n' +
+//     //    'Get more clicks with AI-powered copywriting\n' +
+//     //    'Use AI to create better ads in 1 minute' +
+//     //    'Download',
+//     require('./obs3.json'),
+//
+//     // This is a Avail video ad. 0 comments. 0 likes.
+//     // message: "Whether you're working from home or heading out of town, earn extra money by sharing your car with Avail. \n" +
+//     //    'Park for free & come back to a sparkling clean car, plus cash if your car was shared. Your car is covered by Allstate insurance the entire time you’re… See More\n' +
+//     //    'AVAILCARSHARING.COM\n' +
+//     //    'Share Your Car & Earn Big\n' +
+//     //    'Learn More'
+//     require('./obs4.json'),
+//
+//     require('./obs5.json'),
+//
+//     require('./obs6.json'),
+//
+//     require('./obs7.json'),
+//   ];
+//   main(testcases);
+// }
 
 export default process_fb_observation;
