@@ -46,10 +46,29 @@ export const i18n = {
       'Your Language',
       'Age',
       'Gender'
-    ]
+    ],
+    privacy: ['Privacy']
   },
   german: {
-    nav: ['Mein Archiv', 'TODO', 'TODO'],
+    terms: [
+      'Ich akzeptiere diese Nutzungsbedingungen.',
+      'I accept the updated terms and conditions',
+      'Sie müssen die oben genannten Nutzungsbedingungen akzeptieren, um die Browser-Erweiterung nutzen zu können.',
+      'The above terms and conditions have been updated since you last agreed to them.',
+      'You accepted the above terms and conditions.',
+      'Nutzungsbedingungen',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      ''
+    ],
+    nav: ['Mein Archiv', 'Datenschutzrichtlinie', 'Nutzungsbedingungen'],
     about: ['Über'],
     prefs: [
       'Sharing Preferences',
@@ -67,25 +86,7 @@ export const i18n = {
       'Ihre Einstellungen',
       'Die Einstellung Ihrer Sprache und Ihres Landes hilft uns dabei, mit ihren Daten verantwortungsvoll im Rahmen der jeweiligen Gesetze umzugehen, sowie bei der korrekten Durchführung der Analysen.'
     ],
-
-    terms: [
-      'I accept these terms and conditions',
-      'I accept the updated terms and conditions',
-      'You need to accept the above terms and conditions before you can use the browser extension.',
-      'The above terms and conditions have been updated since you last agreed to them.',
-      'You accepted the above terms and conditions.',
-      'Nutzungsbedingungen',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      ''
-    ]
+    privacy: ['Datenschutzrichtlinie']
   }
 };
 
