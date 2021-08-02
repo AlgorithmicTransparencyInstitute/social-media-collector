@@ -23,7 +23,7 @@ export const i18n = {
       '',
       ''
     ],
-    nav: ['My Archive', 'Privacy Policy', 'Terms & Conditions'],
+    nav: ['My Archive', 'Privacy Policy', 'Terms & Conditions', 'About', 'Preferences'],
     about: ['About the'],
     prefs: [
       'Sharing Preferences',
@@ -47,7 +47,9 @@ export const i18n = {
       'Age',
       'Gender'
     ],
-    privacy: ['Privacy']
+    privacy: ['Privacy'],
+    gender: ['Male', 'Female', 'Other', 'Prefer not to say'],
+    archive: ['My Archive', 'You have nothing in your archive.']
   },
   german: {
     terms: [
@@ -68,7 +70,7 @@ export const i18n = {
       '',
       ''
     ],
-    nav: ['Mein Archiv', 'Datenschutzrichtlinie', 'Nutzungsbedingungen'],
+    nav: ['Mein Archiv', 'Datenschutzrichtlinie', 'Nutzungsbedingungen', 'Über', 'Einstellungen'],
     about: ['Über'],
     prefs: [
       'Sharing Preferences',
@@ -80,13 +82,15 @@ export const i18n = {
       'Einstellungen für Facebook',
       'Diese Optionen kontrollieren, welche Facebook-Daten Sie mit uns teilen.',
 
-      'Einstelllungen für YouTube',
+      'Einstellungen für YouTube',
       'Diese Optionen kontrollieren, welche Youtube-Daten Sie mit uns teilen wollen',
 
       'Ihre Einstellungen',
       'Die Einstellung Ihrer Sprache und Ihres Landes hilft uns dabei, mit ihren Daten verantwortungsvoll im Rahmen der jeweiligen Gesetze umzugehen, sowie bei der korrekten Durchführung der Analysen.'
     ],
-    privacy: ['Datenschutzrichtlinie']
+    privacy: ['Datenschutzrichtlinie'],
+    gender: ['Männlich', 'Weiblich', 'TODO? Other', 'TODO? Prefer not to say'],
+    archive: ['Mein Archiv', 'Sie haben nichts in Ihrem Archiv.']
   }
 };
 
@@ -94,7 +98,7 @@ export const i18n = {
 var lang = process.env.LANGUAGE;
 function I18n(page, i) {
   // return i18n.eng[page][i];
-  console.log('I18n debug', lang, page, i);
+  // console.log('I18n debug', lang, page, i);
   return i18n[lang][page][i];
 }
 
