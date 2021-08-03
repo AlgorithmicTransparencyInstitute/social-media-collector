@@ -11,17 +11,7 @@ export const i18n = {
       'You need to accept the above terms and conditions before you can use the browser extension.',
       'The above terms and conditions have been updated since you last agreed to them.',
       'You accepted the above terms and conditions.',
-      'Terms of Use',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      ''
+      'Terms of Use'
     ],
     nav: ['My Archive', 'Privacy Policy', 'Terms & Conditions', 'About', 'Preferences'],
     about: ['About the'],
@@ -49,7 +39,8 @@ export const i18n = {
     ],
     privacy: ['Privacy'],
     gender: ['Male', 'Female', 'Other', 'Prefer not to say'],
-    archive: ['My Archive', 'You have nothing in your archive.']
+    archive: ['My Archive', 'You have nothing in your archive.'],
+    prefselector: ['Choose']
   },
   german: {
     terms: [
@@ -57,18 +48,8 @@ export const i18n = {
       'I accept the updated terms and conditions',
       'Sie müssen die oben genannten Nutzungsbedingungen akzeptieren, um die Browser-Erweiterung nutzen zu können.',
       'The above terms and conditions have been updated since you last agreed to them.',
-      'You accepted the above terms and conditions.',
-      'Nutzungsbedingungen',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      ''
+      'Sie haben die oben genannten Bedingungen akzeptiert.', // TODO: dblchk with germans
+      'Nutzungsbedingungen'
     ],
     nav: ['Mein Archiv', 'Datenschutzrichtlinie', 'Nutzungsbedingungen', 'Über', 'Einstellungen'],
     about: ['Über'],
@@ -89,8 +70,9 @@ export const i18n = {
       'Die Einstellung Ihrer Sprache und Ihres Landes hilft uns dabei, mit ihren Daten verantwortungsvoll im Rahmen der jeweiligen Gesetze umzugehen, sowie bei der korrekten Durchführung der Analysen.'
     ],
     privacy: ['Datenschutzrichtlinie'],
-    gender: ['Männlich', 'Weiblich', 'TODO? Other', 'TODO? Prefer not to say'],
-    archive: ['Mein Archiv', 'Sie haben nichts in Ihrem Archiv.']
+    gender: ['Männlich', 'Weiblich', 'Divers', 'Keine Angabe'],
+    archive: ['Mein Archiv', 'Sie haben nichts in Ihrem Archiv.'],
+    prefselector: ['Wählen']
   }
 };
 
