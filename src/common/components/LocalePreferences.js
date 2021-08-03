@@ -1,3 +1,4 @@
+import I18n from 'common/i18n';
 import React, { Fragment } from 'react';
 import PreferenceSelector from './PreferenceSelector';
 import { PREF_COUNTRY, PREF_LANGUAGE, PREF_AGE, PREF_GENDER } from 'common/keys';
@@ -12,16 +13,20 @@ const LocalePreferences = () => (
   <Fragment>
     <PreferenceSelector
       options={toArray(COUNTRIES)}
-      label="Your Country"
+      label={I18n('prefs', 10)}
       storageKey={PREF_COUNTRY}
     />
     <PreferenceSelector
       options={toArray(LANGUAGES)}
-      label="Your Language"
+      label={I18n('prefs', 11)}
       storageKey={PREF_LANGUAGE}
     />
-    <PreferenceSelector options={toArray(AGES)} label="Age" storageKey={PREF_AGE} />
-    <PreferenceSelector options={toArray(GENDERS)} label="Gender" storageKey={PREF_GENDER} />
+    <PreferenceSelector options={toArray(AGES)} label={I18n('prefs', 12)} storageKey={PREF_AGE} />
+    <PreferenceSelector
+      options={toArray(GENDERS)}
+      label={I18n('prefs', 13)}
+      storageKey={PREF_GENDER}
+    />
   </Fragment>
 );
 LocalePreferences.displayName = 'Locale preferences';

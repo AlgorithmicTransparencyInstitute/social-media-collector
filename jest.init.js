@@ -52,6 +52,7 @@ global.console = {
 };
 
 // forces values set by Webpack when the app is actually built.
+process.env.LANGUAGE = 'eng';
 process.env.IS_DEBUG = 'true';
 process.env.IS_FIREFOX = 'false';
 process.env.IS_CHROME = 'true';
