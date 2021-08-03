@@ -108,6 +108,7 @@ Any API URL you set in that file will be used as the default url, unless you spe
 1. up the version in the build config file (`nyu-build-config.js` or `legacy-build-config.js`). Legacy is `v2.y.z`, Full is `v3.y.z`.
 2. tag a version, push tag, `git tag vx.0.2` (or whatever).
 3. build both legacy and standard
+ - make sure other build processes are off.
  - legacy:
  	1. `npm run build -- --env file=./legacy-build-config.js --env build=release --env config=std`
  	2. `pushd build/chrome-std-release && zip -r0 ../chrome-$(jq .version manifest.json | tr -d \").zip ./* && popd`

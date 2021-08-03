@@ -7,7 +7,21 @@ const baseTemplate = sourceFolder => ({
   context: resolve(__dirname, '..', sourceFolder),
   module: { rules: getModuleRules() },
   resolve: {
-    alias: getAliases(sourceFolder)
+    alias: getAliases(sourceFolder),
+    fallback: {
+      stream: require.resolve('stream-browserify'),
+      crypto: require.resolve('crypto-browserify'),
+      http: require.resolve('stream-http'),
+      https: require.resolve('https-browserify'),
+      path: require.resolve('path-browserify'),
+      os: require.resolve('os-browserify/browser'),
+      zlib: require.resolve('browserify-zlib'),
+      console: false,
+      fs: false,
+      net: false,
+      tls: false,
+      child_process: false
+    }
   }
 });
 
