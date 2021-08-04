@@ -48,7 +48,7 @@ export const i18n = {
       'I accept the updated terms and conditions',
       'Sie müssen die oben genannten Nutzungsbedingungen akzeptieren, um die Browser-Erweiterung nutzen zu können.',
       'The above terms and conditions have been updated since you last agreed to them.',
-      'Sie haben die oben genannten Bedingungen akzeptiert.', // TODO: dblchk with germans
+      'Sie haben die oben genannten Bedingungen akzeptiert.',
       'Nutzungsbedingungen'
     ],
     nav: ['Mein Archiv', 'Datenschutzrichtlinie', 'Nutzungsbedingungen', 'Über', 'Einstellungen'],
@@ -72,7 +72,7 @@ export const i18n = {
     privacy: ['Datenschutzrichtlinie'],
     gender: ['Männlich', 'Weiblich', 'Divers', 'Keine Angabe'],
     archive: ['Mein Archiv', 'Sie haben nichts in Ihrem Archiv.'],
-    prefselector: ['Wählen']
+    prefselector: ['Auswählen']
   }
 };
 

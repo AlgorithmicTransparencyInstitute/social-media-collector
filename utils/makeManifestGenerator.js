@@ -58,6 +58,7 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
     }
   ];
 
+  // Used for Chrome.
   const baseManifest = {
     ...BASE_MANIFEST,
     name: config.name,
@@ -65,6 +66,7 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
     description: config.description,
     version: config.version,
     version_name: versionName,
+    default_locale: 'en',
     browser_action: {
       ...BASE_MANIFEST.browser_action,
       default_title: config.title,

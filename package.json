@@ -84,6 +84,7 @@
     "eslint-plugin-standard": "^4.0.2",
     "file-loader": "^5.1.0",
     "generate-json-file-webpack-plugin": "0.0.3",
+    "generate-json-webpack-plugin": "^2.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^4.5.0",
     "husky": "^4.3.0",
