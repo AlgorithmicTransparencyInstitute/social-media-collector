@@ -8,6 +8,7 @@ module.exports = (isDebug = false) => ({
   title,
   description,
   version: '3.1.3', // legacy build is v2.0+, this is better, so it's 3.0
+  language: 'eng',
   consentVersion, // if you change this, strange things might happen.
   extensionProviderId: 'nyu',
   geckoId: 'developers@adobserver.org',
