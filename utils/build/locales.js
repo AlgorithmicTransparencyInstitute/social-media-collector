@@ -10,12 +10,12 @@ const locale_en = (data, copyAssetFolder) => {
       ...plugins,
       new GenerateJsonPlugin('messages.json', {
         "appName": {
-          "message": "My App",
-          "description": "The title of the application, displayed in the web store."
+          "message": "Ad Observer",
+          // "description": "The title of the application, displayed in the web store."
         },
         "appDesc": {
-          "message": "This app does something awesome.",
-          "description":"The description of the application, displayed in the web store."
+          "message": "Installing our browser plugin sends us the ads you see on Facebook and YouTube without compromising your privacy.",
+          // "description":"The description of the application, displayed in the web store."
         }
       }),
     ]
@@ -31,12 +31,12 @@ const locale_de = (data, copyAssetFolder) => {
       ...plugins,
       new GenerateJsonPlugin('messages.json', {
         "appName": {
-          "message": "German",
-          "description": "German"
+          "message": "Ad Observer",
+          // "description": "German"
         },
         "appDesc": {
-          "message": "German",
-          "description":"German"
+          "message": "Das Plugin meldet uns die Werbungen, die Sie auf Facebook oder YouTube sehen.",
+          // "description":"German"
         }
       }),
     ]
