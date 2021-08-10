@@ -1,4 +1,3 @@
-import I18n from 'common/i18n';
 import React, { Fragment } from 'react';
 
 import LocalePreferences from 'common/components/LocalePreferences';
@@ -26,17 +25,27 @@ const GENERAL_PERMISSIONS = GENERAL_PERMISSION_KEYS.reduce(makePref, {});
 const FACEBOOK_PERMISSIONS = FACEBOOK_PERMISSION_KEYS.reduce(makePref, {});
 const YOUTUBE_PERMISSIONS = YOUTUBE_PERMISSION_KEYS.reduce(makePref, {});
 
-const checkboxen = (perms, props) =>
-  Object.keys(perms).map(perm => (
-    <PermissionCheckbox
-      key={perm}
-      storageKey={perm}
-      label={perms[perm].label}
-      hintText={perms[perm].hintText}
-      defaultValue={perms[perm].defaultValue}
-      {...props}
-    />
-  ));
+const checkboxen = (perms, props) => {
+  return Object.keys(perms).map(perm => {
+    console.log(
+      'ag3',
+      chrome.i18n.getMessage(perm + '_label'),
+      chrome.i18n.getMessage(perm + '_hintText')
+    );
+    const hintText = chrome.i18n.getMessage(perm + '_hintText'); // perms[perm].hintText
+    const label = chrome.i18n.getMessage(perm + '_label'); // perms[perm].label
+    return (
+      <PermissionCheckbox
+        key={perm}
+        storageKey={perm}
+        label={label}
+        hintText={hintText}
+        defaultValue={perms[perm].defaultValue}
+        {...props}
+      />
+    );
+  });
+};
 
 const YOUTUBE_ASK = () => (
   <div>
@@ -60,22 +69,22 @@ const YOUTUBE_ASK = () => (
 
 const CARDS = {
   locale: {
-    title: I18n('prefs', 8),
-    subtitle: I18n('prefs', 9)
+    title: chrome.i18n.getMessage('prefs_8'),
+    subtitle: chrome.i18n.getMessage('prefs_9')
   },
   general: {
-    title: I18n('prefs', 2),
-    subtitle: I18n('prefs', 3),
+    title: chrome.i18n.getMessage('prefs_2'),
+    subtitle: chrome.i18n.getMessage('prefs_3'),
     permissions: GENERAL_PERMISSIONS
   },
   facebook: {
-    title: I18n('prefs', 4),
-    subtitle: I18n('prefs', 5),
+    title: chrome.i18n.getMessage('prefs_4'),
+    subtitle: chrome.i18n.getMessage('prefs_5'),
     permissions: FACEBOOK_PERMISSIONS
   },
   youtube: {
-    title: I18n('prefs', 6),
-    subtitle: I18n('prefs', 7),
+    title: chrome.i18n.getMessage('prefs_6'),
+    subtitle: chrome.i18n.getMessage('prefs_7'),
     permissions: YOUTUBE_PERMISSIONS
   },
   legacy: {
@@ -96,8 +105,8 @@ const makeCard = (key, content) => (
 const ytCard = process.env.INCLUDE_YOUTUBE ? makeCard('youtube') : makeCard('legacy', '');
 const PreferencesPage = () => (
   <Fragment>
-    <h4 className="mt-4">{I18n('prefs', 0)}</h4>
-    <p>{I18n('prefs', 1)}</p>
+    <h4 className="mt-4">{chrome.i18n.getMessage('prefs_0')}</h4>
+    <p>{chrome.i18n.getMessage('prefs_1')}</p>
     <div>
       <Deck>
         {makeCard('general')}

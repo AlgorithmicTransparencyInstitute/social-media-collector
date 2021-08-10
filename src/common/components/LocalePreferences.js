@@ -1,4 +1,3 @@
-import I18n from 'common/i18n';
 import React, { Fragment } from 'react';
 import PreferenceSelector from './PreferenceSelector';
 import { PREF_COUNTRY, PREF_LANGUAGE, PREF_AGE, PREF_GENDER } from 'common/keys';
@@ -13,18 +12,22 @@ const LocalePreferences = () => (
   <Fragment>
     <PreferenceSelector
       options={toArray(COUNTRIES)}
-      label={I18n('prefs', 10)}
+      label={chrome.i18n.getMessage('prefs_10')}
       storageKey={PREF_COUNTRY}
     />
     <PreferenceSelector
       options={toArray(LANGUAGES)}
-      label={I18n('prefs', 11)}
+      label={chrome.i18n.getMessage('prefs_11')}
       storageKey={PREF_LANGUAGE}
     />
-    <PreferenceSelector options={toArray(AGES)} label={I18n('prefs', 12)} storageKey={PREF_AGE} />
+    <PreferenceSelector
+      options={toArray(AGES)}
+      label={chrome.i18n.getMessage('prefs_12')}
+      storageKey={PREF_AGE}
+    />
     <PreferenceSelector
       options={toArray(GENDERS)}
-      label={I18n('prefs', 13)}
+      label={chrome.i18n.getMessage('prefs_13')}
       storageKey={PREF_GENDER}
     />
   </Fragment>

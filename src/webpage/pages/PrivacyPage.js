@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react';
-import I18n from 'common/i18n';
 
 const PrivacyPage = () => (
   <Fragment>
     <header>
-      <h1>{I18n('privacy', 0)}</h1>
+      <h1>{chrome.i18n.getMessage('privacy_0')}</h1>
     </header>
-    <div dangerouslySetInnerHTML={{ __html: process.env.PRIVACY_TEXT }} />
+    <div dangerouslySetInnerHTML={{ __html: chrome.i18n.getMessage('privacy_html') }} />
   </Fragment>
 );
 PrivacyPage.displayName = 'PrivacyPage';

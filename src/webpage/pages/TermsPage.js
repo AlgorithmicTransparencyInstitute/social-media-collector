@@ -2,7 +2,6 @@ import React, { Fragment, useEffect } from 'react';
 import ConsentAwareView from 'common/components/ConsentAwareView';
 import GrantConsentButton from 'common/components/GrantConsentButton';
 import useConsent from 'common/hooks/useConsent';
-import I18n from 'common/i18n';
 
 const TermsPage = () => {
   const { viewedConsent } = useConsent();
@@ -15,19 +14,19 @@ const TermsPage = () => {
   return (
     <Fragment>
       <header>
-        <h1>{I18n('terms', 5)}</h1>
+        <h1>{chrome.i18n.getMessage('terms_5')}</h1>
       </header>
-      <div dangerouslySetInnerHTML={{ __html: process.env.CONSENT_TEXT }} />
+      <div dangerouslySetInnerHTML={{ __html: chrome.i18n.getMessage('terms_html') }} />
       <ConsentAwareView whenGrantedIs="none">
-        <p>{I18n('terms', 2)}</p>
-        <GrantConsentButton label={I18n('terms', 0)} to="preferences" />
+        <p>{chrome.i18n.getMessage('terms_2')}</p>
+        <GrantConsentButton label={chrome.i18n.getMessage('terms_0')} to="preferences" />
       </ConsentAwareView>
       <ConsentAwareView whenGrantedIs="old">
-        <p>{I18n('terms', 3)}</p>
-        <GrantConsentButton label={I18n('terms', 1)} to="preferences" />
+        <p>{chrome.i18n.getMessage('terms_3')}</p>
+        <GrantConsentButton label={chrome.i18n.getMessage('terms_1')} to="preferences" />
       </ConsentAwareView>
       <ConsentAwareView whenGrantedIs="current">
-        <p>{I18n('terms', 4)}</p>
+        <p>{chrome.i18n.getMessage('terms_4')}</p>
       </ConsentAwareView>
     </Fragment>
   );

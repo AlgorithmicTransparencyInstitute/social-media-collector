@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import usePreference from 'common/hooks/usePreference';
-import I18n from 'common/i18n';
 
 const buildOptions = options =>
   options.map(({ value, text }) => (
@@ -17,7 +16,7 @@ const PreferenceSelector = ({ label, options, storageKey }) => {
     <div className="pt-3">
       <label className="form-label">{label}</label>
       <select id={storageKey} className="form-control" onChange={savePreference} value={selected}>
-        <option value="">{I18n('prefselector', 0)}...</option>
+        <option value="">{chrome.i18n.getMessage('prefselector_0')}...</option>
         {buildOptions(options)}
       </select>
     </div>

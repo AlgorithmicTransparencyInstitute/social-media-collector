@@ -1,8 +1,8 @@
-// general
-
 // LC is abbreviation for locale.
 // export const LC = process.env.LC;
 
+// TODO: this file can be deleted. Remove once this i18n dict is not longer
+// needed to keep around.
 export const i18n = {
   eng: {
     terms: [

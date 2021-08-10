@@ -1,8 +1,6 @@
-import I18n from 'common/i18n';
-
 export const GENDERS = {
-  M: I18n('gender', 0),
-  F: I18n('gender', 1),
-  Other: I18n('gender', 2),
-  PreferNotToSay: I18n('gender', 3)
+  M: chrome.i18n.getMessage('gender_0'),
+  F: chrome.i18n.getMessage('gender_1'),
+  Other: chrome.i18n.getMessage('gender_2'),
+  PreferNotToSay: chrome.i18n.getMessage('gender_3')
 };
