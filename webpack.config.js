@@ -12,6 +12,7 @@ const facebookPreloader = require('./utils/build/facebookPreloader');
 const youtubePreloader = require('./utils/build/youtubePreloader');
 const content = require('./utils/build/content');
 const toolbar = require('./utils/build/toolbar');
+const locales = require('./utils/build/locales');
 const webpage = require('./utils/build/webpage');
 
 // Input and output folders
@@ -62,6 +63,8 @@ const doIt = async (env = {}) => {
           youtubePreloader,
           content,
           toolbar,
+          locales.en,
+          locales.de,
           webpage
         ].forEach(fn => {
           buildDefs.push(fn(data, copyAssetFolder));

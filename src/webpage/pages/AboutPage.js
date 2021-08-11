@@ -1,14 +1,16 @@
-import I18n from 'common/i18n';
 import React, { Fragment } from 'react';
+
+console.log('ag1', chrome.i18n); // TODO: rm.
 
 const AboutPage = () => (
   <Fragment>
     <header>
       <h1>
-        {I18n('about', 0)} {process.env.TITLE}
+        {chrome.i18n.getMessage('about_0')} {process.env.TITLE}
       </h1>
     </header>
-    <div dangerouslySetInnerHTML={{ __html: process.env.ABOUT_TEXT }} />
+
+    <div dangerouslySetInnerHTML={{ __html: chrome.i18n.getMessage('about_html') }} />
   </Fragment>
 );
 AboutPage.displayName = 'AboutPage';

@@ -8,6 +8,7 @@ module.exports = (isDebug = false) => ({
   title,
   description,
   version: '2.1.3', // FBPAC maxed out at 1.11.0 and this is a major update, so, 2.0
+  language: 'eng',
   consentVersion, // if you change this, strange things might happen.
   extensionProviderId: 'nyu',
   includeYoutube: false,
