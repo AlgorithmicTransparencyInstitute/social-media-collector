@@ -45,7 +45,7 @@ export const i18n = {
   german: {
     terms: [
       'Ich akzeptiere diese Nutzungsbedingungen.',
-      'I accept the updated terms and conditions',
+      'Ich akzeptiere die aktualisierten Nutzungsbedingungen',
       'Sie müssen die oben genannten Nutzungsbedingungen akzeptieren, um die Browser-Erweiterung nutzen zu können.',
       'The above terms and conditions have been updated since you last agreed to them.',
       'Sie haben die oben genannten Bedingungen akzeptiert.',
@@ -54,7 +54,7 @@ export const i18n = {
     nav: ['Mein Archiv', 'Datenschutzrichtlinie', 'Nutzungsbedingungen', 'Über', 'Einstellungen'],
     about: ['Über'],
     prefs: [
-      'Sharing Preferences',
+      'Einstellungen festlegen',
       'Sie haben die Kontrolle darüber, was Sie mit diesem Projekt teilen. Um zu ändern, welche Daten sie teilen wollen, füllen Sie einfach die Kästchen aus.',
 
       'Allgemeine Präferenzen',

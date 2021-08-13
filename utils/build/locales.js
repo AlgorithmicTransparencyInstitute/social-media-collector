@@ -399,31 +399,31 @@ const locale_de = (data, copyAssetFolder) => {
           message: 'Dies ermöglicht dem Programm die von Ihnen angeschauten Videos auf Youtube zu sehen. Häufig sind zielgerichtete Werbungen mit bestimmten Videos oder Kanälen verbunden. Dies wäre also eine große Hilfe für dieses Forschungsprojekt',
         },
         user_share_country_label: {
-          message: 'Mein Land teilen',
+          message: 'Land',
         },
         user_share_country_hintText: {
           message: 'Sie teilen uns mit, in welchem Land Sie leben.',
         },
         user_share_language_label: {
-          message: 'Meine Sprache teilen',
+          message: 'Sprache',
         },
         user_share_language_hintText: {
           message: 'Sie teilen uns mit, welche Sprache Sie sprechen.',
         },
         user_share_gender_label: {
-          message: 'Mein Geschlecht teilen',
+          message: 'Geschlecht',
         },
         user_share_gender_hintText: {
           message: 'Sie teilen uns Ihr Geschlecht mit.',
         },
         user_share_age_label: {
-          message: 'Mein Alter teilen',
+          message: 'Alter',
         },
         user_share_age_hintText: {
           message: 'Sie teilen uns Ihr Alter mit.',
         },
         user_share_diagnostic_data_label: {
-          message: 'Diagnose-Daten teilen',
+          message: 'Diagnose-Daten',
         },
         user_share_diagnostic_data_hintText: {
           message: 'Falls Fehler auftreten, können Sie uns zusätzliche Daten schicken, um uns beim Lösen des Problems zu helfen.',
@@ -559,13 +559,13 @@ const locale_de = (data, copyAssetFolder) => {
         },
         about_html: {
           message: `<p>
-            Ad Observer nutzt die freiwillig geteilten Online-Daten der Nutzer für wissenschaftliche Forschung und investigativen Journalismus. Wir wollen die Frage beantworten, wie die Social-Media-Plattformen die Gesellschaft beeinflussen.
+            Ad Observer nutzt die freiwillig geteilten Online-Daten der Nutzer für wissenschaftliche Forschung und investigativen Journalismus. Wir möchten die Frage beantworten, wie die Social-Media-Plattformen die Gesellschaft beeinflussen.
           </p>
           <p>
-            Das Hauptwerkzeug des Projekts ist eine Browser-Erweiterung, die Inhalte, Werbungen Empfehlungen und Zielgruppeninformationen im Internet sammelt. Diese Daten werden anonymisiert und in einer zentralen Datenbank gesammelt, um sie zu analysieren. Die Daten werden für Forscher, Journalisten und die allgemeine Öffentlichkeit zusammengefasst. Dies ist allein eine nicht-kommerzielle-Nutzung, um zu untersuchen, wie sich Online-Inhalte verbreiten, welchen Gruppen von Nutzern gezielt welche Werbungen gezeigt wird und welche Nachrichten benutzt werden, um die Öffentlichkeit zu überzeugen.
+            Das Hauptwerkzeug des Projekts ist eine Browser-Erweiterung, die Inhalte, Werbungen Empfehlungen und Zielgruppeninformationen im Internet sammelt. Diese Daten werden anonymisiert und in einer zentralen Datenbank gesammelt, um sie zu analysieren. Die Daten werden für Forscher, Journalisten und die allgemeine Öffentlichkeit zusammengefasst. Es handelt sich dabei allein un eine nicht-kommerzielle-Nutzung, um zu untersuchen, wie sich Online-Inhalte verbreiten, welchen Gruppen von Nutzern gezielt welche Werbungen gezeigt wird und welche Nachrichten benutzt werden, um die Öffentlichkeit zu überzeugen.
           </p>
           <p>
-            Dieses Projekt auf vielen früheren Untersuchungen auf. Dazu gehören unter anderem ProPublica Facebook Political Ad Collector (und der TGAM FB Political Ad Collector), Who Targets Me und Ad Analyst.
+            Dieses Projekt baut auf vielen früheren Untersuchungen auf. Dazu gehören unter anderem ProPublica Facebook Political Ad Collector (und der TGAM FB Political Ad Collector), Who Targets Me und Ad Analyst.
           </p>
           <p>
             Ziele der Initiative sind das Sammeln von Daten über mehrere Plattformen hinweg und eine bessere Transparenz über die Algorithmen, die unser Leben bestimmen.
@@ -574,7 +574,7 @@ const locale_de = (data, copyAssetFolder) => {
             Das Projekt ist eine Zusammenarbeit von: The Algorithmic Transparency Institute, der New York University, Quartz und der University of Grenoble.
           </p>
           <p>
-            Für weitere Informationen über dieses Projekt besuchen sie bitte:&nbsp;
+            Für weitere Informationen über dieses Projekt besuchen Sie bitte:&nbsp;
             <a href="https://adobserver.org">adobserver.org</a>.
           </p>`,
         },
@@ -583,7 +583,7 @@ const locale_de = (data, copyAssetFolder) => {
           message: 'Einstellungen Teilen',
         },
         prefs_1: {
-          message: 'Sie haben die Kontrolle darüber, was Sie mit diesem Projekt teilen. Um zu ändern, welche Daten sie teilen wollen, füllen Sie einfach die Kästchen aus.',
+          message: 'Sie haben die Kontrolle darüber, welche Informationen Sie mit diesem Projekt teilen. Um zu ändern, welche Daten Sie teilen möchten, füllen Sie einfach die Kästchen aus.',
         },
         prefs_2: {
           message: 'Allgemeine Präferenzen',
