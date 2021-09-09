@@ -7,10 +7,10 @@ import { CURRENT_CONSENT_VERSION } from 'common/storage/consent';
  */
 const updateBadge = async version => {
   if (version === CURRENT_CONSENT_VERSION) {
-    chrome.browserAction.setBadgeText({ text: '' });
+    chrome.action.setBadgeText({ text: '' });
   } else {
-    chrome.browserAction.setBadgeText({ text: '!' });
-    chrome.browserAction.setBadgeBackgroundColor({ color: '#ff0000' });
+    chrome.action.setBadgeText({ text: '!' });
+    chrome.action.setBadgeBackgroundColor({ color: '#ff0000' });
   }
 };
 

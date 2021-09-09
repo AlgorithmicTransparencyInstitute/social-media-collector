@@ -4,27 +4,14 @@ const FB_MATCHES = ['*://*.facebook.com/*'];
 const FB_EXCLUDES = ['*://*.facebook.com/ads/archive*', '*://*.facebook.com/ads/library*'];
 const YT_MATCHES = ['*://*.youtube.com/*'];
 const BASE_MANIFEST = {
-  manifest_version: 2,
   homepage_url: 'https://github.com/AlgorithmicTransparencyInstitute/social-media-collector',
-  background: {
-    scripts: ['background/bundle.js']
-  },
   icons: {
     '16': 'assets/icon16.png',
     '32': 'assets/icon32.png',
     '48': 'assets/icon48.png',
     '64': 'assets/icon64.png',
     '128': 'assets/icon128.png'
-  },
-  browser_action: {
-    default_popup: 'toolbar/index.html',
-    default_icon: {
-      '16': 'images/icon16.png',
-      '24': 'images/icon24.png',
-      '32': 'images/icon32.png'
-    }
-  },
-  web_accessible_resources: ['webpage/*']
+  }
 };
 
 const FACEBOOK_CONTENT_SCRIPT = [
@@ -61,14 +48,15 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
   // Used for Chrome.
   const baseManifest = {
     ...BASE_MANIFEST,
+    manifest_version: 3,
     name: config.name,
     short_name: config.name,
     description: config.description,
     version: config.version,
     version_name: versionName,
     default_locale: 'en',
-    browser_action: {
-      ...BASE_MANIFEST.browser_action,
+    action: {
+      default_popup: 'toolbar/index.html',
       default_title: config.title,
       default_icon: `assets/${config.defaultIcon}`
     },
@@ -78,20 +66,45 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
       ...(config.includeYoutube ? YOUTUBE_CONTENT_SCRIPT : []),
       ...BUNDLE_CONTENT_SCRIPT
     ],
-    permissions
+    background: {
+      service_worker: 'bundle.js'
+    },
+    permissions,
+    web_accessible_resources: [{
+      "resources": [ 'webpage/*', 'assets/runs_on_fb.js' ],
+      "matches": ["<all_urls>"],
+      "extension_ids": []
+    }],
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'",
+    }
   };
 
   const firefoxManifest = {
     ...baseManifest,
+    manifest_version: 2,
+    browser_action: {
+      default_popup: 'toolbar/index.html',
+      default_icon: {
+        '16': 'images/icon16.png',
+        '24': 'images/icon24.png',
+        '32': 'images/icon32.png'
+      }
+    },
     applications: {
       gecko: {
         id: config.geckoId
       }
-    }
+    },
+    background: {
+      scripts: ['bundle.js']
+    },
+    web_accessible_resources: ['webpage/*', 'assets/runs_on_fb.js'],
+    content_security_policy: "script-src 'self' 'unsafe-eval'; object-src 'self'"
   };
 
   return new GenerateJsonFile({
-    filename: '../manifest.json',
+    filename: 'manifest.json',
     value: isFirefox ? firefoxManifest : baseManifest
   });
 };
