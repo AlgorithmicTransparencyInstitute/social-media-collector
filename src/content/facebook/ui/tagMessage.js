@@ -5,7 +5,7 @@ export const AD_SHARED_BUT_NOT_TARGETING =
 export const NOT_SHARING_ADS =
   'This advertisement has not been collected as you are not sharing sponsored posts';
 export const AD_SHARED_BUT_NO_TARGETING_DATA_AVAILABLE =
-  'This advertisement has been collected but targeting information could not be collected';
+  'Post not collected as it did not contain targeting information and is not an ad';
 export const PUBLIC_USER_SHARED = 'This public user post has been collected';
 export const PUBLIC_PAGE_SHARED = 'This public page post has been collected';
 export const PUBLIC_NOT_SHARED = 'This public post was not shared';
