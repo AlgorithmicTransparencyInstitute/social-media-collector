@@ -2,7 +2,7 @@ const GenerateJsonFile = require('generate-json-file-webpack-plugin');
 
 const FB_MATCHES = ['*://*.facebook.com/*'];
 const FB_EXCLUDES = ['*://*.facebook.com/ads/archive*', '*://*.facebook.com/ads/library*'];
-const YT_MATCHES = ['*://*.youtube.com/*'];
+const YT_MATCHES = ['*://www.youtube.com/*'];
 const BASE_MANIFEST = {
   manifest_version: 2,
   homepage_url: 'https://github.com/AlgorithmicTransparencyInstitute/social-media-collector',
