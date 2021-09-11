@@ -1,4 +1,4 @@
-const LINK = ':scope a[role="link"],:scope div[role="button"],:scope div[aria-label="Sponsored"]';
+const LINK = ':scope a[role="link"],:scope div[role="button"],:scope [aria-label="Sponsored"]';
 
 /**
  *  Determine if a FB feed post is sponsored.
@@ -17,7 +17,11 @@ const LINK = ':scope a[role="link"],:scope div[role="button"],:scope div[aria-la
 // This is also not computationally expensive, since on the test post element
 // I used, I found only 3 aria-labelledby elements that we need to go through.
 const isSponsoredPost = function(el, sponsorStr = 'Sponsored') {
-  return isSponsoredTest1(el, sponsorStr) || isSponsoredTest2(el, sponsorStr);
+  var result = isSponsoredTest1(el, sponsorStr) || isSponsoredTest2(el, sponsorStr);
+  // Because FB breaks the isSponsoredPost code often, I'm leaving this
+  // console.log in to help future debugging.
+  // console.debug('>> isSponsoredPost', el, result);
+  return result;
 };
 
 // First we try to detect sponsored post by searching for aria labels with
