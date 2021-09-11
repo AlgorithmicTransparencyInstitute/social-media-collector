@@ -25,17 +25,27 @@ const GENERAL_PERMISSIONS = GENERAL_PERMISSION_KEYS.reduce(makePref, {});
 const FACEBOOK_PERMISSIONS = FACEBOOK_PERMISSION_KEYS.reduce(makePref, {});
 const YOUTUBE_PERMISSIONS = YOUTUBE_PERMISSION_KEYS.reduce(makePref, {});
 
-const checkboxen = (perms, props) =>
-  Object.keys(perms).map(perm => (
-    <PermissionCheckbox
-      key={perm}
-      storageKey={perm}
-      label={perms[perm].label}
-      hintText={perms[perm].hintText}
-      defaultValue={perms[perm].defaultValue}
-      {...props}
-    />
-  ));
+const checkboxen = (perms, props) => {
+  return Object.keys(perms).map(perm => {
+    console.log(
+      'ag3',
+      chrome.i18n.getMessage(perm + '_label'),
+      chrome.i18n.getMessage(perm + '_hintText')
+    );
+    const hintText = chrome.i18n.getMessage(perm + '_hintText'); // perms[perm].hintText
+    const label = chrome.i18n.getMessage(perm + '_label'); // perms[perm].label
+    return (
+      <PermissionCheckbox
+        key={perm}
+        storageKey={perm}
+        label={label}
+        hintText={hintText}
+        defaultValue={perms[perm].defaultValue}
+        {...props}
+      />
+    );
+  });
+};
 
 const YOUTUBE_ASK = () => (
   <div>
@@ -59,23 +69,22 @@ const YOUTUBE_ASK = () => (
 
 const CARDS = {
   locale: {
-    title: 'Your Settings',
-    subtitle:
-      "Setting your language and location help us ensure we're handling your data responsibly and analyzing it correctly."
+    title: chrome.i18n.getMessage('prefs_8'),
+    subtitle: chrome.i18n.getMessage('prefs_9')
   },
   general: {
-    title: 'General Preferences',
-    subtitle: 'These settings apply to all data shared by the extension',
+    title: chrome.i18n.getMessage('prefs_2'),
+    subtitle: chrome.i18n.getMessage('prefs_3'),
     permissions: GENERAL_PERMISSIONS
   },
   facebook: {
-    title: 'Facebook Preferences',
-    subtitle: 'These options control what data you share from your Facebook feed',
+    title: chrome.i18n.getMessage('prefs_4'),
+    subtitle: chrome.i18n.getMessage('prefs_5'),
     permissions: FACEBOOK_PERMISSIONS
   },
   youtube: {
-    title: 'YouTube Preferences',
-    subtitle: 'These options control what data you share when you are using YouTube',
+    title: chrome.i18n.getMessage('prefs_6'),
+    subtitle: chrome.i18n.getMessage('prefs_7'),
     permissions: YOUTUBE_PERMISSIONS
   },
   legacy: {
@@ -96,11 +105,8 @@ const makeCard = (key, content) => (
 const ytCard = process.env.INCLUDE_YOUTUBE ? makeCard('youtube') : makeCard('legacy', '');
 const PreferencesPage = () => (
   <Fragment>
-    <h4 className="mt-4">Sharing Preferences</h4>
-    <p>
-      You have control over what you share with this project. To change what data you wish to share,
-      check or uncheck the box to enable or disable sharing that type of data.
-    </p>
+    <h4 className="mt-4">{chrome.i18n.getMessage('prefs_0')}</h4>
+    <p>{chrome.i18n.getMessage('prefs_1')}</p>
     <div>
       <Deck>
         {makeCard('general')}

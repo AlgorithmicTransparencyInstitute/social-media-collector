@@ -2,7 +2,7 @@ const GenerateJsonFile = require('generate-json-file-webpack-plugin');
 
 const FB_MATCHES = ['*://*.facebook.com/*'];
 const FB_EXCLUDES = ['*://*.facebook.com/ads/archive*', '*://*.facebook.com/ads/library*'];
-const YT_MATCHES = ['*://*.youtube.com/*'];
+const YT_MATCHES = ['*://www.youtube.com/*'];
 const BASE_MANIFEST = {
   manifest_version: 2,
   homepage_url: 'https://github.com/AlgorithmicTransparencyInstitute/social-media-collector',
@@ -58,6 +58,7 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
     }
   ];
 
+  // Used for Chrome.
   const baseManifest = {
     ...BASE_MANIFEST,
     name: config.name,
@@ -65,6 +66,7 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
     description: config.description,
     version: config.version,
     version_name: versionName,
+    default_locale: 'en',
     browser_action: {
       ...BASE_MANIFEST.browser_action,
       default_title: config.title,

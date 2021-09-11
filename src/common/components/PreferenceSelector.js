@@ -16,7 +16,7 @@ const PreferenceSelector = ({ label, options, storageKey }) => {
     <div className="pt-3">
       <label className="form-label">{label}</label>
       <select id={storageKey} className="form-control" onChange={savePreference} value={selected}>
-        <option value="">Choose...</option>
+        <option value="">{chrome.i18n.getMessage('prefselector_0')}...</option>
         {buildOptions(options)}
       </select>
     </div>

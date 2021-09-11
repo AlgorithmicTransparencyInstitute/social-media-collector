@@ -5,7 +5,7 @@ import Archive from '../components/Archive';
 const ArchivePage = () => (
   <Fragment>
     <header>
-      <h1>My Archive</h1>
+      <h1>{chrome.i18n.getMessage('archive_0')}</h1>
     </header>
     <ConsentAwareView whenGrantedIs="none">
       <p className="introduction">

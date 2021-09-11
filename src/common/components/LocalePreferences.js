@@ -12,16 +12,24 @@ const LocalePreferences = () => (
   <Fragment>
     <PreferenceSelector
       options={toArray(COUNTRIES)}
-      label="Your Country"
+      label={chrome.i18n.getMessage('prefs_10')}
       storageKey={PREF_COUNTRY}
     />
     <PreferenceSelector
       options={toArray(LANGUAGES)}
-      label="Your Language"
+      label={chrome.i18n.getMessage('prefs_11')}
       storageKey={PREF_LANGUAGE}
     />
-    <PreferenceSelector options={toArray(AGES)} label="Age" storageKey={PREF_AGE} />
-    <PreferenceSelector options={toArray(GENDERS)} label="Gender" storageKey={PREF_GENDER} />
+    <PreferenceSelector
+      options={toArray(AGES)}
+      label={chrome.i18n.getMessage('prefs_12')}
+      storageKey={PREF_AGE}
+    />
+    <PreferenceSelector
+      options={toArray(GENDERS)}
+      label={chrome.i18n.getMessage('prefs_13')}
+      storageKey={PREF_GENDER}
+    />
   </Fragment>
 );
 LocalePreferences.displayName = 'Locale preferences';
