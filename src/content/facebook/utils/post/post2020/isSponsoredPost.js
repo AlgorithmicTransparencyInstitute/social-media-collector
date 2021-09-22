@@ -18,6 +18,7 @@ const LINK = ':scope a[role="link"],:scope div[role="button"],:scope [aria-label
 // I used, I found only 3 aria-labelledby elements that we need to go through.
 const isSponsoredPost = function(el, sponsorStr = 'Sponsored') {
   var result = isSponsoredTest1(el, sponsorStr) || isSponsoredTest2(el, sponsorStr);
+  result = result || isSponsoredTest3(el, sponsorStr);
   // Because FB breaks the isSponsoredPost code often, I'm leaving this
   // console.log in to help future debugging.
   // console.debug('>> isSponsoredPost', el, result);
@@ -56,6 +57,47 @@ function isSponsoredTest2(element, sponsorStr = 'Sponsored') {
       );
     })
   );
+}
+
+// Whether el2 contains el1.
+function contains(el1, el2) {
+  var rect1 = el1.getBoundingClientRect();
+  var rect2 = el2.getBoundingClientRect();
+
+  return (
+    rect2.top <= rect1.top &&
+    rect1.top <= rect2.bottom &&
+    rect2.top <= rect1.bottom &&
+    rect1.bottom <= rect2.bottom &&
+    rect2.left <= rect1.left &&
+    rect1.left <= rect2.right &&
+    rect2.left <= rect1.right &&
+    rect1.right <= rect2.right
+  );
+}
+
+// Then we try the usual way of finding Sponsor text in the FB Post itself.
+function isSponsoredTest3(element, sponsorStr = 'Sponsored') {
+  const els = element.querySelectorAll(LINK);
+  for (const el of els) {
+    // Try to bypass obfuscated elements by only taking the spans that are
+    // within the original element.
+    var fullstring = '';
+    var spans = el.querySelectorAll('span');
+    for (const span of spans) {
+      if (span.firstChild && contains(span, el)) {
+        var add = span.firstChild.nodeValue;
+        if (add === null) {
+          continue;
+        }
+        fullstring += add;
+      }
+    }
+    if (fullstring === sponsorStr) {
+      return true;
+    }
+  }
+  return false;
 }
 
 export default isSponsoredPost;
