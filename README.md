@@ -78,7 +78,7 @@ Both of the above scripts will generate eight output folders named in the format
 You can specify which `browser`, `config`, and `build` via command line params. For example to only build the `chrome-std-debug` version run:
 
 ```sh
-npm run build -- --env browser=chrome --env config=std --env build=debug
+npm run build -- --env browser=chrome --env config=std --env build=debug --env file=./nyu-build-config.js
 ```
 
 To specify the correct backend to connect to, supply an `--env api=` param.

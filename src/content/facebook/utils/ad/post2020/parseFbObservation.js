@@ -42,11 +42,16 @@ function fbNumStrToInt(s) {
 
 // Taken from https://stackoverflow.com/a/494348
 function newparser(htmlString) {
+
+  // // TODO: this code block only used for running unit tests from CLI.
   // if (isNodeJS()) {
   //   var jsdom = require('jsdom');
-  //   var parser = (new jsdom.JSDOM(htmlString)).window.document;
+  //   var dom = (new jsdom.JSDOM(htmlString))
+  //   var parser = dom.window.document;
+  //   parser.jsdom = dom;
   //   return parser;
   // }
+
   var div = document.createElement('div');
   div.innerHTML = htmlString.trim();
 
@@ -331,6 +336,26 @@ function process_waist_targeting_data(item) {
   return waist_records;
 }
 
+// Removes comments from HTML of Ad. Returns a new HTML.
+function dont_collect_comments(html) {
+  var parser = newparser(html);
+  var A = parser.querySelectorAll('a');
+  for (let a of A) {
+    if (a.href.indexOf('comment_id') < 0) {
+     continue;
+    }
+    // Find closest <li> and kill it.
+    var li = a.closest('li');
+    if (li.parentNode !== null) {
+      li.parentNode.removeChild(li);
+    }
+  }
+  if (isNodeJS()) {
+    return parser.jsdom.serialize();
+  }
+  return parser.outerHTML;
+}
+
 // This is all from parse_facebook_observation.py 'process_facebook_item'.
 function process_facebook_item(item) {
   // Initialize item data dict for insertion into observations database table.
@@ -406,7 +431,6 @@ function process_facebook_item(item) {
   // Create Ad Record for insertion into the ads table
   var ad_data = {};
   ad_data['id'] = observation_data['ad_id'];
-  ad_data['html'] = item.payload.contentHtml;
   ad_data['images'] = getimgsrcs(item_data['ad_images_metadata']);
   ad_data['alt_text'] = "";
   if (item_data.alt_text) { ad_data.alt_text = item_data.alt_text; }
@@ -476,6 +500,13 @@ function process_facebook_item(item) {
 
   //insert_ad(ad_data,conn);
 
+  // Remove parser before saving to browser or sending to server.
+  item.parser = {};
+
+  // Remove comments before using observation to local storage or server.
+  item.payload.contentHtml = dont_collect_comments(item.payload.contentHtml);
+  ad_data['html'] = item.payload.contentHtml;
+
   return {item_data, ad_data, waist_records};
 }
 
@@ -492,23 +523,18 @@ function process_fb_observation(observation) {
   return parsed_observations;
 }
 
+//-----------------------------------------------------------------------------
+// Test code, only used when run from CLI.
+//-----------------------------------------------------------------------------
+
 function test_observation(testcase) {
   console.log(JSON.stringify(process_fb_observation(testcase), null, 2));
 }
 
-function main(testcases) {
-  // test_observation(testcases[0]);
-  // test_observation(testcases[1]);
-  // test_observation(testcases[2]);
-  // test_observation(testcases[3]);
-  // test_observation(testcases[4]);
-  test_observation(testcases[5]);
-  // test_observation(testcases[6]);
-}
-
-// // Run only in nodejs.
-// // TODO: needs to import the files from "tests/test_observations/*.json" instead.
-// if (isNodeJS()) {
+// // NOTE: sorry this must be commented out or else node compiler is going to
+// // try to dereference the requires when building the chrome extension.
+//
+// function test_suite_observations() {
 //   var testcases = [
 //     // Sorry didn't take notes for this one. This is from running the parser.
 //     // Has 7 comments, 2 shares.
@@ -552,7 +578,39 @@ function main(testcases) {
 //
 //     require('./obs7.json'),
 //   ];
-//   main(testcases);
+//
+//   // test_observation(testcases[0]);
+//   // test_observation(testcases[1]);
+//   // test_observation(testcases[2]);
+//   // test_observation(testcases[3]);
+//   // test_observation(testcases[4]);
+//   test_observation(testcases[5]);
+//   // test_observation(testcases[6]);
 // }
+
+// function test_remove_comments() {
+//   var fs = require("fs");
+//   // NOTE: this test is mostly done by eyeballing for now. Eyeball output
+//   // to make sure it has no comments.
+//
+//   // // test1 comments
+//   // // * `Lol they really trying to compare themselves to the sony xm4's xD`
+//   // // * `“You aren’t compared to xm4s” says a bunch of people that never bought Anker headphones lol`
+//   // var html = fs.readFileSync('t/test1.html').toString();
+//
+//   // test2 comments
+//   // * Hmmm... since Google is hosting the ad, how in the heck could this software prevent a 3rd party bot from clicking on it? It would have to integrate with Google somehow...
+//   // * KJ Eliot and it’s a nice business model. I mean nobody can verify if this service is working, working too much (over blocking) or on vacation 🤷🏻‍♂️. You activate it and see a change in conversion rates and now you try to isolate the relationships. Tip...
+//   // * We are going to give it a try for a few months.
+//   var html = fs.readFileSync('t/test2.html').toString();
+//
+//   console.log(dont_collect_comments(html));
+// }
+
+// Run only in nodejs.
+// TODO: needs to import the files from "tests/test_observations/*.json" instead.
+if (isNodeJS()) {
+  test_remove_comments();
+}
 
 export default process_fb_observation;
