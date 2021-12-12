@@ -346,7 +346,7 @@ function dont_collect_comments(html) {
   var parser = newparser(html);
   var A = parser.querySelectorAll('a');
   for (let a of A) {
-    if (a.href.indexOf('comment_id') < 0) {
+    if (!a.href || a.href.indexOf('comment_id') < 0) {
      continue;
     }
     // Find closest <li> and kill it.
@@ -354,9 +354,6 @@ function dont_collect_comments(html) {
     if (li.parentNode !== null) {
       li.parentNode.removeChild(li);
     }
-  }
-  if (isNodeJS()) {
-    return parser.jsdom.serialize();
   }
   return parser.outerHTML;
 }
@@ -630,8 +627,8 @@ function main(testcases) {
 
 // Run only in nodejs.
 // TODO: needs to import the files from "tests/test_observations/*.json" instead.
-if (isNodeJS()) {
-  test_remove_comments();
-}
+// if (isNodeJS()) {
+//   test_remove_comments();
+// }
 
 export default process_fb_observation;
