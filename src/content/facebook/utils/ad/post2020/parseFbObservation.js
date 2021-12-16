@@ -361,6 +361,7 @@ function process_facebook_item(item) {
   // Initialize item data dict for insertion into observations database table.
   var item_data = {};
   var observation_data = {};
+  var ad_data = {};
   
   // Remove comments before using observation to local storage or server.
   item.payload.contentHtml = dont_collect_comments(item.payload.contentHtml);
@@ -433,7 +434,6 @@ function process_facebook_item(item) {
   bep.extract_ft_values(item);
 
   // Create Ad Record for insertion into the ads table
-  var ad_data = {};
   ad_data['id'] = observation_data['ad_id'];
   ad_data['images'] = getimgsrcs(item_data['ad_images_metadata']);
   ad_data['alt_text'] = "";
