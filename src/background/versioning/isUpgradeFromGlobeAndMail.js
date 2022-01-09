@@ -9,17 +9,19 @@ const isUpgradeFromGlobeAndMail = version => {
   // has the user already accepted the terms for the current version?
   if (version) return false;
 
-  // look for a 'redux' object in localStorage
-  const redux = localStorage.getItem('redux');
-  if (!redux) return false;
-
-  try {
-    const { terms } = JSON.parse(redux);
-    return Boolean(terms);
-  } catch (err) {
-    console.error(err);
-    return false;
-  }
+  return false;
+  // TODO: this section is not valid in manifest v3, b/c localStorage is not defined.
+  // // look for a 'redux' object in localStorage
+  // const redux = localStorage.getItem('redux');
+  // if (!redux) return false;
+  //
+  // try {
+  //   const { terms } = JSON.parse(redux);
+  //   return Boolean(terms);
+  // } catch (err) {
+  //   console.error(err);
+  //   return false;
+  // }
 };
 
 export default isUpgradeFromGlobeAndMail;

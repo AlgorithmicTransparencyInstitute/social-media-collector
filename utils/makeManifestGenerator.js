@@ -71,7 +71,7 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
     },
     permissions,
     web_accessible_resources: [{
-      "resources": [ 'webpage/*', 'assets/runs_on_fb.js' ],
+      "resources": [ 'webpage/*', 'assets/runs_on_fb.js', 'assets/runs_on_yt.js' ],
       "matches": ["<all_urls>"],
       "extension_ids": []
     }],
@@ -99,7 +99,7 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
     background: {
       scripts: ['bundle.js']
     },
-    web_accessible_resources: ['webpage/*', 'assets/runs_on_fb.js'],
+    web_accessible_resources: ['webpage/*', 'assets/runs_on_fb.js', 'assets/runs_on_yt.js'],
     content_security_policy: "script-src 'self' 'unsafe-eval'; object-src 'self'"
   };
 
