@@ -8,7 +8,7 @@ import registerUploadListener from './utils/registerUploadListener';
 
 // exported for testing purposes
 export const start = async () => {
-  await startVersioning();
+  startVersioning();
   startMessaging();
   registerUploadListener();
   await startUi();

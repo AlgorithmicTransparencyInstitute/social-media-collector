@@ -2,8 +2,12 @@ export const closePage = () => {
   window.close();
 };
 
+export const getPageURL = function(to) {
+  return chrome.runtime.getURL(`webpage/index.html#${to}`);
+};
+
 export const openPage = to => {
-  const url = chrome.runtime.getURL(`webpage/index.html#${to}`);
+  const url = getPageURL(to);
 
   return () => {
     if (typeof window === 'undefined') {

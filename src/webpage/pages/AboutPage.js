@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
 
-console.log('ag1', chrome.i18n); // TODO: rm.
-
 const AboutPage = () => (
   <Fragment>
     <header>
