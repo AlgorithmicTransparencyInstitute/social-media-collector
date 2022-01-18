@@ -80,11 +80,8 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
     manifest_version: 2,
     browser_action: {
       default_popup: 'toolbar/index.html',
-      default_icon: {
-        '16': 'images/icon16.png',
-        '24': 'images/icon24.png',
-        '32': 'images/icon32.png'
-      }
+      default_icon: "assets/icon128.png",
+      default_title: "Ad Observer"
     },
     applications: {
       gecko: {
