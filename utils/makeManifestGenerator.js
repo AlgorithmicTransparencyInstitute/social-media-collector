@@ -55,11 +55,6 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
     version: config.version,
     version_name: versionName,
     default_locale: 'en',
-    action: {
-      default_popup: 'toolbar/index.html',
-      default_title: config.title,
-      default_icon: `assets/${config.defaultIcon}`
-    },
     homepage_url: config.homepage,
     content_scripts: [
       ...FACEBOOK_CONTENT_SCRIPT,
@@ -103,9 +98,18 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
     content_security_policy: "script-src 'self' 'unsafe-eval'; object-src 'self'"
   };
 
+  const chromeManifest = {
+    ...baseManifest,
+    action: {
+      default_popup: 'toolbar/index.html',
+      default_title: config.title,
+      default_icon: `assets/${config.defaultIcon}`
+    },
+  };
+
   return new GenerateJsonFile({
     filename: 'manifest.json',
-    value: isFirefox ? firefoxManifest : baseManifest
+    value: isFirefox ? firefoxManifest : chromeManifest
   });
 };
 
