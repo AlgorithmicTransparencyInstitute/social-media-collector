@@ -55,11 +55,6 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
     version: config.version,
     version_name: versionName,
     default_locale: 'en',
-    action: {
-      default_popup: 'toolbar/index.html',
-      default_title: config.title,
-      default_icon: `assets/${config.defaultIcon}`
-    },
     homepage_url: config.homepage,
     content_scripts: [
       ...FACEBOOK_CONTENT_SCRIPT,
@@ -71,7 +66,7 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
     },
     permissions,
     web_accessible_resources: [{
-      "resources": [ 'webpage/*', 'assets/runs_on_fb.js' ],
+      "resources": [ 'webpage/*', 'assets/runs_on_fb.js', 'assets/runs_on_yt.js' ],
       "matches": ["<all_urls>"],
       "extension_ids": []
     }],
@@ -85,11 +80,8 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
     manifest_version: 2,
     browser_action: {
       default_popup: 'toolbar/index.html',
-      default_icon: {
-        '16': 'images/icon16.png',
-        '24': 'images/icon24.png',
-        '32': 'images/icon32.png'
-      }
+      default_icon: "assets/icon128.png",
+      default_title: "Ad Observer"
     },
     applications: {
       gecko: {
@@ -99,13 +91,22 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
     background: {
       scripts: ['bundle.js']
     },
-    web_accessible_resources: ['webpage/*', 'assets/runs_on_fb.js'],
+    web_accessible_resources: ['webpage/*', 'assets/runs_on_fb.js', 'assets/runs_on_yt.js'],
     content_security_policy: "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  };
+
+  const chromeManifest = {
+    ...baseManifest,
+    action: {
+      default_popup: 'toolbar/index.html',
+      default_title: config.title,
+      default_icon: `assets/${config.defaultIcon}`
+    },
   };
 
   return new GenerateJsonFile({
     filename: 'manifest.json',
-    value: isFirefox ? firefoxManifest : baseManifest
+    value: isFirefox ? firefoxManifest : chromeManifest
   });
 };
 
