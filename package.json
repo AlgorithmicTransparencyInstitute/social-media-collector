@@ -35,6 +35,7 @@
     "dompurify": "^2.2.6",
     "https-browserify": "^1.0.0",
     "jest-cli": "^26.6.3",
+    "node-html-parser": "^4.1.4",
     "os-browserify": "^0.3.0",
     "path-browserify": "^0.0.1",
     "pluralise": "^1.0.1",

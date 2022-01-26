@@ -8,7 +8,7 @@ const send = async msg =>
   new Promise(resolve =>
     chrome.runtime.sendMessage(msg, response => {
       if (chrome.runtime.lastError) {
-        console.error(chrome.runtime.lastError.message);
+        console.error(msg, chrome.runtime.lastError.message);
       }
       resolve(response);
     })

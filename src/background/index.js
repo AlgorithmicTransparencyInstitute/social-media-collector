@@ -8,11 +8,14 @@ import registerUploadListener from './utils/registerUploadListener';
 
 // exported for testing purposes
 export const start = async () => {
-  await startVersioning();
+  startVersioning();
   startMessaging();
   registerUploadListener();
   await startUi();
 };
 
 /* istanbul ignore next */
-document.addEventListener('DOMContentLoaded', start);
+// In a service worker, we can just call start() immediately instead of waiting
+// for DOM.
+// document.addEventListener('DOMContentLoaded', start);
+start();

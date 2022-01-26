@@ -42,15 +42,20 @@ function fbNumStrToInt(s) {
 
 // Taken from https://stackoverflow.com/a/494348
 function newparser(htmlString) {
+  if (isNodeJS()) { // Or service worker apparently. No 'document' in worker.
 
-  // // TODO: this code block only used for running unit tests from CLI.
-  // if (isNodeJS()) {
-  //   var jsdom = require('jsdom');
-  //   var dom = (new jsdom.JSDOM(htmlString))
-  //   var parser = dom.window.document;
-  //   parser.jsdom = dom;
-  //   return parser;
-  // }
+    // // JSDOM version. Far too bloated (bundle.js blows up 1.7 MB => 18 MB???).
+    // // This is kept in because it is what I first developed the test cases on.
+    // // So I know this produces reliable output.
+    // console.log('using jsdom');
+    // var jsdom = require('jsdom');
+    // var parser = (new jsdom.JSDOM(htmlString)).window.document;
+    // return parser;
+
+    var lib = require('node-html-parser');
+    var parser = new lib.parse(htmlString);
+    return parser;
+  }
 
   var div = document.createElement('div');
   div.innerHTML = htmlString.trim();
@@ -96,7 +101,7 @@ const BrowserExtensionParser = {
     var i = 0;
     for (let el of pfb) {
       if (el.innerText.toLowerCase().trim() === "sponsored") {
-        return pfb[i+1].innerText;
+        return pfb[i+1].textContent;
       }
       ++i;
     }
@@ -167,7 +172,7 @@ const BrowserExtensionParser = {
     */
     var user_content_wrapper = item.parser.querySelectorAll("div.userContentWrapper");
     if (user_content_wrapper.length) {
-        return user_content_wrapper[0].innerText;
+        return user_content_wrapper[0].textContent;
     }
     //logging.warning("Unable to parse the user content or it is not present.")
     return '';
@@ -341,7 +346,7 @@ function dont_collect_comments(html) {
   var parser = newparser(html);
   var A = parser.querySelectorAll('a');
   for (let a of A) {
-    if (a.href.indexOf('comment_id') < 0) {
+    if (!a.href || a.href.indexOf('comment_id') < 0) {
      continue;
     }
     // Find closest <li> and kill it.
@@ -349,9 +354,6 @@ function dont_collect_comments(html) {
     if (li.parentNode !== null) {
       li.parentNode.removeChild(li);
     }
-  }
-  if (isNodeJS()) {
-    return parser.jsdom.serialize();
   }
   return parser.outerHTML;
 }
@@ -389,12 +391,12 @@ function process_facebook_item(item) {
   item_data['user_content_wrapper'] = bep.get_user_content_wrapper(item)
 
   // Parse Ad Images (Returns a list of objects)
-  item_data['ad_images_metadata'] = bep.get_story_attachment_image(item)
+  var ad_images_metadata = bep.get_story_attachment_image(item)
 
   // Fetch Ad Images data
   var images_data = []
   item_data['alt_text'] = ""
-  for (let image of item_data['ad_images_metadata']) {
+  for (let image of ad_images_metadata) {
     var src = image.getAttribute('src');
     // orig was 'alt_text'. Doublecheck 'alt' was the right version.
     if (image.getAttribute('alt')) {
@@ -431,7 +433,8 @@ function process_facebook_item(item) {
   // Create Ad Record for insertion into the ads table
   var ad_data = {};
   ad_data['id'] = observation_data['ad_id'];
-  ad_data['images'] = getimgsrcs(item_data['ad_images_metadata']);
+  ad_data['html'] = item.payload.contentHtml;
+  ad_data['images'] = getimgsrcs(ad_images_metadata);
   ad_data['alt_text'] = "";
   if (item_data.alt_text) { ad_data.alt_text = item_data.alt_text; }
   // Get advertiser and thumbnail data if present
@@ -500,12 +503,13 @@ function process_facebook_item(item) {
 
   //insert_ad(ad_data,conn);
 
-  // Remove parser before saving to browser or sending to server.
-  item.parser = {};
-
   // Remove comments before using observation to local storage or server.
   item.payload.contentHtml = dont_collect_comments(item.payload.contentHtml);
   ad_data['html'] = item.payload.contentHtml;
+
+  // nullify item.parser, so that when JSON.stringify is called on 'item' at
+  // the time of sending POST AJAX, we don't hit a circular JSON loop.
+  item.parser = null;
 
   return {item_data, ad_data, waist_records};
 }
@@ -528,13 +532,27 @@ function process_fb_observation(observation) {
 //-----------------------------------------------------------------------------
 
 function test_observation(testcase) {
-  console.log(JSON.stringify(process_fb_observation(testcase), null, 2));
+  // console.dir is better than console.log for purpose of printing out *all*
+  // levels of the object.
+  console.dir(process_fb_observation(testcase), {depth: null});
+
+  // // This case is still useful to make sure JSON.stringify() works on result.
+  // console.log(JSON.stringify(process_fb_observation(testcase), null, 2));
 }
 
-// // NOTE: sorry this must be commented out or else node compiler is going to
-// // try to dereference the requires when building the chrome extension.
-//
-// function test_suite_observations() {
+function main(testcases) {
+  // test_observation(testcases[0]);
+  // test_observation(testcases[1]);
+  // test_observation(testcases[2]);
+  // test_observation(testcases[3]);
+  // test_observation(testcases[4]);
+  // test_observation(testcases[5]);
+  // test_observation(testcases[6]);
+}
+
+// // Run only in nodejs.
+// // TODO: needs to import the files from "tests/test_observations/*.json" instead.
+// if (isNodeJS()) {
 //   var testcases = [
 //     // Sorry didn't take notes for this one. This is from running the parser.
 //     // Has 7 comments, 2 shares.
@@ -609,8 +627,8 @@ function test_observation(testcase) {
 
 // Run only in nodejs.
 // TODO: needs to import the files from "tests/test_observations/*.json" instead.
-if (isNodeJS()) {
-  test_remove_comments();
-}
+// if (isNodeJS()) {
+//   test_remove_comments();
+// }
 
 export default process_fb_observation;
