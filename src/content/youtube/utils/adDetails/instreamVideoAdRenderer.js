@@ -1,8 +1,8 @@
 import extractAdReasons from '../extractAdReasons';
 import getLinearAdAdvertiserUrl from '../getLinearAdAdvertiserUrl';
 
-const instreamVideoAdRenderer = ad => {
-  const { reasons, title } = extractAdReasons(
+const instreamVideoAdRenderer = async ad => {
+  const { reasons, title } = await extractAdReasons(
     ad.instreamVideoAdRenderer.playerOverlay.instreamAdPlayerOverlayRenderer.adInfoRenderer
       .adHoverTextButtonRenderer
   );

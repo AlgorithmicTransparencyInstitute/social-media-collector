@@ -1,8 +1,8 @@
 import extractAdReasons from '../extractAdReasons';
 
-const imageCompanionAdRenderer = ({ imageCompanionAdRenderer: ad }) => {
+const imageCompanionAdRenderer = async ({ imageCompanionAdRenderer: ad }) => {
   const creative = ad.image.thumbnail.thumbnails[0].url;
-  const { reasons, title } = extractAdReasons(ad.adInfoRenderer.adHoverTextButtonRenderer);
+  const { reasons, title } = await extractAdReasons(ad.adInfoRenderer.adHoverTextButtonRenderer);
   const adId = ad.adVideoId;
 
   return {

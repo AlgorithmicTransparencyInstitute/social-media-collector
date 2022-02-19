@@ -1,7 +1,7 @@
 /* eslint-disable no-prototype-builtins */
 import extractAdReasons from '../extractAdReasons';
 
-const videowallIframeCompanionAdRenderer = ({ videowallIframeCompanionAdRenderer: ad }) => {
+const videowallIframeCompanionAdRenderer = async ({ videowallIframeCompanionAdRenderer: ad }) => {
   const [advertiser, destUrl] = ad.hasOwnProperty('onClickCommands')
     ? [new URL(ad.onClickCommands[0].loggingUrls[0].baseUrl).searchParams.get('adurl')]
     : ad.hasOwnProperty('clickthroughEndpoint') &&
@@ -14,7 +14,7 @@ const videowallIframeCompanionAdRenderer = ({ videowallIframeCompanionAdRenderer
         ]
       : [null, ad.clickthroughEndpoint.urlEndpoint]
     : [];
-  const { reasons, title } = extractAdReasons(ad.adInfoRenderer.adHoverTextButtonRenderer);
+  const { reasons, title } = await extractAdReasons(ad.adInfoRenderer.adHoverTextButtonRenderer);
   const adId = ad.adVideoId;
 
   return {

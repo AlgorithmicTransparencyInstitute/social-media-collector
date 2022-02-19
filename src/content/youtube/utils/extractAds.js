@@ -10,7 +10,7 @@ export const PATHS = [
 ];
 export const URLS = PATHS.map(path => 'https://www.youtube.com' + path);
 
-const extractAds = ({ body, url, hostUrl }, { shareWatched, shareAds, shareAdTargeting }) => {
+const extractAds = async ({ body, url, hostUrl }, { shareWatched, shareAds, shareAdTargeting }) => {
   const [MIDROLL_URL, WATCH_URL, AD_BREAK_URL, PLAYER_URL] = URLS;
   const hostVideo = shareWatched ? { id: extractVideoId(hostUrl), url: hostUrl } : undefined;
 
@@ -20,22 +20,30 @@ const extractAds = ({ body, url, hostUrl }, { shareWatched, shareAds, shareAdTar
   }
 
   if (url.includes(WATCH_URL)) {
-    if (!JSON.stringify(body).includes('adReasons')) return { hostVideo };
+    if (!JSON.stringify(body).includes('adPlacements')) return { hostVideo };
     console.debug('found "watch" ad', url, 'in', hostUrl);
-    if (body.length < 4) {
+    if (body.length && body.length < 4) {
       console.debug('count not extract ad from body', body);
       return { hostVideo };
     }
 
-    const { author, title } = body[2].player && body[2].player.args ? body[2].player.args : {};
+    let playerResponse, player;
+    if (body.length && body.length >= 4) {
+      playerResponse = body[3].playerResponse;
+      player = body[2].player && body[2].player.args ? body[2].player.args : {};
+    } else {
+      playerResponse = body;
+      player = body.videoDetails;
+    }
+
+    const { author, title } = player;
     const {
       adPlacements,
       videoDetails: { videoId: id, channelId, author: vAuthor, title: vTitle }
-    } = body[3].playerResponse;
+    } = playerResponse;
 
-    const adPlc = extractAdPlacements(adPlacements);
+    const adPlc = await extractAdPlacements(adPlacements);
     const ads = shareAdTargeting ? adPlc : adPlc.map(trimTargeting);
-
     return {
       ads,
       hostVideo: shareWatched
@@ -51,7 +59,7 @@ const extractAds = ({ body, url, hostUrl }, { shareWatched, shareAds, shareAdTar
   }
 
   if (url.includes(PLAYER_URL)) {
-    if (!JSON.stringify(body).includes('adReasons')) return { hostVideo };
+    if (!JSON.stringify(body).includes('adPlacements')) return { hostVideo };
     console.debug('found "player" ad', url, 'in', hostUrl);
 
     const {
@@ -63,9 +71,8 @@ const extractAds = ({ body, url, hostUrl }, { shareWatched, shareAds, shareAdTar
       title: vTitle
     } = body.videoDetails ? body.videoDetails : {};
 
-    const adPlc = extractAdPlacements(body.adPlacements);
+    const adPlc = await extractAdPlacements(body.adPlacements);
     const ads = shareAdTargeting ? adPlc : adPlc.map(trimTargeting);
-
     return {
       ads,
       hostVideo: shareWatched
@@ -82,7 +89,7 @@ const extractAds = ({ body, url, hostUrl }, { shareWatched, shareAds, shareAdTar
 
   if (url.includes(MIDROLL_URL) || url.includes(AD_BREAK_URL)) {
     console.debug('found "mid roll" ad', url, 'in', hostUrl);
-    const adPlc = extractAdPlacements(body.playerAds);
+    const adPlc = await extractAdPlacements(body.playerAds);
     const ads = shareAdTargeting ? adPlc : adPlc.map(trimTargeting);
 
     return { ads, hostVideo };

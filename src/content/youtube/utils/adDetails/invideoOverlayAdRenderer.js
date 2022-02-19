@@ -1,7 +1,7 @@
 /* eslint-disable no-prototype-builtins */
 import extractAdReasons from '../extractAdReasons';
 
-const invideoOverlayAdRenderer = ({ invideoOverlayAdRenderer: ad }) => {
+const invideoOverlayAdRenderer = async ({ invideoOverlayAdRenderer: ad }) => {
   const [creative, destUrl] = ad.contentSupportedRenderer.hasOwnProperty(
     'imageOverlayAdContentRenderer'
   )
@@ -18,7 +18,7 @@ const invideoOverlayAdRenderer = ({ invideoOverlayAdRenderer: ad }) => {
         ).searchParams.get('adurl')
       ]
     : [];
-  const { reasons, title } = extractAdReasons(ad.adInfoRenderer.adHoverTextButtonRenderer);
+  const { reasons, title } = await extractAdReasons(ad.adInfoRenderer.adHoverTextButtonRenderer);
   // TODO: work out where to find the adId.
   const adId = null;
 
