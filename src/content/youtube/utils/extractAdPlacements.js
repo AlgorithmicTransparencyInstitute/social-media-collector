@@ -4,7 +4,7 @@ import arrayOfOne from './arrayOfOne';
 import * as ADS from './ads';
 import * as AD_DETAILS from './adDetails';
 
-const parseAdPlacements = async adPlacements => {
+const parseAdPlacements = async (adPlacements, vidTitle) => {
   if (!adPlacements) return;
 
   const ads = [];
@@ -22,7 +22,7 @@ const parseAdPlacements = async adPlacements => {
         const adKey = Object.keys(AD_DETAILS).find(key => ad.hasOwnProperty(key));
         /* istanbul ignore else */
         if (adKey) {
-          ads.push(await AD_DETAILS[adKey](ad));
+          ads.push(await AD_DETAILS[adKey](ad, vidTitle));
         } else {
           console.debug('unknown ad type', ad);
         }

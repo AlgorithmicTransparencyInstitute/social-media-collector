@@ -10,8 +10,7 @@ const extractAdReasons = async ({ button: { buttonRenderer } }) => {
     // the JSON, so we can just grab it from there.
     const adInfo = buttonRenderer[endpointType].adInfoDialogEndpoint.dialog.adInfoDialogRenderer;
     const reasons = adInfo.adReasons.map(l => l.simpleText);
-    const title = adInfo.title.simpleText;
-    return { reasons, title };
+    return { reasons };
   }
 
   // What's happening at a high level is that the adReasons are stored as HTML
@@ -28,10 +27,7 @@ const extractAdReasons = async ({ button: { buttonRenderer } }) => {
   for (const node of reasonsHtml) {
     reasons.push(node.innerText);
   }
-  const title = 'This ad may be based on:';
-  // Note that 'title' is NOT the ad's headline. We are already getting the
-  // ad headline elsewhere.
-  return { reasons, title };
+  return { reasons };
 };
 
 export default extractAdReasons;

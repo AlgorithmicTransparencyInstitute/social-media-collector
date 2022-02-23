@@ -42,7 +42,7 @@ const extractAds = async ({ body, url, hostUrl }, { shareWatched, shareAds, shar
       videoDetails: { videoId: id, channelId, author: vAuthor, title: vTitle }
     } = playerResponse;
 
-    const adPlc = await extractAdPlacements(adPlacements);
+    const adPlc = await extractAdPlacements(adPlacements, title);
     const ads = shareAdTargeting ? adPlc : adPlc.map(trimTargeting);
     return {
       ads,
@@ -71,7 +71,7 @@ const extractAds = async ({ body, url, hostUrl }, { shareWatched, shareAds, shar
       title: vTitle
     } = body.videoDetails ? body.videoDetails : {};
 
-    const adPlc = await extractAdPlacements(body.adPlacements);
+    const adPlc = await extractAdPlacements(body.adPlacements, title);
     const ads = shareAdTargeting ? adPlc : adPlc.map(trimTargeting);
     return {
       ads,
@@ -89,7 +89,10 @@ const extractAds = async ({ body, url, hostUrl }, { shareWatched, shareAds, shar
 
   if (url.includes(MIDROLL_URL) || url.includes(AD_BREAK_URL)) {
     console.debug('found "mid roll" ad', url, 'in', hostUrl);
-    const adPlc = await extractAdPlacements(body.playerAds);
+    const adPlc = await extractAdPlacements(
+      body.playerAds,
+      'WARN: no vid title found for midroll ad'
+    );
     const ads = shareAdTargeting ? adPlc : adPlc.map(trimTargeting);
 
     return { ads, hostVideo };
