@@ -4,11 +4,11 @@ import arrayOfOne from './arrayOfOne';
 import * as ADS from './ads';
 import * as AD_DETAILS from './adDetails';
 
-const parseAdPlacements = adPlacements => {
+const parseAdPlacements = async (adPlacements, vidTitle) => {
   if (!adPlacements) return;
 
   const ads = [];
-  adPlacements.forEach(adPlacement => {
+  for (const adPlacement of adPlacements) {
     try {
       const { renderer } = adPlacement.adPlacementRenderer;
       const [key, ...keys] = Object.keys(renderer);
@@ -17,20 +17,21 @@ const parseAdPlacements = adPlacements => {
 
       const fn = typeof ADS[key] === 'function' ? ADS[key] : /* istanbul ignore next */ arrayOfOne;
 
-      fn(renderer).forEach(ad => {
+      const adRenderers = fn(renderer);
+      for (const ad of adRenderers) {
         const adKey = Object.keys(AD_DETAILS).find(key => ad.hasOwnProperty(key));
         /* istanbul ignore else */
         if (adKey) {
-          ads.push(AD_DETAILS[adKey](ad));
+          ads.push(await AD_DETAILS[adKey](ad, vidTitle));
         } else {
           console.debug('unknown ad type', ad);
         }
-      });
+      }
     } catch (err) /* istanbul ignore next */ {
       console.debug('error processing ad placement', adPlacement);
       console.error(err);
     }
-  });
+  }
   return ads.map(injectId);
 };
 
