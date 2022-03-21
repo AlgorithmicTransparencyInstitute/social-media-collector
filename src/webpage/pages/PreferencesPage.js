@@ -27,11 +27,6 @@ const YOUTUBE_PERMISSIONS = YOUTUBE_PERMISSION_KEYS.reduce(makePref, {});
 
 const checkboxen = (perms, props) => {
   return Object.keys(perms).map(perm => {
-    console.log(
-      'ag3',
-      chrome.i18n.getMessage(perm + '_label'),
-      chrome.i18n.getMessage(perm + '_hintText')
-    );
     const hintText = chrome.i18n.getMessage(perm + '_hintText'); // perms[perm].hintText
     const label = chrome.i18n.getMessage(perm + '_label'); // perms[perm].label
     return (
