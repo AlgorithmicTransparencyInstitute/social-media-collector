@@ -362,6 +362,12 @@ function dont_collect_comments(html) {
 function process_facebook_item(item) {
   // Initialize item data dict for insertion into observations database table.
   var item_data = {};
+  var observation_data = {};
+  var ad_data = {};
+  
+  // Remove comments before using observation to local storage or server.
+  item.payload.contentHtml = dont_collect_comments(item.payload.contentHtml);
+  ad_data['html'] = item.payload.contentHtml;
 
   let waist_records = process_waist_targeting_data(item);
 
@@ -412,7 +418,6 @@ function process_facebook_item(item) {
   //waist_targeting_data = process_waist_targeting_data(item)
 
   // Create Observation Record for insertion into the observations table
-  var observation_data = {};
   observation_data['item_id'] = item['itemId'];
   observation_data['ad_id'] = item['platformItemId'];
   observation_data['share_count'] = item_data['share_count'];
@@ -431,7 +436,6 @@ function process_facebook_item(item) {
   bep.extract_ft_values(item);
 
   // Create Ad Record for insertion into the ads table
-  var ad_data = {};
   ad_data['id'] = observation_data['ad_id'];
   ad_data['html'] = item.payload.contentHtml;
   ad_data['images'] = getimgsrcs(ad_images_metadata);
@@ -503,9 +507,11 @@ function process_facebook_item(item) {
 
   //insert_ad(ad_data,conn);
 
-  // Remove comments before using observation to local storage or server.
-  item.payload.contentHtml = dont_collect_comments(item.payload.contentHtml);
-  ad_data['html'] = item.payload.contentHtml;
+
+  // Remove parser before saving to browser or sending to server.
+  item.parser = {};
+
+
 
   // nullify item.parser, so that when JSON.stringify is called on 'item' at
   // the time of sending POST AJAX, we don't hit a circular JSON loop.
