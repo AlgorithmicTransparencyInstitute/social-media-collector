@@ -7,7 +7,7 @@ module.exports = (isDebug = false) => ({
   name: 'Ad Observer', // the extension name (uses what's in package.json as a default)
   title,
   description,
-  version: '3.2.9', // legacy build is v2.0+, this is better, so it's 3.0
+  version: '3.2.10', // legacy build is v2.0+, this is better, so it's 3.0
   language: 'eng',
   consentVersion, // if you change this, strange things might happen.
   extensionProviderId: 'nyu',
