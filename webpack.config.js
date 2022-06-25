@@ -65,6 +65,7 @@ const doIt = async (env = {}) => {
           toolbar,
           locales.en,
           locales.de,
+          locales.es,
           webpage
         ].forEach(fn => {
           buildDefs.push(fn(data, copyAssetFolder));
