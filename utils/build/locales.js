@@ -788,10 +788,8 @@ const locale_es = (data, copyAssetFolder) => {
           "message": "Ad Observer",
         },
         "appDesc": {
-          "message": "TODO",
-          // XXX english version
-          // "message": "Installing our browser plugin sends us the ads you see on Facebook and YouTube without compromising your privacy.",
-          // "description":"The description of the application, displayed in the web store."
+          "message": "La instalación de nuestro plugin para navegador nos envía los anuncios que usted ve en Facebook y YouTube sin comprometer su privacidad.",
+          "description":"The description of the application, displayed in the web store."
         },
 
         // Preferences page.
@@ -874,26 +872,25 @@ const locale_es = (data, copyAssetFolder) => {
           message: 'Diese Option zeigt zu Ihren Facebook-Posts die jeweils gesammelten Informationen an.',
         },
 
-
-        terms_0: {
+        terms_0: { // TODO
           message: 'Ich akzeptiere diese Nutzungsbedingungen.',
         },
-        terms_1: {
+        terms_1: { // TODO
           message: 'I accept the updated terms and conditions',
         },
-        terms_2: {
+        terms_2: { // TODO
           message: 'Sie müssen die oben genannten Nutzungsbedingungen akzeptieren, um die Browser-Erweiterung nutzen zu können.',
         },
-        terms_3: {
+        terms_3: { // TODO
           message: 'The above terms and conditions have been updated since you last agreed to them.',
         },
-        terms_4: {
+        terms_4: { // TODO
           message: 'Sie haben die oben genannten Bedingungen akzeptiert.',
         },
-        terms_5: {
-          message: 'Nutzungsbedingungen'
+        terms_5: { // DONE
+          message: 'Términos de uso'
         },
-        terms_html: {
+        terms_html: { // Mostly DONE. Couple para need TODO.
           message: `<style>
   p,h1,h4,h3,ul{
              margin: 2vmax;
@@ -910,52 +907,58 @@ const locale_es = (data, copyAssetFolder) => {
   }
 </style>
 
+// TODO
 <h4 style="margin-bottom: 12pt;">Danke, dass Sie Ad Observer installiert haben und uns dabei helfen, politische Online-Anzeigen zu beaufsichtigen.</h4>
-<p><span style="font-style:normal;">Diese Nutzungsbedingungen bilden eine rechtliche Vereinbarung zwischen Ihnen, dem Endnutzer („Nutzer” oder „Sie”) und der New York University („NYU”, „uns” oder „wir”) für die beschränkte Lizenz zur Nutzung der Ad Observer-Anwendung, die eine Webbrowser-Erweiterung, Computersoftware und elektronische Dokumentation („die Anwendung” oder „Ad Observer”) umfasst.</span></p>
 
-<h4><span style="font-style:italic;">Eigentum und Vertrieb</span></h4>
-<p><span style="font-style:normal;">Die Anwendung ist Eigentum und urheberrechtlich geschützt durch NYU. NYU gewährt Ihnen eine begrenzte, weltweite, nicht ausschließliche, gebührenfreie, widerrufliche und nicht kommerzielle Lizenz zum Herunterladen und Verwenden von Ad Observer. Ihre Lizenz zum Herunterladen und zur Nutzung der Anwendung überträgt keinen Titel und kein Eigentum an der Anwendung und ist nicht als Verkauf von Rechten an der Anwendung auszulegen.</span></p>
-<p><span style="font-style:normal;">Ad Observer kann frei verteilt werden, vorbehaltlich, aber nicht beschränkt auf die folgenden Bedingungen:</span></p>
+<p><span style="font-style:normal;">Los presentes Términos de uso constituyen un acuerdo jurídico entre usted (“usuario” o “usted”) y la New York University (“la NYU”, “nosotros” o “nos”), relativo a la licencia limitada de uso de la aplicación Ad Observer, que incluye una extensión del navegador web, el software informático y la documentación electrónica (“la Aplicación” o “Ad Observer”).</span></p>
+
+<h4><span style="font-style:italic;">Propiedad y distribución</span></h4>
+
+<p><span style="font-style:normal;">La Aplicación es propiedad de la NYU y está protegida por derechos de autor de la NYU. La NYU le otorga a usted una licencia limitada, mundial, no exclusiva, libre de regalías, revocable y no comercial para descargar y utilizar Ad Observer. La licencia que recibe para descargar y utilizar la Aplicación no le confiere titularidad o propiedad alguna sobre esta, y no debe interpretarse como la venta de ningún derecho sobre la Aplicación.</span></p>
+
+<p><span style="font-style:normal;">La distribución de Ad Observer puede realizarse gratuitamente, pero sujeto a las siguientes condiciones, entre otras:</span></p>
   <ul>
-    <li>Ohne die ausdrückliche schriftliche Zustimmung der NYU dürfen Sie die Anwendung oder Teile davon nicht an Dritte weitergeben;</li>
-    <li>wenn der Nutzer die Anwendung weitergeben möchte, muss er sich mit der NYU unter developers@adobserver.org in Verbindung setzen, um vor der Weitergabe eine schriftliche Genehmigung einzuholen;</li>
-    <li>der Nutzer darf die Anwendung nicht verkaufen oder weiterverkaufen;</li>
-    <li>der Nutzer darf die Anwendung nicht als Teil eines kommerziellen Pakets weitergeben;</li>
-    <li>der Nutzer darf die Anwendung nicht zur Unterstützung eines kommerziellen Dienstes verwenden oder verteilen;</li>
-    <li>Der Nutzer darf die Anwendung nicht verwenden oder verteilen, um jede Art von Gewinn generierenden Aktivitäten zu unterstützen, selbst wenn sie frei verteilt wird.</li>
+    <li>Salvo que usted cuente con el consentimiento expreso de la NYU, no puede distribuir la Aplicación, ni ninguna porción de esta, a ningún tercero.</li>
+    <li>Si el usuario desea distribuir la Aplicación, será necesario que se comunique con la NYU por correo electrónico a developers@adobserver.org para obtener el consentimiento por escrito previo a la distribución.</li>
+    <li>El usuario no puede vender ni revender la Aplicación.</li>
+    <li>El usuario no debe distribuir la Aplicación como parte de un paquete comercial.</li>
+    <li>El usuario no debe distribuir ni utilizar la Aplicación para brindar apoyo a un servicio comercial.</li>
+    <li>El usuario no debe distribuir ni utilizar la Aplicación para brindar apoyo a ningún tipo de actividad que genere ganancias, aunque se distribuya gratuitamente.</li>
   </ul>
 
-<h4><span style="font-style:italic;">Nutzerverhalten</span></h4>
-<p><span style="font-style:normal;">Es ist dem Nutzer strengstens untersagt und er erklärt sich damit einverstanden, die Anwendung oder jegliche Elemente, Teile oder Abschnitte davon, ohne die vorherige schriftliche Zustimmung von NYU nicht anzupassen, zu bearbeiten, zu ändern, zu modifizieren, zu transformieren, zu veröffentlichen, neu zu veröffentlichen, zu verteilen oder weiterzugeben. Sie erklären sich damit einverstanden, keine automatisierten Datenerfassungsmethoden, Data Mining, Roboter, Scraping oder andere Datenerfassungsmethoden jeglicher Art in der Anwendung zu verwenden.</span></p>
+<h4><span style="font-style:italic;">Comportamiento del usuario</span></h4>
+<p><span style="font-style:normal;">El usuario no podrá, bajo ninguna circunstancia, adaptar, editar, cambiar, modificar, transformar, publicar, volver a publicar, distribuir o redistribuir la Aplicación o cualquiera de los elementos, porciones o partes de ella —y se compromete a no hacerlo— sin el previo consentimiento por escrito de la NYU. Usted acuerda que no utilizará ningún método automatizado de recopilación de datos, minería de datos, robots, extracción o cualquier método de recopilación de datos de cualquier tipo en la Aplicación.</span></p>
 
-<h4><span style="font-style:italic;">Urheberrecht</span></h4>
-<p><span style="font-style:normal;">Die Anwendung und alle Rechte, insbesondere die Eigentumsrechte daran, sind Eigentum der NYU und durch Urheberrechtsgesetze und internationale Urheberrechtsverträge sowie andere Gesetze und Verträge über geistiges Eigentum geschützt. Die Anwendung wird lizenziert, nicht verkauft. Sie erkennen an, dass kein Eigentumsrecht an dem geistigen Eigentum der Anwendung auf Sie übertragen wird. Sie erkennen weiterhin an, dass der Titel und die vollen Eigentumsrechte an der Anwendung das ausschließliche Eigentum der NYU bleiben und Sie keine Rechte an der Anwendung erwerben, außer wie ausdrücklich in dieser Lizenz festgelegt. Sie erklären sich damit einverstanden, dass alle Kopien der Anwendung die gleichen Eigentumshinweise enthalten, die auf und in der Anwendung erscheinen. NYU kann seine Ansprüche gegenüber Personen gerichtlich geltend machen, die gegen diese Nutzungsbedingungen verstoßen, einschließlich der Durchsetzung seiner Urheberrechte an Ad Observer.</span></p>
+<h4><span style="font-style:italic;">Derechos de autor</span></h4>
 
-<h4><span style="font-style:italic;">Garantien</span></h4>
-<p><span style="font-style:normal;">Ad Observer wird dem Nutzer „WIE BESEHEN” zur Verfügung gestellt, ohne Garantien für die Nutzung oder Leistung und NYU lehnt jegliche Garantie- oder Haftungsverpflichtungen gegenüber dem Nutzer jeglicher Art ab, ob ausdrücklich oder stillschweigend. Wo die Gesetzgebung in dieser Vereinbarung eine Bedingung oder Garantie einschließt und diese Gesetzgebung Bestimmungen in einer Vereinbarung ausschließt oder verbietet, die die Anwendung oder Ausübung der Haftung unter einer solchen Bedingung oder Garantie ausschließt oder verändert, wird die Bedingung oder Garantie als in dieser Vereinbarung enthalten betrachtet.</span></p>
+<p><span style="font-style:normal;">La Aplicación y todos los derechos, incluidos los respectivos derechos de propiedad, entre otros, son propiedad de la NYU y están protegidos en virtud de las leyes de derechos de autor y de los tratados internacionales de derechos de autor, así como de conformidad con otras leyes y tratados en materia de propiedad intelectual. La Aplicación se otorga bajo licencia, no se vende. Usted reconoce que no se le transfiere ningún título de propiedad intelectual sobre la Aplicación. Asimismo, reconoce que el título y los derechos de propiedad absoluta sobre la Aplicación seguirán siendo propiedad exclusiva de la NYU, y usted no adquirirá ningún derecho sobre la Aplicación, a excepción de los establecidos de manera expresa en esta licencia. Usted acuerda que las copias de la Aplicación contendrán los mismos avisos de propiedad que aparecen en la Aplicación. La NYU puede incoar procedimientos legales contra aquellos individuos que infrinjan estos Términos de uso, incluso para hacer valer sus derechos de autor sobre Ad Observer. </span></p>
 
-<h4><span style="font-style:italic;">Beschränkung der Haftung</span></h4>
-<p><span style="font-style:normal;">NYU unterliegt nicht, und der Nutzer stellt NYU von jeglicher zusätzlichen Haftung frei und entschädigt NYU gegen jegliche Ansprüche, Klagen, Prozesse oder Verfahren (insbesondere unmittelbare, mittelbare oder Folgeschäden, Kosten für die Entfernung oder Neuinstallation oder Haftung für entgangene Nutzung oder entgangenen Gewinn) aufgrund der Nutzung oder Unmöglichkeit der Nutzung der Anwendung oder der Bereitstellung oder Nichterbringung von Support-Services, jede Verzögerung bei der Lieferung oder Fehler oder Defekt in der Anwendung, auch wenn NYU über die Möglichkeit solcher Schäden informiert wurde. Die gesamte Haftung von NYU im Rahmen dieser Vereinbarung ist auf den Betrag beschränkt, den der Nutzer für die Anwendung bezahlt hat. Der Nutzer hält NYU ferner von allen Ansprüchen, Klagen oder Verfahren schadlos, die von einem Anbieter von Websites oder einem Inhaber von Urheberrechten in Bezug auf den Betrieb der Anwendung durch den Nutzer erhoben werden. Der Nutzer erkennt ausdrücklich an und erklärt sich damit einverstanden, dass er sich nicht auf NYU verlassen hat, und NYU haftet nicht für Ratschläge, die NYU, ihre Bediensteten, Vertreter oder Mitarbeiter in Bezug auf die Eignung für einen beliebigen Zweck der Anwendung gegeben haben.</span></p>
+<h4><span style="font-style:italic;">Garantías</span></h4>
 
-<h4><span style="font-style:italic;">Copyright-Verletzung durch Dritte</span></h4>
-<p><span style="font-style:normal;">NYU duldet nicht die Verletzung des Urheberrechts und anderer Gesetze. NYU verlangt von allen Nutzern, dass sie die Anwendung unter strikter Einhaltung des Urheberrechts und anderer Gesetze nutzen. Die NYU ermächtigt oder ermutigt Sie nicht durch die Bereitstellung der Anwendung, das Urheberrecht oder andere Rechte Dritter zu verletzen.</span></p>
+<p><span style="font-style:normal;">Ad Observer se proporciona al usuario “TAL CUAL”, sin garantía alguna de uso o rendimiento, y la NYU renuncia a toda garantía u obligación de responsabilidad de cualquier tipo, ya sea expresa o implícita, para con el usuario. Cuando, en virtud de la legislación, se imponga alguna condición o garantía sobre este acuerdo, y dicha legislación restrinja o prohíba las disposiciones del acuerdo que excluyen o modifican la aplicación o el ejercicio de la responsabilidad en virtud de dicha condición o garantía, la condición o garantía se considerará incluida en este acuerdo.</span></p>
 
-<h4><span style="font-style:italic;">Haftungsfreistellung</span></h4>
-<p><span style="font-style:normal;">In Verbindung mit Ihrer Nutzung von Ad Observer und soweit nach geltendem Recht zulässig, erklären Sie sich damit einverstanden, NYU und ihre Direktoren, leitenden Angestellten, Mitarbeiter und Berater zu verteidigen, freizustellen und schadlos zu halten von und gegen jegliche Ansprüche oder Forderungen (einschließlich angemessener Anwaltskosten), die sich ergeben aus (a) Ihrer Nutzung der Anwendung; (b) jeglicher Verletzung dieser Nutzungsbedingungen durch Sie; (c) jeglicher Behauptung, dass Ihre Nutzung der Anwendung das Urheberrecht, das Markenrecht, das Geschäftsgeheimnis oder sonstiges geistiges Eigentum oder Rechte Dritter verletzt oder dagegen verstößt.</span></p>
+<h4><span style="font-style:italic;">Limitación de responsabilidad</span></h4>
+<p><span style="font-style:normal;">La NYU no está sujeta a ninguna otra responsabilidad adicional, y el usuario libera y exonera de responsabilidad a la NYU respecto de cualquier reclamo, acción, pleito o procedimiento (incluidos, entre otros, pérdidas o daños directos, indirectos, emergentes, costos de eliminación o reinstalación o la responsabilidad por el daño ocasionado por la pérdida de uso o de ganancias) como consecuencia del uso de la Aplicación o la imposibilidad de utilizarla, o de la prestación o la falta de prestación de servicios de apoyo, de cualquier demora en la entrega o fallo o defecto en la Aplicación, incluso cuando la NYU hubiera sido advertida de la posibilidad de tales daños y perjuicios. La responsabilidad total de la NYU en virtud de este acuerdo se limitará al monto que el usuario haya pagado por la Aplicación. Asimismo, el usuario exonera de responsabilidad a la NYU respecto de cualquier reclamo, acción, pleito o procedimiento que inicie cualquier proveedor de sitios web o cualquier titular de derechos de autor en relación con el uso que el usuario haga de la Aplicación. El usuario reconoce y acuerda de manera expresa que no se ha basado en ningún asesoramiento brindado por la NYU, sus funcionarios, agentes, representantes o empleados en relación con la idoneidad para cualquier propósito de la Aplicación, y la NYU no asume responsabilidad alguna por ello.</span></p>
 
-<h4><span style="font-style:italic;">Ihre Informationen</span></h4>
-<p><span style="font-style:normal;">Durch die Installation der Anwendung erkennen Sie an, dass Sie die Datenschutzrichtlinie von Ad Observer, die die Praktiken zur Erhebung von Informationen der Anwendung beschreibt und regelt, überprüft haben und ihr zustimmen. Eine Kopie der Datenschutzrichtlinie von Ad Observer ist verfügbar unter <a href="https://adobserver.org/privacy-policy/" rel="noopener noreferrer" target="_blank"><span style="font-style:normal;">hier</span></a><span style="font-style:normal;">. Ad Observer behält sich das Recht vor, die Bestimmungen seiner Datenschutzrichtlinie von Zeit zu Zeit zu ändern, und wenn dies der Fall ist, wird Ad Observer alle Änderungen an seiner Datenschutzrichtlinie unter der angegebenen Webadresse veröffentlichen.
+<h4><span style="font-style:italic;">Infracción de derechos de autor de terceros</span></h4>
+<p><span style="font-style:normal;">La NYU no consiente la vulneración de derechos de autor ni de otras leyes. La NYU exige a todos los usuarios que hagan uso de la aplicación en estricto cumplimiento de los derechos de autor y otras leyes. La NYU no autoriza ni alienta, mediante el suministro de la Aplicación, la infracción de los derechos de autor u otros derechos de terceros.</span></p>
+
+<h4><span style="font-style:italic;">Exoneración de responsabilidad</span></h4>
+<p><span style="font-style:normal;">En relación con el uso que usted haga de Ad Observer y en la medida en que lo permita la ley aplicable, usted acuerda defender, indemnizar y exonerar a la NYU, sus directores, funcionarios, empleados y asesores de toda responsabilidad frente a cualquier reclamo o demanda (incluidos los honorarios razonables de abogados) que surjan (a) del uso que usted haga de la Aplicación; (b) de cualquier infracción de estos Términos de uso por su parte; (c) de cualquier aseveración que indique que el uso que usted hace de la Aplicación infringe o vulnera los derechos de autor, marcas registradas, secretos comerciales u otra propiedad intelectual o derechos de cualquier tercero. </span></p>
+
+<h4><span style="font-style:italic;">Su información</span></h4>
+<p><span style="font-style:normal;">Al instalar la Aplicación, usted reconoce que ha consultado y acepta la Política de privacidad de Ad Observer que regula y detalla las prácticas de recopilación de información de la Aplicación. Puede acceder a una copia de la Política de privacidad de Ad Observer en <a href="https://adobserver.org/privacy-policy/" rel="noopener noreferrer" target="_blank"><span style="font-style:normal;">[enlace]</span></a>. Ad Observer se reserva el derecho a modificar las disposiciones de la Política de privacidad de forma periódica y, si lo hace, publicará cualquier modificación realizada en la dirección web proporcionada.
   </span></p>
 
-<h4><span style="font-style:italic;">Allgemeine Bestimmungen</span></h4>
-<p><span style="font-style:normal;">Dies ist die gesamte Vereinbarung zwischen Ihnen und der NYU, die Ihre Nutzung von Ad Observer regelt, und die jegliche vorherige Vereinbarung oder Absprache, ob schriftlich oder mündlich, in Bezug auf die vertraglichen Nutzungsbedingungen ersetzt. Sollte ein Teil dieser Nutzungsbedingungen für nichtig und nicht durchsetzbar befunden werden, hat dies keinen Einfluss auf die Gültigkeit des Rests der Vereinbarung, der gemäß seiner Bedingungen gültig und durchsetzbar bleibt. Diese Nutzungsbedingungen treten automatisch außer Kraft, wenn Sie die Bedingungen nicht einhalten. Die NYU kann diese Nutzungsbedingungen nach eigenem Ermessen jederzeit schriftlich ändern.</span></p>
+<h4><span style="font-style:italic;">Disposiciones generales</span></h4>
+<p><span style="font-style:normal;">Este documento constituye el acuerdo completo entre usted y la NYU, rige el uso que usted haga de Ad Observer y reemplaza cualquier acuerdo o entendimiento previo, ya sea escrito u oral, en relación con el objeto de estos Términos de uso. Si se determina que alguna parte de estos Términos de uso es nula o inaplicable, ello no afectará a la validez del resto del acuerdo, que seguirá teniendo vigor y siendo exigible de conformidad con sus términos. Estos Términos de uso quedarán rescindidos de manera automática en caso de que usted no cumpla con las disposiciones aquí contenidas. La NYU, a su entera discreción, puede modificar estos Términos de uso por escrito y en cualquier momento.</span></p>
 
-<h4><span style="font-style:italic;">Kündigung</span></h4>
-<p><span style="font-style:normal;">Sie können diese Nutzungsbedingungen jederzeit kündigen, indem Sie Ad Observer deinstallieren. Ihr Recht, Ad Observer zu nutzen, kann auch von NYU jederzeit, ohne Grund und ohne Vorankündigung beendet werden. Diese Vereinbarung endet automatisch, wenn Sie eine ihrer Bedingungen nicht einhalten. Sie stimmen zu, nach der Kündigung Ad Observer nicht mehr zu benutzen und zu deinstallieren.</span></p>
+<h4><span style="font-style:italic;">Rescisión</span></h4>
+<p><span style="font-style:normal;">Usted puede rescindir estos Términos de uso en cualquier momento si desinstala Ad Observer. La NYU también puede rescindir en cualquier momento su derecho a utilizar Ad Observer, sin justificación y sin previo aviso. Este acuerdo quedará rescindido de manera automática en caso de que usted no cumpla con los términos aquí contenidos. Tras la rescisión, usted se compromete a dejar de utilizar y a desinstalar Ad Observer.</span></p>
 
-<h4><span style="font-style:italic;">Änderungen in diesen Nutzungsbedingungen</span></h4>
-<p><span style="font-style:normal;">NYU behält sich das Recht vor, diese Nutzungsbedingungen von Zeit zu Zeit zu aktualisieren. Da Ihre Nutzung der Anwendung anonym erfolgt, können wir Sie nicht persönlich darüber informieren. Die aktuelle Version der Nutzungsbedingungen kann unter</span>
-  <a href="https://adobserver.org/terms-of-use/"><span style="font-style:normal;">eingesehen werden</span></a><span style="font-style:normal;">.</span></p>`
+<h4><span style="font-style:italic;">Modificaciones de estos Términos de uso</span></h4>
+<p><span style="font-style:normal;">La NYU se reserva el derecho de actualizar estos Términos de uso de manera periódica. Dado que el uso que usted hace de la Aplicación es de carácter anónimo, no podemos informarle personalmente sobre esto. Puede consultar la versión vigente de los Términos de uso en</span>
+  <a href="https://adobserver.org/terms-of-use/"><span style="font-style:normal;">[enlace]</span></a><span style="font-style:normal;">.</span></p>`
         },
 
         nav_0: {
@@ -974,9 +977,8 @@ const locale_es = (data, copyAssetFolder) => {
           message: 'Einstellungen'
         },
 
-
-        about_0: { // TODO
-          message: 'Über'
+        about_0: { // DONE (dbl check it's "Acerca de" and not "Acerca"
+          message: 'Acerca de'
         },
         about_html: { // DONE.
           message: `<p>
@@ -1047,7 +1049,7 @@ const locale_es = (data, copyAssetFolder) => {
         privacy_0: { // DONE
           message: 'Política de privacidad'
         },
-        privacy_html: {
+        privacy_html: { // mostly DONE with some TODO
           message: `
 <p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">En la presente Política de privacidad (“la Política”) se detallan la forma y los motivos por los que la New York University (“la NYU”) procesa los datos personales cuando las personas instalan Ad Observer (“la Aplicación”).</span></p>
 <br>
