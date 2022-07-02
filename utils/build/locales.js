@@ -451,7 +451,6 @@ const locale_de = (data, copyAssetFolder) => {
           message: 'Diese Option zeigt zu Ihren Facebook-Posts die jeweils gesammelten Informationen an.',
         },
 
-
         terms_0: {
           message: 'Ich akzeptiere diese Nutzungsbedingungen.',
         },
@@ -793,83 +792,83 @@ const locale_es = (data, copyAssetFolder) => {
         },
 
         // Preferences page.
-        youtube_share_ad_targeting_label: {
+        youtube_share_ad_targeting_label: { // TODO
           message: 'Zielgruppeninformationen der Werbung teilen',
         },
-        youtube_share_ad_targeting_hintText: {
+        youtube_share_ad_targeting_hintText: { // TODO
           message: 'Dies erlaubt dem Programm die Erklärungen von YouTube zu sammeln, warum Sie eine Bestimmte Werbung sehen.',
         },
-        youtube_share_ads_label: {
+        youtube_share_ads_label: { // TODO
           message: 'Werbung teilen',
         },
-        youtube_share_ads_hintText: {
+        youtube_share_ads_hintText: { // TODO
           message: 'Dies erlaubt Ad Observer das Teilen der verschiedenen Arten von Werbungen, die ihnen gezeigt werden.',
         },
-        youtube_share_recommended_videos_label: {
+        youtube_share_recommended_videos_label: { // TODO
           message: 'Empfehlungen teilen',
         },
-        youtube_share_recommended_videos_hintText: {
+        youtube_share_recommended_videos_hintText: { // TODO
           message: 'Dies ermöglicht dem Programm zu sehen, welche Videos Ihnen empfohlen werden.',
         },
-        youtube_share_watched_videos_label: {
+        youtube_share_watched_videos_label: { // TODO
           message: 'Gesehene Videos teilen',
         },
-        youtube_share_watched_videos_hintText: {
+        youtube_share_watched_videos_hintText: { // TODO
           message: 'Dies ermöglicht dem Programm die von Ihnen angeschauten Videos auf Youtube zu sehen. Häufig sind zielgerichtete Werbungen mit bestimmten Videos oder Kanälen verbunden. Dies wäre also eine große Hilfe für dieses Forschungsprojekt',
         },
-        user_share_country_label: {
-          message: 'Land',
+        user_share_country_label: { // DONE
+          message: 'Compartir mi país',
         },
-        user_share_country_hintText: {
-          message: 'Sie teilen uns mit, in welchem Land Sie leben.',
+        user_share_country_hintText: { // DONE
+          message: 'El país en el que nos dijo que está.',
         },
-        user_share_language_label: {
-          message: 'Sprache',
+        user_share_language_label: { // DONE
+          message: 'Compartir mi idioma',
         },
-        user_share_language_hintText: {
-          message: 'Sie teilen uns mit, welche Sprache Sie sprechen.',
+        user_share_language_hintText: { // DONE
+          message: 'El idioma que nos dijo que habla.',
         },
-        user_share_gender_label: {
-          message: 'Geschlecht',
+        user_share_gender_label: { // DONE
+          message: 'Compartir mi género',
         },
-        user_share_gender_hintText: {
-          message: 'Sie teilen uns Ihr Geschlecht mit.',
+        user_share_gender_hintText: { // DONE
+          message: 'El género que nos dijo que es.',
         },
-        user_share_age_label: {
-          message: 'Alter',
+        user_share_age_label: { // DONE
+          message: 'Compartir mi edad',
         },
-        user_share_age_hintText: {
-          message: 'Sie teilen uns Ihr Alter mit.',
+        user_share_age_hintText: { // DONE
+          message: 'El grupo de edad al que nos dijo que pertenecía.',
         },
-        user_share_diagnostic_data_label: {
-          message: 'Diagnose-Daten',
+        user_share_diagnostic_data_label: { // DONE
+          message: 'Compartir datos de diagnóstico',
         },
-        user_share_diagnostic_data_hintText: {
-          message: 'Falls Fehler auftreten, können Sie uns zusätzliche Daten schicken, um uns beim Lösen des Problems zu helfen.',
+        user_share_diagnostic_data_hintText: { // DONE
+          message: 'Si las cosas van mal, enviaremos datos adicionales para ayudarnos a diagnosticar el problema.',
         },
-        show_debug_data_label: {
-          message: 'Debug-Informationen anzeigen',
+        show_debug_data_label: { // DONE
+          message: 'Mostrar datos de depuración',
         },
-        show_debug_data_hintText: {
-          message: 'Debug-Informationen werden angezeigt',
+        show_debug_data_hintText: { // DONE
+          message: 'Se mostrará la información de depuración.',
         },
-        facebook_share_sponsored_posts_label: {
-          message: 'Facebook-Werbungen teilen',
+        facebook_share_sponsored_posts_label: { // DONE
+          message: 'Compartir anuncios de Facebook',
         },
-        facebook_share_sponsored_posts_hintText: {
-          message: 'Dies erlaubt dem Programm alle Werbungen zu sammeln, die Ihnen angezeigt werden.',
+        facebook_share_sponsored_posts_hintText: { // DONE
+          message: 'Esto permite que la extensión recoja todos los anuncios que se le muestran en Facebook.',
         },
-        facebook_share_ad_targeting_label: {
-          message: 'Zielgruppendaten teilen',
+        facebook_share_ad_targeting_label: { // DONE
+          message: 'Compartir información sobre la orientación de los anuncios',
         },
-        facebook_share_ad_targeting_hintText: {
-          message: 'Dies erlaubt uns, die „Warum wird mir das angezeigt“-Informationen von Facebook zu sammeln. Dies sind Informationen darüber, warum Ihnen bestimmte Werbung gezielt gezeigt wird.',
+        facebook_share_ad_targeting_hintText: { // DONE
+          message: 'Esto permite que la extensión solicite y recopile la información "¿Por qué estoy viendo esto?" de Facebook que explica por qué un anuncio en particular se dirigió a usted.',
         },
-        facebook_show_collection_status_label: {
-          message: 'Sammlungsstatus anzeigen',
+        facebook_show_collection_status_label: { // DONE
+          message: 'Mostrar el estado de la recopilación',
         },
-        facebook_show_collection_status_hintText: {
-          message: 'Diese Option zeigt zu Ihren Facebook-Posts die jeweils gesammelten Informationen an.',
+        facebook_show_collection_status_hintText: { // DONE
+          message: 'Si estuviese activada, etiquetará su publicación de Facebook con la información de la recopilación.',
         },
 
         terms_0: { // TODO
@@ -961,23 +960,23 @@ const locale_es = (data, copyAssetFolder) => {
   <a href="https://adobserver.org/terms-of-use/"><span style="font-style:normal;">[enlace]</span></a><span style="font-style:normal;">.</span></p>`
         },
 
-        nav_0: {
+        nav_0: { // TODO
           message: 'Mein Archiv',
         },
-        nav_1: {
+        nav_1: { // TODO
           message: 'Datenschutzrichtlinie',
         },
-        nav_2: {
+        nav_2: { // TODO
           message: 'Nutzungsbedingungen',
         },
-        nav_3: {
+        nav_3: { // TODO
           message: 'Über',
         },
-        nav_4: {
+        nav_4: { // TODO
           message: 'Einstellungen'
         },
 
-        about_0: { // DONE (dbl check it's "Acerca de" and not "Acerca"
+        about_0: { // DONE (TODO: dbl check it's "Acerca de" and not "Acerca")
           message: 'Acerca de'
         },
         about_html: { // DONE.
@@ -1216,29 +1215,31 @@ const locale_es = (data, copyAssetFolder) => {
 `,
         },
 
-        gender_0: {
-          message: 'Männlich',
+        gender_0: { // DONE
+          message: 'Masculino',
         },
-        gender_1: {
-          message: 'Weiblich',
+        gender_1: { // DONE
+          message: 'Femenino',
         },
-        gender_2: {
-          message: 'Divers',
+        gender_2: { // DONE
+          message: 'Otro',
         },
-        gender_3: {
-          message: 'Keine Angabe'
+        gender_3: { // DONE
+          message: 'Prefiere no indicar'
         },
 
-        archive_0: {
-          message: 'Mein Archiv',
+        archive_0: { // DONE
+          message: 'Mi archivo',
         },
-        archive_1: {
+        archive_1: { // TODO
           message: 'Sie haben nichts in Ihrem Archiv.'
         },
 
-        prefselector_0: {
-          message: 'Auswählen'
+        prefselector_0: { // DONE
+          message: 'Elija'
         }
+
+        // TODO: the "My Archive" docx. Looks like I missed some i18n :(
 
 
 
