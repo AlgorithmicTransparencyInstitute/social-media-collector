@@ -11,7 +11,7 @@ const formatDate = date =>
 
 const ArchiveHeader = ({ count, since }) => (
   <div className="mb-2">
-    <div>This is an archive of the data this extension has collected from your social feeds.</div>
+    <div>{chrome.i18n.getMessage('archive_2')}</div>
     <div className="small">
       You have {pluralise.withCount(count, '% item')} in your archive, collected since&nbsp;
       <span className="as-date">{formatDate(since)}</span>

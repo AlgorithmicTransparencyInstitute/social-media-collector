@@ -348,6 +348,9 @@ const locale_en = (data, copyAssetFolder) => {
         archive_1: {
           message: 'You have nothing in your archive.'
         },
+        archive_2: {
+          message: 'This is an archive of the data this extension has collected from your social feeds.'
+        },
 
         prefselector_0: {
           message: 'Choose'
@@ -455,13 +458,13 @@ const locale_de = (data, copyAssetFolder) => {
         terms_0: {
           message: 'Ich akzeptiere diese Nutzungsbedingungen.',
         },
-        terms_1: {
+        terms_1: { // TODO
           message: 'I accept the updated terms and conditions',
         },
         terms_2: {
           message: 'Sie müssen die oben genannten Nutzungsbedingungen akzeptieren, um die Browser-Erweiterung nutzen zu können.',
         },
-        terms_3: {
+        terms_3: { // TODO
           message: 'The above terms and conditions have been updated since you last agreed to them.',
         },
         terms_4: {
@@ -764,6 +767,9 @@ const locale_de = (data, copyAssetFolder) => {
         archive_1: {
           message: 'Sie haben nichts in Ihrem Archiv.'
         },
+        archive_2: { // TODO
+          message: 'This is an archive of the data this extension has collected from your social feeds.'
+        },
 
         prefselector_0: {
           message: 'Auswählen'
@@ -793,104 +799,104 @@ const locale_es = (data, copyAssetFolder) => {
         },
 
         // Preferences page.
-        youtube_share_ad_targeting_label: { // DONE
+        youtube_share_ad_targeting_label: {
           message: 'Compartir información sobre el direccionamiento del anuncio',
         },
-        youtube_share_ad_targeting_hintText: { // DONE
+        youtube_share_ad_targeting_hintText: {
           message: 'Esto compartirá las explicaciones proporcionadas por YouTube sobre por qué se le mostró un anuncio en particular.',
         },
-        youtube_share_ads_label: { // DONE
+        youtube_share_ads_label: {
           message: 'Compartir anuncios',
         },
-        youtube_share_ads_hintText: { // DONE
+        youtube_share_ads_hintText: {
           message: 'Esto compartirá todos los diferentes tipos de anuncios que se le muestran en YouTube',
         },
-        youtube_share_recommended_videos_label: { // DONE
+        youtube_share_recommended_videos_label: {
           message: 'Compartir recomendaciones',
         },
-        youtube_share_recommended_videos_hintText: { // DONE
+        youtube_share_recommended_videos_hintText: {
           message: 'Esto compartirá los otros videos que YouTube le recomienda mientras mira un video.',
         },
-        youtube_share_watched_videos_label: { // DONE
+        youtube_share_watched_videos_label: {
           message: 'Compartir videos vistos',
         },
-        youtube_share_watched_videos_hintText: { // DONE
+        youtube_share_watched_videos_hintText: {
           message: 'Esto compartirá cada video que elija ver en YouTube (a menudo, los anuncios están dirigidos a los espectadores de un video o canal en particular, por lo que es de gran ayuda si elige esta opción).',
         },
-        user_share_country_label: { // DONE
+        user_share_country_label: {
           message: 'Compartir mi país',
         },
-        user_share_country_hintText: { // DONE
+        user_share_country_hintText: {
           message: 'El país en el que nos dijo que está.',
         },
-        user_share_language_label: { // DONE
+        user_share_language_label: {
           message: 'Compartir mi idioma',
         },
-        user_share_language_hintText: { // DONE
+        user_share_language_hintText: {
           message: 'El idioma que nos dijo que habla.',
         },
-        user_share_gender_label: { // DONE
+        user_share_gender_label: {
           message: 'Compartir mi género',
         },
-        user_share_gender_hintText: { // DONE
+        user_share_gender_hintText: {
           message: 'El género que nos dijo que es.',
         },
-        user_share_age_label: { // DONE
+        user_share_age_label: {
           message: 'Compartir mi edad',
         },
-        user_share_age_hintText: { // DONE
+        user_share_age_hintText: {
           message: 'El grupo de edad al que nos dijo que pertenecía.',
         },
-        user_share_diagnostic_data_label: { // DONE
+        user_share_diagnostic_data_label: {
           message: 'Compartir datos de diagnóstico',
         },
-        user_share_diagnostic_data_hintText: { // DONE
+        user_share_diagnostic_data_hintText: {
           message: 'Si las cosas van mal, enviaremos datos adicionales para ayudarnos a diagnosticar el problema.',
         },
-        show_debug_data_label: { // DONE
+        show_debug_data_label: {
           message: 'Mostrar datos de depuración',
         },
-        show_debug_data_hintText: { // DONE
+        show_debug_data_hintText: {
           message: 'Se mostrará la información de depuración.',
         },
-        facebook_share_sponsored_posts_label: { // DONE
+        facebook_share_sponsored_posts_label: {
           message: 'Compartir anuncios de Facebook',
         },
-        facebook_share_sponsored_posts_hintText: { // DONE
+        facebook_share_sponsored_posts_hintText: {
           message: 'Esto permite que la extensión recoja todos los anuncios que se le muestran en Facebook.',
         },
-        facebook_share_ad_targeting_label: { // DONE
+        facebook_share_ad_targeting_label: {
           message: 'Compartir información sobre la orientación de los anuncios',
         },
-        facebook_share_ad_targeting_hintText: { // DONE
+        facebook_share_ad_targeting_hintText: {
           message: 'Esto permite que la extensión solicite y recopile la información "¿Por qué estoy viendo esto?" de Facebook que explica por qué un anuncio en particular se dirigió a usted.',
         },
-        facebook_show_collection_status_label: { // DONE
+        facebook_show_collection_status_label: {
           message: 'Mostrar el estado de la recopilación',
         },
-        facebook_show_collection_status_hintText: { // DONE
+        facebook_show_collection_status_hintText: {
           message: 'Si estuviese activada, etiquetará su publicación de Facebook con la información de la recopilación.',
         },
 
-        terms_0: { // DONE
+        terms_0: {
           message: 'Acepto estos términos y condiciones',
         },
-        terms_1: { // DONE
+        terms_1: {
           message: 'Acepto los términos y las condiciones actualizados',
         },
-        terms_2: { // DONE
+        terms_2: {
           message: 'Debe aceptar los términos y las condiciones anteriores antes de poder usar la extensión del navegador.',
         },
-        terms_3: { // DONE
+        terms_3: {
           message: 'Los términos y las condiciones anteriores se han actualizado desde la última vez que los aceptó.',
         },
-        terms_4: { // DONE
+        terms_4: {
           message: 'Usted aceptó los términos y las condiciones anteriores.',
         },
-        terms_5: { // DONE
+        terms_5: {
           message: 'Términos de uso'
         },
-        terms_html: { // Mostly DONE. Couple para need TODO.
+        terms_html: {
           message: `<style>
   p,h1,h4,h3,ul{
              margin: 2vmax;
@@ -960,26 +966,26 @@ const locale_es = (data, copyAssetFolder) => {
   <a href="https://adobserver.org/terms-of-use/"><span style="font-style:normal;">[enlace]</span></a><span style="font-style:normal;">.</span></p>`
         },
 
-        nav_0: { // DONE
+        nav_0: {
           message: 'Mi archivo',
         },
-        nav_1: { // DONE
+        nav_1: {
           message: 'Política de privacidad',
         },
-        nav_2: { // DONE
+        nav_2: {
           message: 'Términos y condiciones',
         },
-        nav_3: { // DONE
+        nav_3: {
           message: 'Acerca de nosotros',
         },
-        nav_4: { // DONE
+        nav_4: {
           message: 'Preferencias'
         },
 
-        about_0: { // DONE
+        about_0: {
           message: 'Acerca de'
         },
-        about_html: { // DONE.
+        about_html: {
           message: `<p>
             Ad Observer es una iniciativa para que los ciudadanos compartan de manera voluntaria los datos sobre lo que ven en Internet para permitir la investigación académica y el periodismo de investigación sobre el impacto de las plataformas digitales en la sociedad.
           </p>
@@ -1001,54 +1007,54 @@ const locale_es = (data, copyAssetFolder) => {
           </p>`,
         },
 
-        prefs_0: { // DONE
+        prefs_0: {
           message: 'Preferencias de uso compartido',
         },
-        prefs_1: { // DONE
+        prefs_1: {
           message: 'Usted tiene el control sobre lo que comparte con este proyecto. Para cambiar los datos que desea compartir, marque o desmarque la casilla para activar o desactivar el uso compartido de ese tipo de datos.',
         },
-        prefs_2: { // DONE
+        prefs_2: {
           message: 'Preferencias generales',
         },
-        prefs_3: { // DONE
+        prefs_3: {
           message: 'Estos ajustes se aplican a todos los datos compartidos por la extensión.',
         },
-        prefs_4: { // DONE
+        prefs_4: {
           message: 'Preferencias de Facebook',
         },
-        prefs_5: { // DONE
+        prefs_5: {
           message: 'Estas opciones controlan los datos que comparte de su canal de Facebook.',
         },
-        prefs_6: { // DONE
+        prefs_6: {
           message: 'Preferencias de YouTube',
         },
-        prefs_7: { // DONE
+        prefs_7: {
           message: 'Estas opciones controlan los datos que comparte cuando utiliza YouTube',
         },
-        prefs_8: { // DONE
+        prefs_8: {
           message: 'Su configuración',
         },
-        prefs_9: { // DONE
+        prefs_9: {
           message: 'La configuración de su idioma y ubicación nos ayuda a garantizar que estamos manejando sus datos de manera responsable y analizándolos de manera correcta.'
         },
 
-        prefs_10: { // DONE
+        prefs_10: {
           message: 'Su país',
         },
-        prefs_11: { // DONE
+        prefs_11: {
           message: 'Su idioma',
         },
-        prefs_12: { // DONE
+        prefs_12: {
           message: 'Edad',
         },
-        prefs_13: { // DONE
+        prefs_13: {
           message: 'Sexo'
         },
 
-        privacy_0: { // DONE
+        privacy_0: {
           message: 'Política de privacidad'
         },
-        privacy_html: { // DONE
+        privacy_html: {
           message: `
 <p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">En la presente Política de privacidad (“la Política”) se detallan la forma y los motivos por los que la New York University (“la NYU”) procesa los datos personales cuando las personas instalan Ad Observer (“la Aplicación”).</span></p>
 <br>
@@ -1208,33 +1214,32 @@ const locale_es = (data, copyAssetFolder) => {
 `,
         },
 
-        gender_0: { // DONE
+        gender_0: {
           message: 'Masculino',
         },
-        gender_1: { // DONE
+        gender_1: {
           message: 'Femenino',
         },
-        gender_2: { // DONE
+        gender_2: {
           message: 'Otro',
         },
-        gender_3: { // DONE
+        gender_3: {
           message: 'Prefiere no indicar'
         },
 
-        archive_0: { // DONE
+        archive_0: {
           message: 'Mi archivo',
         },
-        archive_1: { // DONE
+        archive_1: {
           message: 'Su archivo está vacío.'
         },
+        archive_2: {
+          message: 'Este es un archivo de los datos que esta extensión ha recopilado de sus redes sociales.'
+        },
 
-        prefselector_0: { // DONE
+        prefselector_0: {
           message: 'Elija'
         }
-
-        // TODO: the "My Archive" docx. Looks like I missed some i18n :(
-
-
 
       }),
     ]
