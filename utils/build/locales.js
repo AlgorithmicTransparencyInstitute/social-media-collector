@@ -289,6 +289,7 @@ const locale_en = (data, copyAssetFolder) => {
 <p>+1 212 992 7256</p>
 <p><strong>Guiding principles</strong></p>
 <p>NYU is committed to respecting individuals&rsquo; right to privacy, protecting personal data and compliance with applicable laws globally. In accordance with these guiding principles, the Application has been designed to process the minimum amount of personal data possible to achieve NYU&rsquo;s objectives.&nbsp;</p>
+
 <p><strong>Purposes and means of data processing</strong></p>
 <p>The purpose of the Application is to collect information about the political ads directed at and seen by private individuals on Facebook &amp; YouTube. This is done with the objective of facilitating public understanding of how political advertising is deployed. NYU believes that it is in the public interest to understand this phenomenon and its impact on democracy.&nbsp;</p>
 <p><br />To this end, NYU collects basic demographic information about the individuals who install the Application as well as information about the ads that they see. This information has been kept to an absolute minimum, so that it is not possible for NYU to identify individual users of the Application.</p>
@@ -792,29 +793,29 @@ const locale_es = (data, copyAssetFolder) => {
         },
 
         // Preferences page.
-        youtube_share_ad_targeting_label: { // TODO
-          message: 'Zielgruppeninformationen der Werbung teilen',
+        youtube_share_ad_targeting_label: { // DONE
+          message: 'Compartir información sobre el direccionamiento del anuncio',
         },
-        youtube_share_ad_targeting_hintText: { // TODO
-          message: 'Dies erlaubt dem Programm die Erklärungen von YouTube zu sammeln, warum Sie eine Bestimmte Werbung sehen.',
+        youtube_share_ad_targeting_hintText: { // DONE
+          message: 'Esto compartirá las explicaciones proporcionadas por YouTube sobre por qué se le mostró un anuncio en particular.',
         },
-        youtube_share_ads_label: { // TODO
-          message: 'Werbung teilen',
+        youtube_share_ads_label: { // DONE
+          message: 'Compartir anuncios',
         },
-        youtube_share_ads_hintText: { // TODO
-          message: 'Dies erlaubt Ad Observer das Teilen der verschiedenen Arten von Werbungen, die ihnen gezeigt werden.',
+        youtube_share_ads_hintText: { // DONE
+          message: 'Esto compartirá todos los diferentes tipos de anuncios que se le muestran en YouTube',
         },
-        youtube_share_recommended_videos_label: { // TODO
-          message: 'Empfehlungen teilen',
+        youtube_share_recommended_videos_label: { // DONE
+          message: 'Compartir recomendaciones',
         },
-        youtube_share_recommended_videos_hintText: { // TODO
-          message: 'Dies ermöglicht dem Programm zu sehen, welche Videos Ihnen empfohlen werden.',
+        youtube_share_recommended_videos_hintText: { // DONE
+          message: 'Esto compartirá los otros videos que YouTube le recomienda mientras mira un video.',
         },
-        youtube_share_watched_videos_label: { // TODO
-          message: 'Gesehene Videos teilen',
+        youtube_share_watched_videos_label: { // DONE
+          message: 'Compartir videos vistos',
         },
-        youtube_share_watched_videos_hintText: { // TODO
-          message: 'Dies ermöglicht dem Programm die von Ihnen angeschauten Videos auf Youtube zu sehen. Häufig sind zielgerichtete Werbungen mit bestimmten Videos oder Kanälen verbunden. Dies wäre also eine große Hilfe für dieses Forschungsprojekt',
+        youtube_share_watched_videos_hintText: { // DONE
+          message: 'Esto compartirá cada video que elija ver en YouTube (a menudo, los anuncios están dirigidos a los espectadores de un video o canal en particular, por lo que es de gran ayuda si elige esta opción).',
         },
         user_share_country_label: { // DONE
           message: 'Compartir mi país',
@@ -871,20 +872,20 @@ const locale_es = (data, copyAssetFolder) => {
           message: 'Si estuviese activada, etiquetará su publicación de Facebook con la información de la recopilación.',
         },
 
-        terms_0: { // TODO
-          message: 'Ich akzeptiere diese Nutzungsbedingungen.',
+        terms_0: { // DONE
+          message: 'Acepto estos términos y condiciones',
         },
-        terms_1: { // TODO
-          message: 'I accept the updated terms and conditions',
+        terms_1: { // DONE
+          message: 'Acepto los términos y las condiciones actualizados',
         },
-        terms_2: { // TODO
-          message: 'Sie müssen die oben genannten Nutzungsbedingungen akzeptieren, um die Browser-Erweiterung nutzen zu können.',
+        terms_2: { // DONE
+          message: 'Debe aceptar los términos y las condiciones anteriores antes de poder usar la extensión del navegador.',
         },
-        terms_3: { // TODO
-          message: 'The above terms and conditions have been updated since you last agreed to them.',
+        terms_3: { // DONE
+          message: 'Los términos y las condiciones anteriores se han actualizado desde la última vez que los aceptó.',
         },
-        terms_4: { // TODO
-          message: 'Sie haben die oben genannten Bedingungen akzeptiert.',
+        terms_4: { // DONE
+          message: 'Usted aceptó los términos y las condiciones anteriores.',
         },
         terms_5: { // DONE
           message: 'Términos de uso'
@@ -906,8 +907,7 @@ const locale_es = (data, copyAssetFolder) => {
   }
 </style>
 
-// TODO
-<h4 style="margin-bottom: 12pt;">Danke, dass Sie Ad Observer installiert haben und uns dabei helfen, politische Online-Anzeigen zu beaufsichtigen.</h4>
+<h4 style="margin-bottom: 12pt;">Gracias por instalar Ad Observer y ayudarnos a monitorear los anuncios políticos en línea.</h4>
 
 <p><span style="font-style:normal;">Los presentes Términos de uso constituyen un acuerdo jurídico entre usted (“usuario” o “usted”) y la New York University (“la NYU”, “nosotros” o “nos”), relativo a la licencia limitada de uso de la aplicación Ad Observer, que incluye una extensión del navegador web, el software informático y la documentación electrónica (“la Aplicación” o “Ad Observer”).</span></p>
 
@@ -960,23 +960,23 @@ const locale_es = (data, copyAssetFolder) => {
   <a href="https://adobserver.org/terms-of-use/"><span style="font-style:normal;">[enlace]</span></a><span style="font-style:normal;">.</span></p>`
         },
 
-        nav_0: { // TODO
-          message: 'Mein Archiv',
+        nav_0: { // DONE
+          message: 'Mi archivo',
         },
-        nav_1: { // TODO
-          message: 'Datenschutzrichtlinie',
+        nav_1: { // DONE
+          message: 'Política de privacidad',
         },
-        nav_2: { // TODO
-          message: 'Nutzungsbedingungen',
+        nav_2: { // DONE
+          message: 'Términos y condiciones',
         },
-        nav_3: { // TODO
-          message: 'Über',
+        nav_3: { // DONE
+          message: 'Acerca de nosotros',
         },
-        nav_4: { // TODO
-          message: 'Einstellungen'
+        nav_4: { // DONE
+          message: 'Preferencias'
         },
 
-        about_0: { // DONE (TODO: dbl check it's "Acerca de" and not "Acerca")
+        about_0: { // DONE
           message: 'Acerca de'
         },
         about_html: { // DONE.
@@ -1048,7 +1048,7 @@ const locale_es = (data, copyAssetFolder) => {
         privacy_0: { // DONE
           message: 'Política de privacidad'
         },
-        privacy_html: { // mostly DONE with some TODO
+        privacy_html: { // DONE
           message: `
 <p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">En la presente Política de privacidad (“la Política”) se detallan la forma y los motivos por los que la New York University (“la NYU”) procesa los datos personales cuando las personas instalan Ad Observer (“la Aplicación”).</span></p>
 <br>
@@ -1092,9 +1092,8 @@ const locale_es = (data, copyAssetFolder) => {
 <span style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">
   <br></span>
 
-// TODO: translate "Zu diesem..." German bit.
-<span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Zu diesem Zweck erhebt die NYU grundlegende demografische Informationen über die Personen, die die Anwendung installieren, sowie Informationen über die Anzeigen, die sie sehen. Diese Informationen wurden auf ein absolutes Minimum beschränkt, so dass&nbsp;</span>
-<span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">es für NYU nicht möglich ist, einzelne Nutzer der Anwendung zu identifizieren</span><span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">. &nbsp;</span></p>
+<span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Con este fin, NYU recopila información demográfica básica sobre las personas que instalan la Aplicación, así como información sobre los anuncios que ven. Esta información se ha mantenido al mínimo absoluto, &nbsp;</span>
+<span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">de modo que no es posible que NYU identifique usuarios individuales de la Aplicación.</span><span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">. &nbsp;</span></p>
 
 <br>
 
@@ -1109,11 +1108,7 @@ const locale_es = (data, copyAssetFolder) => {
 <p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Cuando un usuario particular instala la Aplicación, se lo invita a suministrar información demográfica básica sobre sí mismo: el grupo de edad, el género y la etnia. Este perfil con características demográficas básicas (“el Perfil”) permite que la NYU pueda entender quiénes ven los anuncios. No es obligatorio suministrar dicha información y la Aplicación puede seguir recopilando datos que contribuyan al proyecto de investigación sin que el usuario cree un Perfil.</span></p>
 <br>
 
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Es werden von NYU keine weiteren personenbezogenen identifizierbaren Informationen angefordert oder verarbeitet. Die Browsersprache, die von der Anwendung zum Zwecke der korrekten Satz- und Syntaxanalyse (Parsing) der Anzeigen aufgezeichnet wird, ist ebenfalls im Profil enthalten. Die Anwendung führt kein „Profiling“ oder eine „automatisierte Entscheidungsfindung“ im Sinne der DSGVO durch.</span></p>
-<br>
-
-// TODO: this needs translation
-<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Wenn die Nutzerin/ der Nutzer sich dafür entschieden hat, ihr/sein Profil zu teilen, wird eine Identifikationsnummer (ID) erstellt und lokal in der Anwendung gespeichert. Wenn die Anwendung eine Werbeanzeige erkennt, werden die Details der Werbeanzeige zusammen mit der ID und den Profildaten an die NYU übermittelt. Diese Daten werden dann in die Datenbank hinzugefügt, mit Ausnahme der ID, die nicht in die Datenbank aufgenommen wird.</span></p>
+<p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">La NYU no solicita ni procesa ninguna otra información de identificación personal. El idioma del navegador, que la Aplicación registra con el fin de analizar correctamente los anuncios, también se incluye en el Perfil. La Aplicación no realiza ninguna “elaboración de perfiles” ni lleva a cabo una “toma de decisiones automatizadas” conforme se define en el Reglamento General de Protección de Datos (RGPD).</span></p>
 <br>
 
 <p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Si el usuario decide no crear o no compartir un Perfil, solo los datos relacionados con los anuncios se transmitirán e incluirán en la Base de datos. Todos los usuarios pueden ver los datos relacionados con los anuncios que la Aplicación haya procesado si hacen clic, en cualquier momento, en el icono Ad Observer y se desplazan hasta “My Archive” (Mi Archivo). </span></p>
@@ -1131,8 +1126,7 @@ const locale_es = (data, copyAssetFolder) => {
 <span style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">
   <br>  </span>
 
-  // TODO: this bit needs translation.
-  <span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Wie oben erwähnt, werden die in der Datenbank gespeicherten Daten anonymisiert, was bedeutet, dass der Widerruf der Einwilligung eines Nutzers nicht die Löschung der Daten im Zusammenhang mit den von der Anwendung erhobenen Anzeigen bedeutet.&nbsp;</span></p>
+  <span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Como se indicó anteriormente, los datos que se conservan en la Base de datos son anonimizados, lo que significa que el retiro del consentimiento por parte de un usuario no supondrá la eliminación de los datos relacionados con los anuncios que la Aplicación ha recopilado. &nbsp;</span></p>
 
 <p style="line-height: 1;">
   <br>
@@ -1144,10 +1138,9 @@ const locale_es = (data, copyAssetFolder) => {
 <span style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">
     <br> </span>
 
-  // TODO: this bit needs translation.
-  <span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Wie oben erwähnt, können Einzelpersonen bei der Installation der Anwendung Informationen über ihre ethnische Zugehörigkeit angeben. Diese Daten, die unter die Definition von „besondere Kategorien von personenbezogenen Daten“ gemäß der DSGVO fallen können, werden mit Zustimmung verarbeitet. Wie oben erwähnt,&nbsp;</span>
+  <span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Como se indicó anteriormente, las personas pueden optar por proporcionar información sobre su origen étnico cuando instalen la Aplicación. Estos datos, que pueden estar comprendidos dentro de la definición de “categorías especiales de datos” en virtud del Reglamento General de Protección de Datos (General Data Protection Regulation, RGPD), se procesan con consentimiento. Como se indicó anteriormente, &nbsp;</span>
 
-  <span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">werden diese Daten von der NYU nicht in einem Format gespeichert, das die Identifizierung der betroffenen Person ermöglicht</span><span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">. Andere sensible Daten werden von NYU nicht angefordert oder verarbeitet.&nbsp;</span></p>
+  <span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">NYU no almacena estos datos en un formato que permita la identificación de la persona en cuestión</span><span style="font-size:11pt;font-family:Calibri,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">. NYU no solicita ni procesa otros datos confidenciales. &nbsp;</span></p>
 <p dir="ltr" style="line-height: 1; margin-top: 0pt; margin-bottom: 0pt;">
   <br>
 </p>
@@ -1231,8 +1224,8 @@ const locale_es = (data, copyAssetFolder) => {
         archive_0: { // DONE
           message: 'Mi archivo',
         },
-        archive_1: { // TODO
-          message: 'Sie haben nichts in Ihrem Archiv.'
+        archive_1: { // DONE
+          message: 'Su archivo está vacío.'
         },
 
         prefselector_0: { // DONE
