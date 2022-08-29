@@ -10,6 +10,22 @@ const LINK = ':scope a[role="link"],:scope div[role="button"],:scope [aria-label
  *  @returns {Boolean} true if the post subtitle contains a visible sponsored substring.
  */
 
+// Because FB breaks this file's ad detection often, I'm writing down the process
+// for fixing it so that I don't have to figure it out every time I try.
+//
+// Steps to fix isSponsoredPost.
+//
+// 1) In Chrome dev console, find the ad post element. You can find it by
+//    right-clicking on ad post and Inspect Element, then "Store as global variable".
+//    That creates a temp1 variable. Do `var ad = temp1`
+//
+// 2) Test each sponsor test on adpost variable in dev console. Example:
+//
+//      isSponsoredTest1(ad)
+//
+// 3) Now you can run your traditional debugging methods by stepping thru each
+//    line of code in each sponsored test.
+
 // Since Facebook, by FTC law, must have an aria label with the word "Sponsored",
 // our strategy is to find all elements with a aria-labelledby attr, then lookup
 // the corresponding aria label for the word Sponsored.
@@ -19,6 +35,7 @@ const LINK = ':scope a[role="link"],:scope div[role="button"],:scope [aria-label
 const isSponsoredPost = function(el, sponsorStr = 'Sponsored') {
   var result = isSponsoredTest1(el, sponsorStr) || isSponsoredTest2(el, sponsorStr);
   result = result || isSponsoredTest3(el, sponsorStr);
+  result = result || isSponsoredTest4(el, sponsorStr);
   // Because FB breaks the isSponsoredPost code often, I'm leaving this
   // console.log in to help future debugging.
   // console.debug('>> isSponsoredPost', el, result);
@@ -78,7 +95,7 @@ function contains(el1, el2) {
 
 // Then we try the usual way of finding Sponsor text in the FB Post itself.
 function isSponsoredTest3(element, sponsorStr = 'Sponsored') {
-  const els = element.querySelectorAll(LINK);
+  var els = element.querySelectorAll(LINK);
   for (const el of els) {
     // Try to bypass obfuscated elements by only taking the spans that are
     // within the original element.
@@ -95,6 +112,54 @@ function isSponsoredTest3(element, sponsorStr = 'Sponsored') {
     }
     if (fullstring === sponsorStr) {
       return true;
+    }
+  }
+  return false;
+}
+
+function isSponsoredTest4(element, sponsorStr = 'Sponsored') {
+  var els = element.querySelectorAll(LINK);
+
+  // In this for loop, we try to read the text of each element for sponsorStr.
+  for (const el of els) {
+    var lines = {}; // Organize letters by line. Index is letter's offsetTop.
+    var spans = el.querySelectorAll('span');
+
+    // Each span has a letter. The spans are in random places.
+    // In this for loop, we first organize all the spans by the same line.
+    // We know they're on the same line if they have the same offsetTop.
+    for (const span of spans) {
+      if (span.firstChild) {
+        var letter = span.firstChild.nodeValue;
+        if (letter === null) {
+          continue;
+        }
+        // Add to the appropriate line by offsetTop.
+        var o = span.offsetTop;
+        if (!lines[o]) {
+          lines[o] = [];
+        }
+        lines[o].push({ letter, position: span.offsetLeft });
+      }
+    }
+
+    // Now sort each line by their position in the line.
+    // This is necessary since they // could appear randomly.
+    for (var [_, line] of Object.entries(lines)) {
+      line.sort(function(a, b) {
+        return a.position - b.position;
+      });
+    }
+
+    // Now detect which line has Sponsored string.
+    for ([_, line] of Object.entries(lines)) {
+      var fullstring = '';
+      for (letter of line) {
+        fullstring += letter.letter;
+      }
+      if (fullstring === sponsorStr) {
+        return true;
+      }
     }
   }
   return false;
