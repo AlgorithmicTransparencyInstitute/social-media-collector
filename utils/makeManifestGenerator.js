@@ -92,7 +92,7 @@ const makeManifestGenerator = ({ shortSha }) => ({ isFirefox, apiUrl, config }) 
       scripts: ['bundle.js']
     },
     web_accessible_resources: ['webpage/*', 'assets/runs_on_fb.js', 'assets/runs_on_yt.js'],
-    content_security_policy: "script-src 'self' 'unsafe-eval'; object-src 'self'"
+    content_security_policy: "script-src 'self'; object-src 'self'"
   };
 
   const chromeManifest = {

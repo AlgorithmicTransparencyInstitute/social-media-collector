@@ -17,7 +17,7 @@ const makeHandler = (analyse, report) => async ({ source, data }) => {
       console.debug('content script received data', data);
       const perms = await permissions();
       console.debug('permissions', perms);
-      const payload = analyse(data, perms);
+      const payload = await analyse(data, perms);
       console.debug('payload', payload);
       const response = await report(payload, perms);
       console.debug('report completed', response);
