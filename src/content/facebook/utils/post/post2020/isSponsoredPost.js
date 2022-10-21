@@ -36,6 +36,7 @@ const isSponsoredPost = function(el, sponsorStr = 'Sponsored') {
   var result = isSponsoredTest1(el, sponsorStr) || isSponsoredTest2(el, sponsorStr);
   result = result || isSponsoredTest3(el, sponsorStr);
   result = result || isSponsoredTest4(el, sponsorStr);
+  result = result || isSponsoredTest5(el, sponsorStr);
   // Because FB breaks the isSponsoredPost code often, I'm leaving this
   // console.log in to help future debugging.
   // console.debug('>> isSponsoredPost', el, result);
@@ -158,6 +159,24 @@ function isSponsoredTest4(element, sponsorStr = 'Sponsored') {
         fullstring += letter.letter;
       }
       if (fullstring === sponsorStr) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+// This test checks for SVG for sponsored.
+function isSponsoredTest5(element, sponsorStr = 'Sponsored') {
+  var els = element.querySelectorAll(LINK);
+  for (const el of els) {
+    var useEls = el.querySelectorAll('use');
+    for (var useEl of useEls) {
+      var href = useEl.getAttribute('xlink:href').substring(1); // Removes leading '#'
+      var text = document.getElementById(href);
+      var label = text.innerHTML;
+      if (label === sponsorStr) {
+        console.log('guo test5 pass');
         return true;
       }
     }

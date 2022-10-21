@@ -29,6 +29,9 @@ const getGraph = async label =>
  *  @param {HTMLElement} element — The element.
  *  @return {object} The `adId` and `clientToken`.
  */
-const getAdIdAndToken = async element => getGraph(element.getAttribute('aria-labelledby'));
+async function getAdIdAndToken(element) {
+  var label = element.querySelectorAll('a[tabindex="0"]')[1].innerText;
+  return getGraph(label);
+}
 
 export default getAdIdAndToken;

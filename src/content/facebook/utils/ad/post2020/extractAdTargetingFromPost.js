@@ -15,7 +15,7 @@ const extractAdTargetingFromPost = async post => {
   } = post;
   const { adId, clientToken } = await getAdIdAndToken(elem);
   if (!adId || !clientToken) {
-    console.debug('missing adId or clientToken', adId, clientToken);
+    console.error('missing adId or clientToken', adId, clientToken);
     return;
   }
 

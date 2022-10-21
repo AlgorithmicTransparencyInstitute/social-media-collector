@@ -10,14 +10,18 @@ import toVariables from '../toVariables';
 /**
  *  Construct the body of the request to the graphql endpoint.
  *
+ *  This is an example of the variables we send to GraphQL.
+ *  {"adId":"23850881217110085","fields":{"ad_id":"23850881217110085","client_token":"AI@AQL7ElGT7BbZCrPvVDR2hae4QYbU9-naZ8Eto8k8icuvYgcTrO0mErLOp54bZ2bQbDqGpId3PHwoxlmRkZOeGU2J","request_id":"f25974b188815ec_23850881217110085"}}
+ *
  *  @param An object containing the data needed to construct the body
  *  @return The URI encoded concatenated body string.
+ *
  */
 const makeBody = (adId, clientToken, data) => {
   // hard code this.
-  const componentName = 'AdsPrefWAISTDialogQuery';
+  const componentName = 'CometAdPrefsWAISTDialogRootQuery';
   // hard coding this seems to work.
-  const WAIST_GRAPHQL_DOC_ID = '3134194616602210';
+  const WAIST_GRAPHQL_DOC_ID = '5574710692594916';
 
   const body = {
     av: data.__user,
@@ -84,7 +88,7 @@ const getAdTargetingData = async (adId, clientToken, data) => {
 
     /* istanbul ignore if */
     if (json.error || json.errors) {
-      console.debug('Server error', json);
+      console.error('Server error. [url, request, response]', url, metadata, json);
       return null;
     }
     return json;
