@@ -7,7 +7,7 @@ import tagMessage from '../tagMessage';
 // way to dedupe the code.
 function getDivNewsfeedSelector() {
   var feedstart = document.querySelector('#ssrb_feed_start');
-  var newsfeedClass = feedstart.nextElementSibling.querySelector('div').className;
+  var newsfeedClass = feedstart.nextElementSibling.querySelector('div[class]').className;
   console.log('guo selector', `div [class="${newsfeedClass}"]`);
   return `div [class="${newsfeedClass}"]`;
 }
